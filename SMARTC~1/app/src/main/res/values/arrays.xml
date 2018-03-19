@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="major">
+        <item>가정교육과</item>
+        <item>건축공학과</item>
+        <item>멀티미디어공학과</item>
+        <item>전자전기공학과</item>
+        <item>정보통신공학과</item>
+        <item>컴퓨터공학과</item>
+        <item>화공생물공학과</item>
+
+
+    </string-array>
+    
+    <string-array name="year">
+        <item>2013년도</item>
+        <item>2014년도</item>
+        <item>2015년도</item>
+        <item>2016년도</item>
+        <item>2017년도</item>
+        <item>2018년도</item>
+    </string-array>
+
+    <string-array name="semester">
+        <item>1학기</item>
+        <item>여름학기</item>
+        <item>2학기</item>
+        <item>겨울학기</item>
+    </string-array>
+
+    <string-array name="course">
+        <item>자료구조</item>
+        <item>컴퓨터알고리즘</item>
+        <item>데이터베이스</item>
+        <item>인터네트워킹</item>
+
+
+    </string-array>
+
+</resources>
