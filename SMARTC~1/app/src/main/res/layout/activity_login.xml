@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_login"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.capston.iceamericano.smartcampus.LoginActivity">
+
+
+   <LinearLayout
+       android:layout_width="match_parent"
+       android:layout_height="match_parent"
+       android:orientation="vertical"
+       android:background="@color/colorPrimary"
+
+       >
+       <LinearLayout
+           android:id="@+id/L1"
+           android:orientation="vertical"
+           android:layout_width="match_parent"
+           android:layout_height="120dp"
+           android:background="#ffffff"
+           android:gravity="center"
+           >
+
+           <ImageView
+               android:layout_width="350dp"
+               android:layout_height="100dp"
+               android:layout_gravity="center"
+               android:src="@drawable/realtitle" />
+
+       </LinearLayout>
+
+       <LinearLayout
+           android:orientation="vertical"
+           android:layout_width="match_parent"
+           android:layout_height="match_parent">
+           <TextView
+               android:layout_marginTop="30dp"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:layout_gravity="center"
+               android:textStyle="bold"
+               android:textColor="#726d69"
+               android:textSize="42dp"
+               android:text="SMART CAMPUS"/>
+           <EditText
+               android:background="#ffffff"
+               android:layout_marginTop="30dp"
+               android:layout_width="280dp"
+               android:layout_height="wrap_content"
+               android:hint="  학번"
+               android:layout_gravity="center"
+               android:padding="10dp"
+               android:paddingLeft="50dp"
+               android:id="@+id/ID_hint"
+               android:drawableLeft="@drawable/ic_school_black_24dp"
+               android:drawablePadding="10dp"
+               android:drawableStart="@drawable/ic_school_black_24dp"/>
+
+           <EditText
+               android:drawablePadding="10dp"
+               android:inputType="textPassword"
+               android:background="#ffffff"
+               android:layout_marginTop="10dp"
+               android:layout_width="280dp"
+               android:layout_height="wrap_content"
+               android:hint="  비밀번호"
+               android:layout_gravity="center"
+               android:padding="10dp"
+               android:id="@+id/PW_hint"
+
+               android:drawableStart="@drawable/ic_https_black_24dp"
+               android:drawableLeft="@drawable/ic_https_black_24dp"/>
+           
+           <Button
+               android:layout_width="280dp"
+               android:layout_height="wrap_content"
+               android:textSize="20dp"
+               android:textStyle="bold"
+               android:background="#1163dd"
+               android:text="로그인"
+               android:textColor="#ffffff"
+               android:layout_margin="10dp"
+               android:layout_gravity="center"/>
+           <Button
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:layout_gravity="center"
+               android:textSize="18dp"
+               android:layout_marginTop="10dp"
+               android:text="회원가입"
+               android:textStyle="bold"
+               android:textColor="#000000"
+               android:background="@color/colorPrimary"
+               android:id="@+id/registerButton"/>
+           <Button
+               android:paddingTop="10dp"
+               android:layout_width="wrap_content"
+               android:layout_height="25dp"
+               android:layout_gravity="center"
+               android:textSize="10dp"
+               android:background="@color/colorPrimary"
+               android:text="비밀번호 찾기 및 변경"
+               android:id="@+id/PWchange"
+               android:textColor="#5a5856"/>
+           <LinearLayout
+               android:layout_gravity="center"
+               android:layout_width="90dp"
+               android:layout_height="1dp"
+               android:background="#686762"></LinearLayout>
+
+
+
+       </LinearLayout>
+
+
+
+
+   </LinearLayout>
+
+
+</RelativeLayout>

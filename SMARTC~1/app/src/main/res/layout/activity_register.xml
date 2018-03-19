@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_login"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.capston.iceamericano.smartcampus.RegisterActivity">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:background="#f5f4e9"
+        >
+
+        <TextView
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:layout_gravity="center"
+            android:text="회원 가입"
+            android:textColor="#56524e"
+            android:textSize="30dp"
+            android:textStyle="bold"
+            android:background="@color/colorPrimary" />
+        <LinearLayout
+            android:layout_marginTop="30dp"
+            android:layout_marginLeft="40dp"
+            android:layout_marginRight="40dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            >
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Type"
+                android:textSize="20dp"
+                android:textStyle="bold"
+                android:textColor="#000000"
+                android:background="#f5f4e9"
+                />
+            <RadioButton
+                android:layout_marginLeft="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="학생"
+                android:textStyle="bold"
+                android:textColor="#000000"
+                android:layout_weight="3"/>
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="교수"
+                android:textStyle="bold"
+                android:textColor="#000000"
+                android:layout_weight="3"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="36dp"
+            android:layout_marginLeft="36dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <Spinner
+
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_gravity="center"
+                android:id="@+id/Major_Spinner">
+
+            </Spinner>
+
+            <EditText
+                android:drawablePadding="10dp"
+                android:layout_marginTop="10dp"
+                android:background="#ffffff"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="  학번"
+                android:layout_gravity="center"
+                android:padding="10dp"
+                android:paddingLeft="50dp"
+                android:id="@+id/SN_hint"
+                android:drawableLeft="@drawable/ic_school_black_24dp"
+                android:drawableStart="@drawable/ic_school_black_24dp"/>
+
+            <Button
+
+                android:layout_width="wrap_content"
+                android:layout_height="20dp"
+                android:textSize="15dp"
+                android:textStyle="bold"
+                android:background="@color/colorPrimary"
+                android:text="*중복 확인"
+                android:layout_marginTop="5dp"
+                android:layout_marginLeft="230dp"
+                />
+
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="*1개의 기기에 1개의 학번만을 등록할 수 있습니다."/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_marginRight="36dp"
+            android:layout_marginLeft="36dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <EditText
+                android:drawablePadding="10dp"
+                android:inputType="textPassword"
+                android:background="#ffffff"
+                android:layout_marginTop="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="  이름"
+                android:layout_gravity="center"
+                android:padding="10dp"
+                android:paddingLeft="50dp"
+                android:id="@+id/NAME_hint"
+                android:drawableStart="@drawable/ic_person_black_24dp"
+                android:drawableLeft="@drawable/ic_person_black_24dp"/>
+            <EditText
+                android:drawablePadding="10dp"
+                android:inputType="textPassword"
+                android:background="#ffffff"
+                android:layout_marginTop="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="  비밀번호"
+                android:layout_gravity="center"
+                android:padding="10dp"
+                android:paddingLeft="50dp"
+                android:id="@+id/PW_hint2"
+                android:drawableStart="@drawable/ic_https_black_24dp"
+                android:drawableLeft="@drawable/ic_https_black_24dp"/>
+            <EditText
+                android:drawablePadding="10dp"
+                android:inputType="textPassword"
+                android:background="#ffffff"
+                android:layout_marginTop="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="  비밀번호 확인"
+                android:layout_gravity="center"
+                android:padding="10dp"
+                android:paddingLeft="50dp"
+                android:id="@+id/PW_hint"
+                android:drawableStart="@drawable/ic_info_outline_black_24dp"
+                android:drawableLeft="@drawable/ic_info_outline_black_24dp"/>
+            <EditText
+                android:drawablePadding="10dp"
+                android:background="#ffffff"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="  E-mail"
+                android:layout_gravity="center"
+                android:padding="10dp"
+                android:layout_marginTop="10dp"
+                android:paddingLeft="50dp"
+                android:id="@+id/E_hint"
+                android:drawableLeft="@drawable/ic_email_black_24dp"
+                android:drawableStart="@drawable/ic_email_black_24dp"/>
+            <Button
+                android:id="@+id/registerButton2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="20dp"
+                android:textStyle="bold"
+                android:background="@color/colorPrimary"
+                android:text="가입하기"
+                android:layout_marginTop="10dp"
+                android:layout_gravity="center"/>
+
+        </LinearLayout>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </LinearLayout>
+
+
+</RelativeLayout>
