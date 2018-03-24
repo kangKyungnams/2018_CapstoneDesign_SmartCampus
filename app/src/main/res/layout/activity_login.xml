@@ -55,7 +55,7 @@
                android:layout_gravity="center"
                android:padding="10dp"
                android:paddingLeft="50dp"
-               android:id="@+id/ID_hint"
+               android:id="@+id/ed_ID"
                android:drawableLeft="@drawable/ic_school_black_24dp"
                android:drawablePadding="10dp"
                android:drawableStart="@drawable/ic_school_black_24dp"/>
@@ -70,7 +70,7 @@
                android:hint="  비밀번호"
                android:layout_gravity="center"
                android:padding="10dp"
-               android:id="@+id/PW_hint"
+               android:id="@+id/ed_PW"
 
                android:drawableStart="@drawable/ic_https_black_24dp"
                android:drawableLeft="@drawable/ic_https_black_24dp"/>
@@ -84,7 +84,8 @@
                android:text="로그인"
                android:textColor="#ffffff"
                android:layout_margin="10dp"
-               android:layout_gravity="center"/>
+               android:layout_gravity="center"
+               android:id="@+id/loginButton"/>
            <Button
                android:layout_width="wrap_content"
                android:layout_height="wrap_content"

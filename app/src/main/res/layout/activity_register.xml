@@ -87,7 +87,7 @@
                 android:layout_gravity="center"
                 android:padding="10dp"
                 android:paddingLeft="50dp"
-                android:id="@+id/SN_hint"
+                android:id="@+id/ed_StuNum"
                 android:drawableLeft="@drawable/ic_school_black_24dp"
                 android:drawableStart="@drawable/ic_school_black_24dp"/>
 
@@ -135,7 +135,7 @@
                 android:layout_gravity="center"
                 android:padding="10dp"
                 android:paddingLeft="50dp"
-                android:id="@+id/NAME_hint"
+                android:id="@+id/ed_name"
                 android:drawableStart="@drawable/ic_person_black_24dp"
                 android:drawableLeft="@drawable/ic_person_black_24dp"/>
             <EditText
@@ -149,7 +149,7 @@
                 android:layout_gravity="center"
                 android:padding="10dp"
                 android:paddingLeft="50dp"
-                android:id="@+id/PW_hint2"
+                android:id="@+id/ed_password"
                 android:drawableStart="@drawable/ic_https_black_24dp"
                 android:drawableLeft="@drawable/ic_https_black_24dp"/>
             <EditText
@@ -176,11 +176,11 @@
                 android:padding="10dp"
                 android:layout_marginTop="10dp"
                 android:paddingLeft="50dp"
-                android:id="@+id/E_hint"
+                android:id="@+id/ed_email"
                 android:drawableLeft="@drawable/ic_email_black_24dp"
                 android:drawableStart="@drawable/ic_email_black_24dp"/>
             <Button
-                android:id="@+id/registerButton2"
+                android:id="@+id/bt_signup"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textSize="20dp"
