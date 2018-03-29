@@ -1,6 +1,5 @@
 package com.capston.iceamericano.smartcampus;
 
-import android.bluetooth.BluetoothAdapter;
 import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
@@ -16,6 +15,13 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
+
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -26,7 +32,9 @@ public class LoginActivity extends AppCompatActivity {
     private Button registerButton;
     private Button loginButton;
 
-    BluetoothAdapter mBluetoothAdapter;
+    DatabaseReference uReference = FirebaseDatabase.getInstance().getReference();
+    DatabaseReference userdata = uReference.child("user");
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,35 +46,16 @@ public class LoginActivity extends AppCompatActivity {
         loginButton = (Button) findViewById(R.id.loginButton);
 
         mAuth = FirebaseAuth.getInstance();
-        mBluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        blueTooth();
+
 
         registerButton.setOnClickListener(register);
         loginButton.setOnClickListener(login);
 
 
-
     }
 
 
-    void blueTooth ()
-    {
-        if(mBluetoothAdapter == null)
-        {
-            Log.d(TAG, "There is no bluetooth");
-        }
-        else
-        {
-            if(mBluetoothAdapter.isEnabled())
-            {
-                Log.d(TAG, "Bluetooth is already on");
-            }
-            else
-            {
-                mBluetoothAdapter.enable();
-            }
-        }
-    }
+
 
 
     Button.OnClickListener register = new Button.OnClickListener() {
@@ -80,6 +69,7 @@ public class LoginActivity extends AppCompatActivity {
     Button.OnClickListener login = new Button.OnClickListener() {
         @Override
         public void onClick(View v) { // 빈칸일시 에러메시지 띄우기
+
             if (ed_ID.getText().toString().isEmpty() == true) {
                     ed_ID.setError("Please confirm the Email");
                 return;
@@ -88,7 +78,29 @@ public class LoginActivity extends AppCompatActivity {
                     ed_PW.setError("PW를 입력해 주세요");
                 return;
             }
-            loginAuth(ed_ID.getText().toString(),ed_PW.getText().toString());
+
+
+
+            userdata.addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(DataSnapshot dataSnapshot) {
+                    // This method is called once with the initial value and again
+                    // whenever data at this location is updated.
+
+                    String e_mail = dataSnapshot.child(ed_ID.getText().toString()).child("e_mail").getValue().toString();
+                    String value = dataSnapshot.getValue().toString();
+                    loginAuth(e_mail,ed_PW.getText().toString());
+                }
+
+                @Override
+                public void onCancelled(DatabaseError error) {
+                    // Failed to read value
+                    Log.w(TAG, "Failed to read value.", error.toException());
+                }
+            });
+
+
+
         }
     };
 
