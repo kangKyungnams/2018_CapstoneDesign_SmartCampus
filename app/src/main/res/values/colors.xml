@@ -4,4 +4,7 @@
     <color name="colorPrimaryDark">#000000</color>
     <color name="colorAccent">#2170c5</color>
     <color name="colorlightBlue">#54c3ff</color>
+    <color name="colorGray">#999ea1</color>
+    <color name="colorrealGray">#676a6c</color>
+    <color name="colorlightYello">#f7f9dd</color>
 </resources>
