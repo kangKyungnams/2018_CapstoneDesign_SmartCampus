@@ -1,7 +1,15 @@
 package com.capston.iceamericano.smartcampus;
 
+import android.*;
+import android.bluetooth.BluetoothAdapter;
+import android.bluetooth.BluetoothManager;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.location.LocationManager;
+import android.os.Build;
+import android.provider.Settings;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -123,8 +131,10 @@ public class LoginActivity extends AppCompatActivity {
     Button.OnClickListener register = new Button.OnClickListener() {
         @Override
         public void onClick(View v) { // 버튼에 로그인 기능 입히기
-            Intent registerIntent = new Intent(LoginActivity.this, RegisterActivity.class);
-            LoginActivity.this.startActivity(registerIntent);
+
+                Intent registerIntent = new Intent(LoginActivity.this, RegisterActivity.class);
+                LoginActivity.this.startActivity(registerIntent);
+
         }
     };
 
@@ -141,24 +151,25 @@ public class LoginActivity extends AppCompatActivity {
                 return;
             }
 
+            if(checkPermission()) {
+                userdata.addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(DataSnapshot dataSnapshot) {
+                        // This method is called once with the initial value and again
+                        // whenever data at this location is updated.
 
-            userdata.addListenerForSingleValueEvent(new ValueEventListener() {
-                @Override
-                public void onDataChange(DataSnapshot dataSnapshot) {
-                    // This method is called once with the initial value and again
-                    // whenever data at this location is updated.
+                        String e_mail = dataSnapshot.child(ed_ID.getText().toString()).child("e_mail").getValue().toString();
+                        String value = dataSnapshot.getValue().toString();
+                        loginAuth(e_mail, ed_PW.getText().toString());
+                    }
 
-                    String e_mail = dataSnapshot.child(ed_ID.getText().toString()).child("e_mail").getValue().toString();
-                    String value = dataSnapshot.getValue().toString();
-                    loginAuth(e_mail,ed_PW.getText().toString());
-                }
-
-                @Override
-                public void onCancelled(DatabaseError error) {
-                    // Failed to read value
-                    Log.w(TAG, "Failed to read value.", error.toException());
-                }
-            });
+                    @Override
+                    public void onCancelled(DatabaseError error) {
+                        // Failed to read value
+                        Log.w(TAG, "Failed to read value.", error.toException());
+                    }
+                });
+            }
 
 
 
@@ -188,6 +199,37 @@ public class LoginActivity extends AppCompatActivity {
 
                     }
                 });
+    }
+
+    private boolean checkPermission(){
+        BluetoothManager bluetoothManager =
+                (BluetoothManager) this.getSystemService(Context.BLUETOOTH_SERVICE);
+        BluetoothAdapter mBluetoothAdapter = bluetoothManager.getAdapter();
+
+        if((mBluetoothAdapter == null || !mBluetoothAdapter.isEnabled())){
+            startActivity(new Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE));
+            return false;
+        }
+
+
+        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.M){
+            if(this.checkSelfPermission(android.Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED){
+                requestPermissions(new String[]{android.Manifest.permission.ACCESS_COARSE_LOCATION, android.Manifest.permission.ACCESS_FINE_LOCATION}, 1);
+                return false;
+            }
+
+            LocationManager lm = (LocationManager)this.getSystemService(Context.LOCATION_SERVICE);
+            boolean gps_enabled = false;
+            try {
+                gps_enabled = lm.isProviderEnabled(LocationManager.GPS_PROVIDER);
+            } catch(Exception ex) {}
+
+            if(!gps_enabled){
+                startActivity(new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS));
+                return false;
+            }
+        }
+        return true;
     }
 
 }
