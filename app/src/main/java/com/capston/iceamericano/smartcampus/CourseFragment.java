@@ -1,5 +1,6 @@
 package com.capston.iceamericano.smartcampus;
 
+import android.app.AlertDialog;
 import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
@@ -9,8 +10,15 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.ListView;
 import android.widget.RadioGroup;
 import android.widget.Spinner;
+
+import org.json.JSONArray;
+import org.json.JSONObject;
+
+import java.util.ArrayList;
+import java.util.List;
 
 
 /**
@@ -21,7 +29,10 @@ import android.widget.Spinner;
  * Use the {@link CourseFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class CourseFragment extends Fragment {
+public class CourseFragment extends Fragment
+{
+    View v;
+
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -67,11 +78,16 @@ public class CourseFragment extends Fragment {
     private Spinner yearSpinner;
     private ArrayAdapter semesterAdapter;
     private Spinner semesterSpinner;
-    private ArrayAdapter majorAdapter;
-    private Spinner majorSpinner;
+    private ArrayAdapter areaAdapter;
+    private Spinner areaSpinner;
 
     private String courseYear = "";
     private String courseSemester = "";
+    private String courseMajor = "";
+
+    private ListView courseListView;
+    private CourseListAdapter adapter;
+    private List<Course> courseList;
 
     @Override
     public void onActivityCreated(Bundle b){
@@ -80,14 +96,19 @@ public class CourseFragment extends Fragment {
 //        final RadioGroup courseUniversityGroup = (RadioGroup)getView().findViewById(R.id.)
         yearSpinner = (Spinner)getView().findViewById(R.id.yearSpinner);
         semesterSpinner = (Spinner)getView().findViewById(R.id.semesterSpinner);
-        majorSpinner = (Spinner)getView().findViewById(R.id.majorSpinner);
+        areaSpinner = (Spinner)getView().findViewById(R.id.areaSpinner);
 
         yearAdapter = ArrayAdapter.createFromResource(getActivity(), R.array.year, android.R.layout.simple_spinner_dropdown_item);
         yearSpinner.setAdapter(yearAdapter);
         semesterAdapter = ArrayAdapter.createFromResource(getActivity(), R.array.semester, android.R.layout.simple_spinner_dropdown_item);
         semesterSpinner.setAdapter(semesterAdapter);
-        majorAdapter = ArrayAdapter.createFromResource(getActivity(),R.array.semester, android.R.layout.simple_spinner_dropdown_item);
-        majorSpinner.setAdapter(majorAdapter);
+        areaAdapter = ArrayAdapter.createFromResource(getActivity(),R.array.area, android.R.layout.simple_spinner_dropdown_item);
+        areaSpinner.setAdapter(areaAdapter);
+
+        courseListView = (ListView)getView().findViewById(R.id.courseListView);
+        courseList = new ArrayList<Course>();
+        adapter = new CourseListAdapter(getContext().getApplicationContext(), courseList);
+        courseListView.setAdapter(adapter);
     }
 
 
@@ -97,7 +118,9 @@ public class CourseFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_course, container, false);
+        v = inflater.inflate(R.layout.fragment_course, container, false);
+        return v;
+
     }
 
     // TODO: Rename method, update argument and hook method into UI event
@@ -107,16 +130,6 @@ public class CourseFragment extends Fragment {
         }
     }
 
-    @Override
-    public void onAttach(Context context) {
-        super.onAttach(context);
-        if (context instanceof OnFragmentInteractionListener) {
-            mListener = (OnFragmentInteractionListener) context;
-        } else {
-            throw new RuntimeException(context.toString()
-                    + " must implement OnFragmentInteractionListener");
-        }
-    }
 
     @Override
     public void onDetach() {
@@ -137,5 +150,56 @@ public class CourseFragment extends Fragment {
     public interface OnFragmentInteractionListener {
         // TODO: Update argument type and name
         void onFragmentInteraction(Uri uri);
+    }
+
+    public void onPostExecute(String result){
+        try{
+            courseList.clear();
+            JSONObject jsonObject = new JSONObject(result);
+            JSONArray jsonArray = jsonObject.getJSONArray("response");
+            int count = 0;
+            int courseID; //강의 고유 번호
+            int courseYear; // 강의 년도
+            String courseSemester; // 강의 학기
+            String courseMajor; // 강의 해당 학과
+            String courseGrade; // 강의 해당 학년
+            String courseTitle; // 강의 제목
+            String courseProfessor; // 강의 교수
+            String courseTime; // 강의 시간대
+            String courseRoom; // 강의실번호
+            int courseCredit; // 강의 학점
+            int courseDivide; // 강의 분반
+            int coursePersonnel; //강의 해당 인원
+            while(count < jsonArray.length()){
+                JSONObject object = jsonArray.getJSONObject(count);
+                courseID = object.getInt("courseID");
+                courseYear = object.getInt("courseYear");
+                courseSemester = object.getString("courseSemester");
+                courseMajor = object.getString("courseMajor");
+                courseGrade = object.getString("courseGrade");
+                courseTitle = object.getString("courseTitle");
+                courseTime = object.getString("courseTime");
+                courseRoom = object.getString("courseRoom");
+                courseProfessor = object.getString("courseProfessor");
+                courseCredit = object.getInt("courseCredit");
+                courseDivide = object.getInt("courseDivide");
+                coursePersonnel = object.getInt("coursePersonnel");
+                Course course = new Course(courseID, courseYear, courseSemester, courseMajor, courseGrade, courseTitle, courseProfessor, courseTime, courseRoom, courseCredit, courseDivide, coursePersonnel);
+                courseList.add(course);
+                count++;
+            }
+            if(count == 0){
+                AlertDialog dialog;
+                AlertDialog.Builder builder = new AlertDialog.Builder(CourseFragment.this.getActivity());
+                dialog = builder.setMessage("조회된 강의가 없습니다.")
+                        .setPositiveButton("확인",null)
+                        .create();
+                dialog.show();
+            }
+            adapter.notifyDataSetChanged();
+
+        } catch (Exception e){
+            e.printStackTrace();
+        }
     }
 }

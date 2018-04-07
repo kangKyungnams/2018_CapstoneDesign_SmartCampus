@@ -1,13 +1,24 @@
 package com.capston.iceamericano.smartcampus;
 
+import android.app.Fragment;
+import android.app.FragmentManager;
 import android.content.Intent;
+import android.support.design.widget.NavigationView;
+import android.support.v4.view.GravityCompat;
+import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -19,7 +30,9 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity
+    implements NavigationView.OnNavigationItemSelectedListener{
+
 
     String TAG = "MainActivity";
     private ArrayAdapter adapter;
@@ -33,7 +46,21 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        spinner = (Spinner)findViewById(R.id.course_Spinner);
+        spinner = (Spinner) findViewById(R.id.course_Spinner);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
+                this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+        drawer.addDrawerListener(toggle);
+        toggle.syncState();
+
+        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+        navigationView.setNavigationItemSelectedListener(this);
+
+
+
 
         //접속 계정의 강의 목록 불러오기
         userdata.addListenerForSingleValueEvent(new ValueEventListener() {
@@ -42,15 +69,14 @@ public class MainActivity extends AppCompatActivity {
                 // This method is called once with the initial value and again
                 // whenever data at this location is updated.
 
-                String value = user.getEmail().substring(0,10);
+                String value = user.getEmail().substring(0, 10);
                 ArrayList<String> arGeneral = new ArrayList<String>();
 
-                for (DataSnapshot dataSnapshot2: dataSnapshot.getChildren()){
+                for (DataSnapshot dataSnapshot2 : dataSnapshot.getChildren()) {
 
                     String value2 = dataSnapshot2.getKey();
                     Boolean compare = value2.startsWith(value);
-                    if(compare)
-                    {
+                    if (compare) {
                         arGeneral.add(dataSnapshot2.child("title").getValue().toString());
                     }
 
@@ -68,7 +94,7 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
-        TextView course_button2 = (TextView)findViewById(R.id.course_button2);
+        TextView course_button2 = (TextView) findViewById(R.id.course_button2);
         course_button2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -78,4 +104,50 @@ public class MainActivity extends AppCompatActivity {
         });
 
     }
-}
+        public boolean onNavigationItemSelected (MenuItem item){
+        // Handle navigation view item clicks here.
+        int id = item.getItemId();
+
+        FragmentManager manager = getFragmentManager();
+
+        if (id == R.id.nav_myinfo) {
+            manager.beginTransaction().replace(R.id.content_main, new Myinfo()).commit();
+        } else if (id == R.id.nav_course) {
+            manager.beginTransaction().replace(R.id.content_main, new Fragment()).commit();
+        } else if (id == R.id.nav_restaurant) {
+            manager.beginTransaction().replace(R.id.content_main, new Restaurant()).commit();
+        } else if (id == R.id.nav_appinfo) {
+            manager.beginTransaction().replace(R.id.content_main, new Appinfo()).commit();
+        }
+
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        drawer.closeDrawer(GravityCompat.START);
+        return true;
+    }
+        public boolean onCreateOptionsMenu (Menu menu){
+        // Inflate the menu; this adds items to the action bar if it is present.
+
+        MenuInflater inflater = getMenuInflater();
+
+        getMenuInflater().inflate(R.menu.main, menu);
+        return true;
+    }
+        @Override
+        public boolean onOptionsItemSelected (MenuItem item){
+        // Handle action bar item clicks here. The action bar will
+        // automatically handle clicks on the Home/Up button, so long
+        // as you specify a parent activity in AndroidManifest.xml.
+        int id = item.getItemId();
+        //noinspection SimplifiableIfStatement
+        if (id == R.id.action_logout) {
+            Toast.makeText(MainActivity.this, "로그아웃!!", Toast.LENGTH_SHORT).show();
+            return true;
+        } else if (id == R.id.action_settings) {
+            Toast.makeText(MainActivity.this, "설정!!", Toast.LENGTH_SHORT).show();
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+
+    }

@@ -37,4 +37,11 @@
 
     </string-array>
 
+
+    <string-array name="area">
+        <item>전공</item>
+        <item>공통교양</item>
+        <item>교양필수</item>
+    </string-array>
+
 </resources>
