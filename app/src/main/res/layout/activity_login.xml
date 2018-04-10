@@ -80,7 +80,7 @@
                android:layout_height="wrap_content"
                android:textSize="20dp"
                android:textStyle="bold"
-               android:background="#1163dd"
+               android:background="#3284ff"
                android:text="로그인"
                android:textColor="#ffffff"
                android:layout_margin="10dp"

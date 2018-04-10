@@ -16,6 +16,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -94,35 +95,55 @@ public class MainActivity extends AppCompatActivity
         });
 
 
-        TextView course_button2 = (TextView) findViewById(R.id.course_button2);
-        course_button2.setOnClickListener(new View.OnClickListener() {
+        Button course_button = (Button) findViewById(R.id.course_button2);
+        Button restaurant_button = (Button) findViewById(R.id.restaurant_button);
+        Button my_button = (Button) findViewById(R.id.my_button);
+
+        course_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent registerIntent2 = new Intent(MainActivity.this, StudentClassActivity.class);
-                MainActivity.this.startActivity(registerIntent2);
+                Intent Intent1 = new Intent(MainActivity.this, StudentClassActivity.class);
+                MainActivity.this.startActivity(Intent1);
+            }
+        });
+        restaurant_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent Intent2 = new Intent(MainActivity.this, Restaurant.class);
+                MainActivity.this.startActivity(Intent2);
+            }
+        });
+        my_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent Intent3 = new Intent(MainActivity.this, Mypage.class);
+                MainActivity.this.startActivity(Intent3);
             }
         });
 
     }
         public boolean onNavigationItemSelected (MenuItem item){
-        // Handle navigation view item clicks here.
-        int id = item.getItemId();
+            int id = item.getItemId();
 
-        FragmentManager manager = getFragmentManager();
 
-        if (id == R.id.nav_myinfo) {
-            manager.beginTransaction().replace(R.id.content_main, new Myinfo()).commit();
-        } else if (id == R.id.nav_course) {
-            manager.beginTransaction().replace(R.id.content_main, new Fragment()).commit();
-        } else if (id == R.id.nav_restaurant) {
-            manager.beginTransaction().replace(R.id.content_main, new Restaurant()).commit();
-        } else if (id == R.id.nav_appinfo) {
-            manager.beginTransaction().replace(R.id.content_main, new Appinfo()).commit();
-        }
 
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        drawer.closeDrawer(GravityCompat.START);
-        return true;
+            if (id == R.id.nav_myinfo) {
+                Intent myinfo1 = new Intent(MainActivity.this, Mypage.class);
+                MainActivity.this.startActivity(myinfo1);
+            } else if (id == R.id.nav_course) {
+                Intent course1 = new Intent(MainActivity.this, Course.class);
+                MainActivity.this.startActivity(course1);
+            } else if (id == R.id.nav_restaurant) {
+                Intent restaurant1 = new Intent(MainActivity.this, Restaurant.class);
+                MainActivity.this.startActivity(restaurant1);
+            } else if (id == R.id.nav_appinfo) {
+                Intent appinfo1 = new Intent(MainActivity.this, Appinfo.class);
+                MainActivity.this.startActivity(appinfo1);
+            }
+
+            DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+            drawer.closeDrawer(GravityCompat.START);
+            return true;
     }
         public boolean onCreateOptionsMenu (Menu menu){
         // Inflate the menu; this adds items to the action bar if it is present.
