@@ -34,7 +34,7 @@ public class Restaurant extends AppCompatActivity {
         @Override
         protected void onCreate(@Nullable Bundle savedInstanceState) {
             super.onCreate(savedInstanceState);
-
+            setContentView(R.layout.activity_restaurant);
             RestaurantSpinner = (Spinner) findViewById(R.id.course_Spinner);
         }
 
