@@ -1,13 +1,102 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent" android:layout_height="match_parent">
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.capston.iceamericano.smartcampus.Restaurant"
+    android:background="@drawable/res2"
+    android:id="@+id/content_restaurant">
+    <!--app:layout_behavior="@string/appbar_scrolling_view_behavior"-->
 
-    <TextView
+
+
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_gravity="center"
-        android:gravity="center"
-        android:text="식당"
-        android:textSize="100dp"/>
+        >
+        <!--<LinearLayout-->
+        <!--android:id="@+id/Res_L1"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:orientation="vertical"-->
+        <!--android:background="#f9f7ea">-->
+        <!--<ImageView-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="127dp"-->
+        <!--android:src="@drawable/res2"/>-->
+        <!--</LinearLayout>-->
+        <LinearLayout
+            android:layout_marginTop="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginLeft="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:drawableStart="@drawable/ic_restaurant_black_29dp"
+                android:text=" 오늘의 식단 "
+                android:textSize="30dp"
+                android:textStyle="bold"
+                android:textColor="#ffffff"
+                android:background="@color/colorGray"
+                />
+            <Spinner
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_gravity="center"
+                android:id="@+id/restaurant_Spinner"
+                android:layout_marginBottom="10dp"
+                android:background="#ffffff">
+            </Spinner>
 
-</RelativeLayout>
+
+            <LinearLayout
+                android:layout_marginTop="180dp"
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+                <Button
+                    android:id="@+id/Res_bt1"
+                    android:layout_width="match_parent"
+                    android:layout_height="52dp"
+                    android:text=" 주 문 하 기 "
+                    android:textSize="20dp"
+                    android:textStyle="bold"
+                    android:textColor="#ffffff"
+                    android:background="#1470f7" />
+                <Button
+                    android:id="@+id/Res_bt2"
+                    android:layout_marginTop="25dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="52dp"
+                    android:text=" 충 전 하 기 "
+                    android:textSize="20dp"
+                    android:textStyle="bold"
+                    android:textColor="#ffffff"
+                    android:background="#1470f7" />
+                <Button
+                    android:id="@+id/Res_bt3"
+                    android:layout_marginTop="25dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="52dp"
+                    android:text=" 마 이 페 이 지 "
+                    android:textSize="20dp"
+                    android:textStyle="bold"
+                    android:textColor="#ffffff"
+                    android:background="#1470f7" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+
+
+    </RelativeLayout>
+
+
+</android.support.constraint.ConstraintLayout>
+

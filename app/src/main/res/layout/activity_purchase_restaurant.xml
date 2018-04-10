@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#f5f4e9"
+    tools:context=".PurchaseRestaurant">
+
+    <!--<LinearLayout-->
+    <!--android:id="@+id/Res_L1"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:orientation="vertical"-->
+    <!--android:background="#f9f7ea">-->
+    <!--<ImageView-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="127dp"-->
+    <!--android:src="@drawable/res2"/>-->
+    <!--</LinearLayout>-->
+    <LinearLayout
+        android:id="@+id/food_L1"
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:drawableStart="@drawable/ic_restaurant_black_24dp"
+            android:text=" 식당 선택 "
+            android:textSize="25dp"
+            android:textStyle="bold"
+            android:textColor="#000000"
+            android:background="#f5f4e9"
+            />
+        <Spinner
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_gravity="center"
+            android:id="@+id/restaurant_Spinner"
+            android:layout_marginBottom="10dp"
+            android:background="#ffffff">
+        </Spinner>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/food_L2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp">
+        <RadioGroup
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <LinearLayout
+                android:layout_marginTop="7dp"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <RadioButton
+                    android:textSize="20dp"
+                    android:text=" 상록원 일품 "
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+                <Button
+                    android:layout_width="40dp"
+                    android:layout_height="38dp"
+                    android:text="-"/>
+                <EditText
+                    android:hint=" 수량 "
+                    android:background="#ffffff"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+                <Button
+                    android:layout_width="40dp"
+                    android:layout_height="38dp"
+                    android:text="+"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_marginTop="7dp"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <RadioButton
+                    android:textSize="20dp"
+                    android:text=" 상록원 뚝배기"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+                <Button
+                    android:layout_width="40dp"
+                    android:layout_height="38dp"
+                    android:text="-"/>
+                <EditText
+                    android:hint=" 수량 "
+                    android:background="#ffffff"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+                <Button
+                    android:layout_width="40dp"
+                    android:layout_height="38dp"
+                    android:text="+"/>
+            </LinearLayout><LinearLayout
+            android:layout_marginTop="7dp"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <RadioButton
+                android:textSize="20dp"
+                android:text=" 상록원 고등어무조림"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <Button
+                android:layout_width="40dp"
+                android:layout_height="38dp"
+                android:text="-"/>
+            <EditText
+                android:hint=" 수량 "
+                android:background="#ffffff"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <Button
+                android:layout_width="40dp"
+                android:layout_height="38dp"
+                android:text="+"/>
+        </LinearLayout>
+        </RadioGroup>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/food_L3"
+        android:layout_marginTop="50dp"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:layout_marginLeft="25dp"
+            android:layout_marginRight="25dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text=" 주문 수량 : "
+                android:textSize="17dp"
+                android:textStyle="bold"
+                android:gravity="center"
+                android:textColor="#000000"
+                android:background="#e1e1e1" />
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint=" 수량 "
+                android:textSize="17dp"
+                android:textStyle="bold"
+                android:textColor="#000000"
+                android:background="#ffffff" />
+            <TextView
+                android:layout_marginLeft="20dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text=" 주문 금액 : "
+                android:textSize="17dp"
+                android:textStyle="bold"
+                android:gravity="center"
+                android:textColor="#000000"
+                android:background="#e1e1e1" />
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint=" 58,000 "
+                android:textSize="17dp"
+                android:textStyle="bold"
+                android:textColor="#000000"
+                android:background="#ffffff" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_margin="25dp"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <Button
+                android:layout_weight="1"
+                android:id="@+id/Pur_bt1"
+                android:layout_gravity="center"
+                android:layout_width="match_parent"
+                android:layout_height="52dp"
+                android:text=" 초기화 "
+                android:textSize="20dp"
+                android:textStyle="bold"
+                android:textColor="#ffffff"
+                android:background="@color/colorGray"
+                android:layout_marginRight="10dp"/>
+            <Button
+                android:layout_marginLeft="10dp"
+                android:layout_weight="1"
+                android:id="@+id/Pur_bt2"
+                android:layout_gravity="center"
+                android:layout_width="match_parent"
+                android:layout_height="52dp"
+                android:text=" 주문하기 "
+                android:textSize="20dp"
+                android:textStyle="bold"
+                android:textColor="#ffffff"
+                android:background="#1470f7" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+</LinearLayout>
