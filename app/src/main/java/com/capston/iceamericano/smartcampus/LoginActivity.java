@@ -151,25 +151,25 @@ public class LoginActivity extends AppCompatActivity {
                 return;
             }
 
-            if(checkPermission()) {
-                userdata.addListenerForSingleValueEvent(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(DataSnapshot dataSnapshot) {
-                        // This method is called once with the initial value and again
-                        // whenever data at this location is updated.
 
-                        String e_mail = dataSnapshot.child(ed_ID.getText().toString()).child("e_mail").getValue().toString();
-                        String value = dataSnapshot.getValue().toString();
-                        loginAuth(e_mail, ed_PW.getText().toString());
-                    }
+            userdata.addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(DataSnapshot dataSnapshot) {
+                    // This method is called once with the initial value and again
+                    // whenever data at this location is updated.
 
-                    @Override
-                    public void onCancelled(DatabaseError error) {
-                        // Failed to read value
-                        Log.w(TAG, "Failed to read value.", error.toException());
-                    }
-                });
-            }
+                    String e_mail = dataSnapshot.child(ed_ID.getText().toString()).child("e_mail").getValue().toString();
+                    String value = dataSnapshot.getValue().toString();
+                    loginAuth(e_mail, ed_PW.getText().toString());
+                }
+
+                @Override
+                public void onCancelled(DatabaseError error) {
+                    // Failed to read value
+                    Log.w(TAG, "Failed to read value.", error.toException());
+                }
+            });
+
 
 
 
@@ -189,8 +189,10 @@ public class LoginActivity extends AppCompatActivity {
                         if (task.isSuccessful()) {
                             // Sign in success, update UI with the signed-in user's information
                             Log.d(TAG, "signInWithEmail:success");
-                            FirebaseUser user = mAuth.getCurrentUser();
-                            LoginActivity.this.startActivity(loginIntent);
+                            if(checkPermission()) {
+                                FirebaseUser user = mAuth.getCurrentUser();
+                                LoginActivity.this.startActivity(loginIntent);
+                            }
                         } else {
                             // If sign in fails, display a message to the user.
                             Log.w(TAG, "signInWithEmail:failure", task.getException());
