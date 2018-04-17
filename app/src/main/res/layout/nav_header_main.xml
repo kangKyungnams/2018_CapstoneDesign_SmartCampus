@@ -1,66 +1,66 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="match_parent"
+    android:layout_width="245dp"
     android:layout_height="180dp"
-    android:background="@color/colorlightYello"
+    android:background="#ffffff"
     android:gravity="bottom"
     android:orientation="vertical"
     android:paddingBottom="16dp"
-    android:paddingLeft="16dp"
+    android:paddingLeft="10dp"
     android:paddingRight="16dp"
     android:layout_marginTop="16dp"
     android:theme="@style/ThemeOverlay.AppCompat.Dark">
 
     <LinearLayout
-        android:layout_marginTop="10dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:orientation="horizontal">
         <ImageView
+            android:layout_marginTop="15dp"
             android:id="@+id/imageView1"
-            android:layout_width="wrap_content"
+            android:layout_width="210dp"
             android:layout_height="wrap_content"
             android:paddingTop="@dimen/nav_header_vertical_spacing"
-            android:src="@drawable/profile" />
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-            <TextView
-                android:textStyle="bold"
-                android:textSize="20dp"
-                android:layout_marginLeft="10dp"
-                android:layout_marginTop="30dp"
-                android:id="@+id/major1"
-                android:textColor="#000000"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:paddingTop="@dimen/nav_header_vertical_spacing"
-                android:text="정보통신공학과" />
+            android:src="@drawable/realtitle" />
+        <!--<LinearLayout-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:orientation="vertical">-->
+            <!--<TextView-->
+                <!--android:textStyle="bold"-->
+                <!--android:textSize="20dp"-->
+                <!--android:layout_marginLeft="10dp"-->
+                <!--android:layout_marginTop="30dp"-->
+                <!--android:id="@+id/major1"-->
+                <!--android:textColor="#000000"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:paddingTop="@dimen/nav_header_vertical_spacing"-->
+                <!--android:text="정보통신공학과" />-->
 
-            <TextView
-                android:textStyle="bold"
-                android:textSize="20dp"
-                android:layout_marginLeft="10dp"
-                android:layout_marginTop="8dp"
-                android:textColor="#000000"
-                android:id="@+id/student_id1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="2013112072" />
-        </LinearLayout>
+            <!--<TextView-->
+                <!--android:textStyle="bold"-->
+                <!--android:textSize="20dp"-->
+                <!--android:layout_marginLeft="10dp"-->
+                <!--android:layout_marginTop="8dp"-->
+                <!--android:textColor="#000000"-->
+                <!--android:id="@+id/student_id1"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:text="2013112072" />-->
+        <!--</LinearLayout>-->
     </LinearLayout>
 
 
-    <TextView
-        android:paddingLeft="13dp"
-        android:textSize="20dp"
-        android:layout_marginTop="3dp"
-        android:textColor="#000000"
-        android:id="@+id/name"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="김 찬 우" />
+    <!--<TextView-->
+        <!--android:paddingLeft="13dp"-->
+        <!--android:textSize="20dp"-->
+        <!--android:layout_marginTop="3dp"-->
+        <!--android:textColor="#000000"-->
+        <!--android:id="@+id/name"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:text="김 찬 우" />-->
 
 </LinearLayout>
