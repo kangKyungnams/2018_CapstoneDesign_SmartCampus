@@ -22,15 +22,14 @@
             android:layout_height="42dp"
             android:textSize="25dp"
             android:text="내 정보"/>
-        <Button
-            android:layout_marginLeft="107dp"
-            android:layout_marginTop="19dp"
-            android:layout_width="102dp"
-            android:layout_height="35dp"
-            android:textColor="#ffffff"
-            android:background="#1470f7"
-            android:textSize="20dp"
-            android:text="수정"/>
+
+        <TextView
+            android:layout_marginTop="7dp"
+            android:layout_width="130dp"
+            android:layout_height="30dp"
+            android:layout_marginLeft="100dp"
+            android:background="@drawable/colorbrown"/>
+
     </LinearLayout>
 
     <LinearLayout

@@ -78,7 +78,7 @@
         </activity>
         <activity
             android:name=".PurchaseRestaurant"
-            android:label="음 식 주 문"
+            android:label="주 문 하 기"
             android:theme="@style/AppTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -126,17 +126,27 @@
                 <category android:name="android.intent.category.BROWSABLE" />
             </intent-filter>
         </activity>
-        <activity android:name=".ModifyMyinfo" />
-        <activity android:name=".CourseList"></activity>
-
-        <activity android:name=".AttState"
+        <activity android:name=".ModifyMypage" />
+        <activity android:name=".CourseList" />
+        <activity
+            android:name=".AttState"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.BROWSABLE" />
             </intent-filter>
+        </activity>
+        <activity android:name=".FoodList" />
+        <activity android:name=".food" />
+        <activity android:name=".EnrollNotice"
+            android:label="공 지 등 록"
+            android:theme="@style/AppTheme">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
+                <category android:name="android.intent.category.BROWSABLE" />
+            </intent-filter>
         </activity>
     </application>
 
