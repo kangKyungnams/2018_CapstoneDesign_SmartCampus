@@ -33,12 +33,11 @@
             android:orientation="vertical">
             <TextView
                 android:layout_marginTop="10dp"
-                android:id="@+id/courseName"
+                android:id="@+id/lecture_info_courseName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:layout_gravity="center"
-                android:text="안드로이드 앱 프로그래밍_02"
                 android:textSize="22dp"
                 android:textStyle="bold"
                 android:textColor="#000000"
@@ -46,12 +45,11 @@
                 />
             <TextView
                 android:layout_marginTop="10dp"
-                android:id="@+id/courseID"
+                android:id="@+id/lecture_info_courseID"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:layout_gravity="center"
-                android:text="INC-4023"
                 android:textSize="22dp"
                 android:textStyle="bold"
                 android:textColor="#000000"
@@ -128,10 +126,10 @@
                     android:layout_height="30dp"
                     android:gravity="center"
                     android:layout_gravity="center"
-                    android:text="전 공"
                     android:textSize="15dp"
                     android:textColor="#ffffff"
                     android:background="@color/colorGray"
+                    android:id="@+id/lecture_info_type"
                     />
                 <TextView
                     android:layout_width="match_parent"
@@ -139,10 +137,10 @@
                     android:gravity="center"
                     android:layout_gravity="center"
                     android:layout_weight="1"
-                    android:text="3학점"
                     android:textSize="15dp"
                     android:textColor="#ffffff"
                     android:background="@color/colorGray"
+                    android:id="@+id/lecture_info_credit"
                     />
                 <TextView
                     android:layout_weight="1"
@@ -150,10 +148,10 @@
                     android:layout_height="30dp"
                     android:gravity="center"
                     android:layout_gravity="center"
-                    android:text="양기주"
                     android:textSize="15dp"
                     android:textColor="#ffffff"
                     android:background="@color/colorGray"
+                    android:id="@+id/lecture_info_professor"
                     />
             </LinearLayout>
 
@@ -176,12 +174,11 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:text="신 공학관
-3165"
                     android:layout_gravity="center"
                     android:gravity="center"
                     android:textSize="18dp"
                     android:textStyle="bold"
+                    android:id="@+id/lecture_info_classroom"
                     android:background="#ffffff"
                     />
                 <Button

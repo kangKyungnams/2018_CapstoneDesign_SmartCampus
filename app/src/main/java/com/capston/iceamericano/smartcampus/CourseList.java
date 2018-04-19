@@ -1,67 +1,96 @@
 package com.capston.iceamericano.smartcampus;
+import android.content.Intent;
+import android.content.SharedPreferences;
+import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.util.Log;
+import android.view.View;
 
-        import android.support.v7.app.AppCompatActivity;
-        import android.os.Bundle;
-        import android.app.AlertDialog;
-        import android.content.Context;
-        import android.net.Uri;
-        import android.os.Bundle;
-        import android.support.annotation.Nullable;
-        import android.support.v4.app.Fragment;
-        import android.view.LayoutInflater;
-        import android.view.View;
-        import android.view.ViewGroup;
-        import android.widget.ArrayAdapter;
-        import android.widget.ListView;
-        import android.widget.RadioGroup;
-        import android.widget.Spinner;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
-        import org.json.JSONArray;
-        import org.json.JSONObject;
-
-        import java.util.ArrayList;
-        import java.util.List;
+import java.util.ArrayList;
+import java.util.List;
 
 public class CourseList extends AppCompatActivity {
 
-    private ArrayAdapter yearAdapter;
-    private Spinner yearSpinner;
-    private ArrayAdapter semesterAdapter;
-    private Spinner semesterSpinner;
-    private ArrayAdapter areaAdapter;
-    private Spinner areaSpinner;
-
-    private String courseYear = "";
-    private String courseSemester = "";
-    private String courseMajor = "";
-
-    private ListView courseListView;
-    private CourseListAdapter adapter;
-    private List<Course> courseList;
+    RecyclerView mRecyclerView;
+    LinearLayoutManager mLayoutManager;
+    List<Course> mList;
+    CourseListAdapter mAdapter;
+    FirebaseDatabase database;
+    String TAG = getClass().getSimpleName();
+    FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+    DatabaseReference uReference = FirebaseDatabase.getInstance().getReference();
+    DatabaseReference userdata = uReference.child("takingCourseList");
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_course_list);
+        setContentView(R.layout.activity_student_class);
 
-        yearSpinner = (Spinner)findViewById(R.id.yearSpinner);
-        semesterSpinner = (Spinner)findViewById(R.id.semesterSpinner);
-        areaSpinner = (Spinner)findViewById(R.id.areaSpinner);
+        database = FirebaseDatabase.getInstance();
+
+        mRecyclerView = (RecyclerView) findViewById(R.id.my_recycler_view);
+
+        // use this setting to improve performance if you know that changes
+        // in content do not change the layout size of the RecyclerView
+        mRecyclerView.setHasFixedSize(true);
+
+        // use a linear layout manager
+        mLayoutManager = new LinearLayoutManager(CourseList.this);
+        mRecyclerView.setLayoutManager(mLayoutManager);
+
+        // specify an adapter (see also next example)
+        mList = new ArrayList<>();
+        mAdapter = new CourseListAdapter(mList,this);
+        mRecyclerView.setAdapter(mAdapter);
 
 
-        yearAdapter = ArrayAdapter.createFromResource(getApplicationContext(), R.array.year, android.R.layout.simple_spinner_dropdown_item);
-        yearSpinner.setAdapter(yearAdapter);
-        semesterAdapter = ArrayAdapter.createFromResource(getApplicationContext(), R.array.semester, android.R.layout.simple_spinner_dropdown_item);
-        semesterSpinner.setAdapter(semesterAdapter);
-        areaAdapter = ArrayAdapter.createFromResource(getApplicationContext(),R.array.area, android.R.layout.simple_spinner_dropdown_item);
-        areaSpinner.setAdapter(areaAdapter);
+        String  value= user.getEmail().substring(0, 10);
+        DatabaseReference userLecture = userdata.child(value);
+        userLecture.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                // This method is called once with the initial value and again
+                // whenever data at this location is updated.
+                String value1 = dataSnapshot.getValue().toString();
+                for (DataSnapshot dataSnapshot2: dataSnapshot.getChildren()){
 
-        courseListView = (ListView)findViewById(R.id.courseListView);
-        courseList = new ArrayList<Course>();
-        adapter = new CourseListAdapter(getApplicationContext(), courseList);
-        courseListView.setAdapter(adapter);
+                    String title = dataSnapshot2.child("title").getValue().toString();
+                    String professor = dataSnapshot2.child("professor_name").getValue().toString();
+                    String classroom = dataSnapshot2.child("classroom_id").getValue().toString();
+                    String credit = dataSnapshot2.child("credit").getValue().toString();
+                    String lectureID = dataSnapshot2.getKey();
+                    String value2 = dataSnapshot2.getValue().toString();
 
+                    Log.d(TAG, "Value is: " + value2);
+                    Course course =  new Course(title,professor,classroom,credit,lectureID);
+
+
+                    // [START_EXCLUDE]
+                    // Update RecyclerView
+
+                    mList.add(course);
+                    mAdapter.notifyItemInserted(mList.size() - 1);
+                }
+
+            }
+
+            @Override
+            public void onCancelled(DatabaseError error) {
+                // Failed to read value
+                Log.w(TAG, "Failed to read value.", error.toException());
+            }
+        });
 
     }
 

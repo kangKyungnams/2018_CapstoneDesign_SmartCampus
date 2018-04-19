@@ -6,127 +6,57 @@ package com.capston.iceamericano.smartcampus;
 
 public class Course {
 
-    int courseID; //강의 고유 번호
-    int courseYear; // 강의 년도
-    String courseSemester; // 강의 학기
-    String courseMajor; // 강의 해당 학과
-    String courseGrade; // 강의 해당 학년
-    String courseTitle; // 강의 제목
-    String courseProfessor; // 강의 교수
-    String courseTime; // 강의 시간대
-    String courseRoom; // 강의실번호
-    int courseCredit; // 강의 학점
-    int courseDivide; // 강의 분반
-    int coursePersonnel; //강의 해당 인원
+    String title; // 강의 제목
+    String professor_name; // 교수 이름
+    String classroom_id; // 강의실
+    String credit; // 강의 학점
+    String lectureID; // 학수번호
 
-    public int getCourseID() {
-        return courseID;
+    public Course(String title, String professor_name, String classroom_id, String credit, String lectureID) {
+        this.title = title;
+        this.professor_name = professor_name;
+        this.classroom_id = classroom_id;
+        this.credit = credit;
+        this.lectureID = lectureID;
     }
 
-    public void setCourseID(int courseID) {
-        this.courseID = courseID;
+    public String getLectureID() {
+        return lectureID;
     }
 
-    public int getCourseYear() {
-        return courseYear;
+    public void setLectureID(String lectureID) {
+        this.lectureID = lectureID;
     }
 
-    public void setCourseYear(int courseYear) {
-        this.courseYear = courseYear;
+    public String getTitle() {
+        return title;
     }
 
-    public String getCourseSemester() {
-        return courseSemester;
+    public void setTitle(String title) {
+        this.title = title;
     }
 
-    public void setCourseSemester(String courseSemester) {
-        this.courseSemester = courseSemester;
+    public String getProfessor_name() {
+        return professor_name;
     }
 
-    public String getCourseMajor() {
-        return courseMajor;
+    public void setProfessor_name(String professor_name) {
+        this.professor_name = professor_name;
     }
 
-    public void setCourseMajor(String courseMajor) {
-        this.courseMajor = courseMajor;
+    public String getClassroom_id() {
+        return classroom_id;
     }
 
-    public String getCourseGrade() {
-        return courseGrade;
+    public void setClassroom_id(String classroom_id) {
+        this.classroom_id = classroom_id;
     }
 
-    public void setCourseGrade(String courseGrade) {
-        this.courseGrade = courseGrade;
+    public String getCredit() {
+        return credit;
     }
 
-    public String getCourseTitle() {
-        return courseTitle;
-    }
-
-    public void setCourseTitle(String courseTitle) {
-        this.courseTitle = courseTitle;
-    }
-
-    public String getCourseProfessor() {
-        return courseProfessor;
-    }
-
-    public void setCourseProfessor(String courseProfessor) {
-        this.courseProfessor = courseProfessor;
-    }
-
-    public String getCourseTime() {
-        return courseTime;
-    }
-
-    public void setCourseTime(String courseTime) {
-        this.courseTime = courseTime;
-    }
-
-    public String getCourseRoom() {
-        return courseRoom;
-    }
-
-    public void setCourseRoom(String courseRoom) {
-        this.courseRoom = courseRoom;
-    }
-
-    public int getCourseCredit() {
-        return courseCredit;
-    }
-
-    public void setCourseCredit(int courseCredit) {
-        this.courseCredit = courseCredit;
-    }
-
-    public int getCourseDivide() {
-        return courseDivide;
-    }
-
-    public void setCourseDivide(int courseDivide) {
-        this.courseDivide = courseDivide;
-    }
-
-    public int getCoursePersonnel() {
-        return coursePersonnel;
-    }
-
-    public void setCoursePersonnel(int coursePersonnel) {
-        this.coursePersonnel = coursePersonnel;
-    }
-
-    public Course(int courseID, int courseYear, String courseSemester, String courseMajor, String courseGrade, String courseTitle, String courseProfessor, String courseTime, String courseRoom, int courseCredit, int courseDivide, int coursePersonnel) {
-        this.courseID = courseID;
-        this.courseYear = courseYear;
-        this.courseSemester = courseSemester;
-        this.courseMajor = courseMajor;
-        this.courseGrade = courseGrade;
-        this.courseTitle = courseTitle;
-        this.courseProfessor = courseProfessor;
-        this.courseTime = courseTime;
-        this.courseRoom = courseRoom;
-        this.courseCredit = courseCredit;
-        this.courseDivide = courseDivide;
-        this.coursePersonnel = coursePersonnel;
+    public void setCredit(String credit) {
+        this.credit = credit;
     }
 }

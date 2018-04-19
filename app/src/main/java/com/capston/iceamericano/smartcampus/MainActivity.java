@@ -1,7 +1,5 @@
 package com.capston.iceamericano.smartcampus;
 
-import android.app.Fragment;
-import android.app.FragmentManager;
 import android.content.Intent;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -18,7 +16,6 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -98,7 +95,7 @@ public class MainActivity extends AppCompatActivity
         course_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent Intent1 = new Intent(MainActivity.this, StudentClassActivity.class);
+                Intent Intent1 = new Intent(MainActivity.this, CourseList.class);
                 MainActivity.this.startActivity(Intent1);
             }
         });

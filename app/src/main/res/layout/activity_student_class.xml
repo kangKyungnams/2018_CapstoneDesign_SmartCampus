@@ -98,15 +98,12 @@
                 android:background="#ffffff"
                 >
 
-                    <ListView
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:id="@+id/courseListView"
-                        android:dividerHeight="5dp"
-                        android:divider="#ffffff">
-                    </ListView>
-
-
+                <!-- A RecyclerView with some commonly used attributes -->
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/my_recycler_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scrollbars="vertical" />
 
 
             </LinearLayout>
@@ -114,33 +111,6 @@
 
         </LinearLayout>
 
-
-    <!--<LinearLayout-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:orientation="vertical"-->
-        <!--android:background="#f9f7ea"-->
-        <!--&gt;-->
-
-        <!--<TextView-->
-            <!--android:gravity="center"-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="70dp"-->
-            <!--android:layout_gravity="center"-->
-            <!--android:text="내 강의실"-->
-            <!--android:textColor="#56524e"-->
-            <!--android:textSize="20dp"-->
-            <!--android:textStyle="bold"-->
-            <!--android:background="@color/colorPrimary" />-->
-   <!---->
-
-
-
-
-
-
-
-    <!--</LinearLayout>-->
     </LinearLayout>
 
 </LinearLayout>

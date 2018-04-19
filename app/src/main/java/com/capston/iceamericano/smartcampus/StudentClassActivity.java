@@ -43,24 +43,8 @@ public class StudentClassActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_course_list);
+//        setContentView(R.layout.activity_course_list);
 
-        yearSpinner = (Spinner)findViewById(R.id.yearSpinner);
-        semesterSpinner = (Spinner)findViewById(R.id.semesterSpinner);
-        areaSpinner = (Spinner)findViewById(R.id.areaSpinner);
-
-
-        yearAdapter = ArrayAdapter.createFromResource(getApplicationContext(), R.array.year, android.R.layout.simple_spinner_dropdown_item);
-        yearSpinner.setAdapter(yearAdapter);
-        semesterAdapter = ArrayAdapter.createFromResource(getApplicationContext(), R.array.semester, android.R.layout.simple_spinner_dropdown_item);
-        semesterSpinner.setAdapter(semesterAdapter);
-        areaAdapter = ArrayAdapter.createFromResource(getApplicationContext(),R.array.area, android.R.layout.simple_spinner_dropdown_item);
-        areaSpinner.setAdapter(areaAdapter);
-
-        courseListView = (ListView)findViewById(R.id.courseListView);
-        courseList = new ArrayList<Course>();
-        adapter = new CourseListAdapter(getApplicationContext(), courseList);
-        courseListView.setAdapter(adapter);
 
 
     }

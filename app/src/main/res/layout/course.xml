@@ -14,15 +14,15 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:background="@color/colorPrimary">
+
             <TextView
+                android:id="@+id/course_List_Title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="강의 제목"
-                android:id="@+id/courseTitle"
-                android:padding="3dp"
                 android:layout_gravity="center"
+                android:padding="3dp"
                 android:textColor="#000000"
-                android:textStyle="bold"/>
+                android:textStyle="bold" />
 
         </LinearLayout>
 
@@ -35,8 +35,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="교수 이름"
-                android:id="@+id/courseProfessor"
+                android:id="@+id/course_List_Professor"
                 android:padding="3dp"
                 android:layout_gravity="center"
                 android:textColor="#000000"
@@ -46,8 +45,7 @@
                 android:layout_marginLeft="5dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="학점"
-                android:id="@+id/courseCredit"
+                android:id="@+id/course_List_Credit"
                 android:padding="3dp"
                 android:layout_gravity="center"
                 android:textColor="#000000"
@@ -64,23 +62,12 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="수강생 인원"
-                android:id="@+id/coursePersonnel"
+                android:id="@+id/course_List_Room"
                 android:padding="3dp"
                 android:layout_gravity="center"
                 android:textColor="#ff0095"
                 android:textStyle="bold"/>
 
-            <TextView
-                android:layout_marginLeft="5dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="강의 시간대"
-                android:id="@+id/courseTime"
-                android:padding="3dp"
-                android:layout_gravity="center"
-                android:textColor="#1a09fe"
-                android:textStyle="bold"/>
 
         </LinearLayout>
 
@@ -100,7 +87,7 @@
             android:gravity="center"
             android:layout_gravity="center"
             android:text="바로 가기"
-            android:id="@+id/addButton"
+            android:id="@+id/course_List_info_button"
             android:layout_marginRight="8dp"
             android:layout_marginLeft="8dp"/>
 
