@@ -6,89 +6,54 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="#f7f7ef"
+    tools:context=".FoodList">
 
-    tools:context=".Cash">
 
-    <!--<LinearLayout-->
-    <!--android:id="@+id/Res_L1"-->
-    <!--android:layout_width="match_parent"-->
-    <!--android:layout_height="wrap_content"-->
-    <!--android:orientation="vertical"-->
-    <!--android:background="#f9f7ea">-->
-    <!--<ImageView-->
-    <!--android:layout_width="wrap_content"-->
-    <!--android:layout_height="127dp"-->
-    <!--android:src="@drawable/res2"/>-->
-    <!--</LinearLayout>-->
-    <LinearLayout
-        android:background="#e1e1e1"
-        android:id="@+id/food_L1"
-        android:layout_marginTop="0dp"
-        android:layout_width="match_parent"
-        android:layout_height="80dp"
-        android:orientation="horizontal">
-        <TextView
-            android:layout_gravity="center"
-            android:layout_marginLeft="22dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text=" 출금 계좌 :"
-            android:textSize="25dp"
-            android:textStyle="bold"
-            android:textColor="#000000"
-            android:background="#e1e1e1"
-            />
-        <Spinner
-            android:layout_marginBottom="0dp"
-            android:layout_marginLeft="7dp"
-            android:layout_width="40dp"
-            android:layout_height="35dp"
-            android:layout_gravity="center"
-            android:scrollbarSize="10dp"
-            android:id="@+id/restaurant_Spinner"
-            android:background="#ffffff">
-        </Spinner>
-
-        <EditText
-            android:layout_gravity="center"
-            android:layout_marginLeft="7dp"
-            android:background="#ffffff"
-            android:layout_width="wrap_content"
-            android:layout_height="35dp"
-            android:textSize="20dp"
-            android:hint="  110-393-123213  "/>
-    </LinearLayout>
 
     <LinearLayout
-        android:background="#e1e1e1"
         android:id="@+id/food_L3"
-        android:layout_marginTop="2dp"
+        android:layout_marginTop="20dp"
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
         <LinearLayout
-
-            android:layout_marginTop="15dp"
             android:layout_marginLeft="25dp"
             android:layout_marginRight="25dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
-
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text=" 충전 금액 : "
-                android:textSize="25dp"
+                android:text=" 주문 수량 : "
+                android:textSize="18dp"
                 android:textStyle="bold"
                 android:gravity="center"
                 android:textColor="#000000"
-                android:background="#e1e1e1" />
+                android:background="#f7f7ef" />
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint=" 수량 "
+                android:textSize="18dp"
+                android:textStyle="bold"
+                android:textColor="#000000"
+                android:background="#ffffff" />
+            <TextView
+                android:layout_marginLeft="20dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text=" 주문 금액 : "
+                android:textSize="18dp"
+                android:textStyle="bold"
+                android:gravity="center"
+                android:textColor="#000000"
+                android:background="#f7f7ef" />
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint=" 58,000 "
-                android:textSize="25dp"
+                android:textSize="18dp"
                 android:textStyle="bold"
                 android:textColor="#000000"
                 android:background="#ffffff" />
@@ -119,7 +84,7 @@
                 android:layout_gravity="center"
                 android:layout_width="match_parent"
                 android:layout_height="52dp"
-                android:text=" 충전 "
+                android:text=" 주문하기 "
                 android:textSize="20dp"
                 android:textStyle="bold"
                 android:textColor="#ffffff"
@@ -129,5 +94,12 @@
 
     </LinearLayout>
 
+    <ListView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/courseListView"
+        android:dividerHeight="5dp"
+        android:divider="#ffffff">
+    </ListView>
 
 </LinearLayout>

@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".MypageRestaurent"
-    android:background="#f5f4e9">
+    android:background="#f7f7ef">
 
     <!--<LinearLayout-->
     <!--android:id="@+id/Res_L1"-->
@@ -236,8 +236,8 @@
             android:gravity="center"
             android:textSize="20dp"
             android:textStyle="bold"
-            android:textColor="#ffffff"
-            android:background="@color/colorGray" />
+            android:textColor="#515151"
+            android:background="#f7f7ef"/>
         <EditText
             android:layout_weight="1"
             android:layout_gravity="center"

@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="#f5f4e9"
+    android:background="#f7f7ef"
     tools:context=".PurchaseRestaurant">
 
     <!--<LinearLayout-->
@@ -26,196 +26,68 @@
         android:layout_marginLeft="20dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <Button
             android:layout_weight="1"
-            android:drawableStart="@drawable/ic_restaurant_black_24dp"
-            android:text=" 식당 선택 "
+            android:id="@+id/bt_sanglog"
+            android:layout_gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:text=" 상록원 "
             android:textSize="25dp"
             android:textStyle="bold"
-            android:textColor="#000000"
-            android:background="#f5f4e9"
-            />
-        <Spinner
-            android:layout_width="match_parent"
-            android:layout_height="40dp"
+            android:textColor="#ffffff"
+            android:background="#f122a9"
+            android:layout_marginRight="10dp"/>
+        <Button
+            android:layout_weight="1"
+            android:id="@+id/bt_grutergi"
             android:layout_gravity="center"
-            android:id="@+id/restaurant_Spinner"
-            android:layout_marginBottom="10dp"
-            android:background="#ffffff">
-        </Spinner>
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:text=" 그루터기 "
+            android:textSize="25dp"
+            android:textStyle="bold"
+            android:textColor="#ffffff"
+            android:background="#40fe1a"
+            android:layout_marginRight="10dp"/>
+
     </LinearLayout>
 
     <LinearLayout
+        android:orientation="horizontal"
         android:id="@+id/food_L2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="20dp">
-        <RadioGroup
-            android:orientation="vertical"
+        <Button
+            android:layout_weight="1"
+            android:id="@+id/bt_facalty"
+            android:layout_gravity="center"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
-            <LinearLayout
-                android:layout_marginTop="7dp"
-                android:orientation="horizontal"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-                <RadioButton
-                    android:textSize="20dp"
-                    android:text=" 상록원 일품 "
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
-                <Button
-                    android:layout_width="40dp"
-                    android:layout_height="38dp"
-                    android:text="-"/>
-                <EditText
-                    android:hint=" 수량 "
-                    android:background="#ffffff"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
-                <Button
-                    android:layout_width="40dp"
-                    android:layout_height="38dp"
-                    android:text="+"/>
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_marginTop="7dp"
-                android:orientation="horizontal"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-                <RadioButton
-                    android:textSize="20dp"
-                    android:text=" 상록원 뚝배기"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
-                <Button
-                    android:layout_width="40dp"
-                    android:layout_height="38dp"
-                    android:text="-"/>
-                <EditText
-                    android:hint=" 수량 "
-                    android:background="#ffffff"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
-                <Button
-                    android:layout_width="40dp"
-                    android:layout_height="38dp"
-                    android:text="+"/>
-            </LinearLayout><LinearLayout
-            android:layout_marginTop="7dp"
-            android:orientation="horizontal"
+            android:layout_height="150dp"
+            android:text=" 교직원 식당"
+            android:textSize="25dp"
+            android:textStyle="bold"
+            android:textColor="#ffffff"
+            android:background="#fef623"
+            android:layout_marginRight="10dp"/>
+        <Button
+            android:layout_weight="1"
+            android:id="@+id/bt_dormitory"
+            android:layout_gravity="center"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-            <RadioButton
-                android:textSize="20dp"
-                android:text=" 상록원 고등어무조림"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-            <Button
-                android:layout_width="40dp"
-                android:layout_height="38dp"
-                android:text="-"/>
-            <EditText
-                android:hint=" 수량 "
-                android:background="#ffffff"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-            <Button
-                android:layout_width="40dp"
-                android:layout_height="38dp"
-                android:text="+"/>
-        </LinearLayout>
-        </RadioGroup>
+            android:layout_height="150dp"
+            android:text=" 기숙사 식당 "
+            android:textSize="25dp"
+            android:textStyle="bold"
+            android:textColor="#ffffff"
+            android:background="#177cff"
+            android:layout_marginRight="10dp"/>
 
     </LinearLayout>
 
-    <LinearLayout
-        android:id="@+id/food_L3"
-        android:layout_marginTop="50dp"
-        android:orientation="vertical"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <LinearLayout
-            android:layout_marginLeft="25dp"
-            android:layout_marginRight="25dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text=" 주문 수량 : "
-                android:textSize="17dp"
-                android:textStyle="bold"
-                android:gravity="center"
-                android:textColor="#000000"
-                android:background="#e1e1e1" />
-            <EditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint=" 수량 "
-                android:textSize="17dp"
-                android:textStyle="bold"
-                android:textColor="#000000"
-                android:background="#ffffff" />
-            <TextView
-                android:layout_marginLeft="20dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text=" 주문 금액 : "
-                android:textSize="17dp"
-                android:textStyle="bold"
-                android:gravity="center"
-                android:textColor="#000000"
-                android:background="#e1e1e1" />
-            <EditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint=" 58,000 "
-                android:textSize="17dp"
-                android:textStyle="bold"
-                android:textColor="#000000"
-                android:background="#ffffff" />
-        </LinearLayout>
 
-        <LinearLayout
-            android:layout_margin="25dp"
-            android:orientation="horizontal"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <Button
-                android:layout_weight="1"
-                android:id="@+id/Pur_bt1"
-                android:layout_gravity="center"
-                android:layout_width="match_parent"
-                android:layout_height="52dp"
-                android:text=" 초기화 "
-                android:textSize="20dp"
-                android:textStyle="bold"
-                android:textColor="#ffffff"
-                android:background="@color/colorGray"
-                android:layout_marginRight="10dp"/>
-            <Button
-                android:layout_marginLeft="10dp"
-                android:layout_weight="1"
-                android:id="@+id/Pur_bt2"
-                android:layout_gravity="center"
-                android:layout_width="match_parent"
-                android:layout_height="52dp"
-                android:text=" 주문하기 "
-                android:textSize="20dp"
-                android:textStyle="bold"
-                android:textColor="#ffffff"
-                android:background="#1470f7" />
-
-        </LinearLayout>
-
-    </LinearLayout>
 
 
 </LinearLayout>
