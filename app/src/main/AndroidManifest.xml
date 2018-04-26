@@ -49,7 +49,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".InfoCourseActivity"
+            android:name=".Lecture.InfoCourseActivity"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -127,7 +127,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".ModifyMyinfo" />
-        <activity android:name=".CourseList"></activity>
+        <activity android:name=".Lecture.CourseList"></activity>
 
         <activity android:name=".AttState"
             android:theme="@style/AppTheme.NoActionBar">
