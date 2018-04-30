@@ -6,9 +6,6 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Spinner;
 
-import com.capston.iceamericano.smartcampus.Lecture.Course;
-import com.capston.iceamericano.smartcampus.Lecture.CourseListAdapter;
-
 import java.util.List;
 
 public class StudentClassActivity extends AppCompatActivity {

@@ -1,4 +1,4 @@
-package com.capston.iceamericano.smartcampus.Lecture;
+package com.capston.iceamericano.smartcampus;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;

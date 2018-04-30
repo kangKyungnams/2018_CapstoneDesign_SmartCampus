@@ -4,9 +4,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.ListView;
 
-import com.capston.iceamericano.smartcampus.Lecture.Course;
-import com.capston.iceamericano.smartcampus.Lecture.CourseListAdapter;
-
 import java.util.List;
 
 public class AttCheckActivity extends AppCompatActivity {
