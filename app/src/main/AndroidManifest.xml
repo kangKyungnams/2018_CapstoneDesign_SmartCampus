@@ -49,7 +49,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".Lecture.InfoCourseActivity"
+            android:name=".InfoCourseActivity"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -126,17 +126,10 @@
                 <category android:name="android.intent.category.BROWSABLE" />
             </intent-filter>
         </activity>
-<<<<<<< HEAD
-        <activity android:name=".ModifyMyinfo" />
-        <activity android:name=".Lecture.CourseList"></activity>
-
-        <activity android:name=".AttState"
-=======
         <activity android:name=".ModifyMypage" />
         <activity android:name=".CourseList" />
         <activity
             android:name=".AttState"
->>>>>>> origin/Design
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
