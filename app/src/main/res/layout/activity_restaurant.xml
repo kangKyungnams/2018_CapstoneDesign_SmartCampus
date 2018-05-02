@@ -15,17 +15,6 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         >
-        <!--<LinearLayout-->
-        <!--android:id="@+id/Res_L1"-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:orientation="vertical"-->
-        <!--android:background="#f9f7ea">-->
-        <!--<ImageView-->
-        <!--android:layout_width="wrap_content"-->
-        <!--android:layout_height="127dp"-->
-        <!--android:src="@drawable/res2"/>-->
-        <!--</LinearLayout>-->
         <LinearLayout
             android:layout_marginTop="20dp"
             android:layout_marginRight="15dp"
@@ -60,7 +49,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
                 <Button
-                    android:id="@+id/Res_bt1"
+                    android:id="@+id/bt_restaurant_order"
                     android:layout_width="match_parent"
                     android:layout_height="65dp"
                     android:text=" 주 문 하 기 "
@@ -69,7 +58,7 @@
                     android:textColor="#ffffff"
                     android:background="#1470f7" />
                 <Button
-                    android:id="@+id/Res_bt2"
+                    android:id="@+id/bt_restaurant_charge"
                     android:layout_marginTop="25dp"
                     android:layout_width="match_parent"
                     android:layout_height="65dp"
@@ -79,7 +68,7 @@
                     android:textColor="#ffffff"
                     android:background="#1470f7" />
                 <Button
-                    android:id="@+id/Res_bt3"
+                    android:id="@+id/bt_restaurant_mypage"
                     android:layout_marginTop="25dp"
                     android:layout_width="match_parent"
                     android:layout_height="65dp"

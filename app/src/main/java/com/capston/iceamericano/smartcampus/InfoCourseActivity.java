@@ -82,7 +82,7 @@ public class InfoCourseActivity extends AppCompatActivity {
 
     Button.OnClickListener bt_attCheck = new Button.OnClickListener() {
         @Override
-        public void onClick(View v) { // 버튼에 로그인 기능 입히기
+        public void onClick(View v) {
 
             Intent attCheck = new Intent(InfoCourseActivity.this, AttCheckActivity.class);
             attCheck.putExtra("lectureNameKey",lecture_info_courseID.getText().toString());
