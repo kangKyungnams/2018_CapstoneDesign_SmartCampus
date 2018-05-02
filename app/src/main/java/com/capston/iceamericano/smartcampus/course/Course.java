@@ -1,8 +1,4 @@
-package com.capston.iceamericano.smartcampus.Lecture;
-
-/**
- * Created by cksdn on 2018-03-25.
- */
+package com.capston.iceamericano.smartcampus;
 
 public class Course {
 

@@ -27,7 +27,7 @@ public class Mypage extends AppCompatActivity {
     FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
     DatabaseReference uReference = FirebaseDatabase.getInstance().getReference();
     DatabaseReference userdata = uReference.child("user");
-    private TextView mypage_user_name, mypage_major, mypage_stuID, mypage_email;
+    private TextView mypage_user_name, mypage_major, mypage_email;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,7 +40,6 @@ public class Mypage extends AppCompatActivity {
 
         String  value= user.getEmail().substring(0, 10);
         DatabaseReference userMypage = userdata.child(value);
-        mypage_stuID.setText(value);
 
         //접속 계정의 강의 목록 불러오기
         userMypage.addListenerForSingleValueEvent(new ValueEventListener() {

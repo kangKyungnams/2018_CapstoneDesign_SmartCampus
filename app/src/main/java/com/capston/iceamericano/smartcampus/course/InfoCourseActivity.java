@@ -4,7 +4,9 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.TextView;
 
@@ -24,6 +26,7 @@ public class InfoCourseActivity extends AppCompatActivity {
     String TAG = "InfoCourseActivity";
     String lectureID;
     TextView lecture_info_courseName, lecture_info_courseID, lecture_info_type, lecture_info_credit, lecture_info_professor, lecture_info_classroom;
+    Button bt_info_course_attCheck;
     FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
     DatabaseReference uReference = FirebaseDatabase.getInstance().getReference();
     DatabaseReference userdata = uReference.child("takingCourseList");
@@ -43,6 +46,8 @@ public class InfoCourseActivity extends AppCompatActivity {
         lecture_info_professor = (TextView)findViewById(R.id.lecture_info_professor);
         lecture_info_classroom = (TextView)findViewById(R.id.lecture_info_classroom);
         lecture_info_courseID.setText(lectureID);
+
+        bt_info_course_attCheck = (Button) findViewById(R.id.bt_info_course_attCheck);
 
         String  value= user.getEmail().substring(0, 10);
         DatabaseReference userLecture = userdata.child(value);
@@ -69,5 +74,20 @@ public class InfoCourseActivity extends AppCompatActivity {
                 Log.w(TAG, "Failed to read value.", error.toException());
             }
         });
+
+
+        bt_info_course_attCheck.setOnClickListener(bt_attCheck);
     }
+
+
+    Button.OnClickListener bt_attCheck = new Button.OnClickListener() {
+        @Override
+        public void onClick(View v) { // 버튼에 로그인 기능 입히기
+
+            Intent attCheck = new Intent(InfoCourseActivity.this, AttCheckActivity.class);
+            attCheck.putExtra("lectureNameKey",lecture_info_courseID.getText().toString());
+            attCheck.putExtra("lectureName", lecture_info_courseName.getText().toString());
+            InfoCourseActivity.this.startActivity(attCheck);
+        }
+    };
 }

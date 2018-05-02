@@ -16,6 +16,7 @@
         android:textStyle="bold"
         android:textSize="22dp"
         android:textColor="@color/colorPrimaryDark"
+        android:id="@+id/tv_att_check_lectureName"
         />
     <LinearLayout
         android:orientation="horizontal"
@@ -139,13 +140,12 @@
                 android:textStyle="bold"/>
         </LinearLayout>
 
-        <ListView
+        <!-- A RecyclerView with some commonly used attributes -->
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/att_recyclerView"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:id="@+id/courseListView"
-            android:dividerHeight="5dp"
-            android:divider="#ffffff">
-        </ListView>
+            android:scrollbars="vertical" />
 
 
 
