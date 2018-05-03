@@ -77,7 +77,7 @@ public class BeaconService extends Service {
 //출석 중 노티알림
         Notification notiEx = new NotificationCompat.Builder(BeaconService.this)
                 .setContentTitle("동국대학교 스마트캠퍼스(" + userCode + ")" )
-                .setContentText(className + "과목 출석이 진행중입니다. ("+String.valueOf(mCount)+"%)")
+                .setContentText(className + " 과목 출석이 진행중입니다. ("+String.valueOf(mCount)+"%)")
                 .setSmallIcon(R.mipmap.ic_launcher)
                 .build();
 
@@ -115,8 +115,8 @@ public class BeaconService extends Service {
                                     if (isDiscovered) {
                                         mCount++;
                                         isDiscovered = false;
-                                        Toast msg = Toast.makeText(BeaconService.this, "됐다! "+mCount, Toast.LENGTH_SHORT);
-                                        msg.show();
+//                                        Toast msg = Toast.makeText(BeaconService.this, "됐다! "+mCount, Toast.LENGTH_SHORT);
+//                                        msg.show();
                                         mHandler.sendMessage(Message.obtain(mHandler,1));
 
                                         //노티 업데이트
@@ -128,8 +128,9 @@ public class BeaconService extends Service {
                                         //background에서 foreground로 전환
                                         startForeground(1,notiEx);
 
-                                        if(mCount>10){
-                                            stopSelf();     //출석완료시 자동종료
+                                        if(mCount>10 /*|| 교수가 출석 종료시*/  ){
+                                            stopSelf();
+                                            //출석완료시 자동종료
                                         }
 
                                     }

@@ -29,6 +29,9 @@
                 <category android:name="android.intent.category.BROWSABLE" />
             </intent-filter>
         </activity>
+
+        <service android:name=".BeaconService" />
+
         <activity
             android:name=".MainActivity"
             android:theme="@style/AppTheme.NoActionBar">
@@ -130,7 +133,8 @@
         <activity android:name=".CourseList" />
         <activity android:name=".FoodList" />
         <activity android:name=".food" />
-        <activity android:name=".EnrollNotice"
+        <activity
+            android:name=".EnrollNotice"
             android:label="공 지 등 록"
             android:theme="@style/AppTheme">
             <intent-filter>
@@ -148,7 +152,15 @@
                 <category android:name="android.intent.category.BROWSABLE" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".AttCheckForProfActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
+                <category android:name="android.intent.category.BROWSABLE" />
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>

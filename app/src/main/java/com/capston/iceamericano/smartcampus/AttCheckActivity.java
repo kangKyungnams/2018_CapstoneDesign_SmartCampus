@@ -51,7 +51,6 @@ public class AttCheckActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_att_check);
-//        plutoconManager.stopMonitoring();
         attStart = findViewById(R.id.attStart);
 
 
@@ -61,7 +60,13 @@ public class AttCheckActivity extends AppCompatActivity {
         attStart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startSrv();
+//                if(교수가 출석 버튼을 눌렀다면){
+                    startSrv();
+//                }
+//                else{
+//                    Toast msg = Toast.makeText(AttCheckActivity.this, "현재 진행중인 수업이 아닙니다.", Toast.LENGTH_SHORT);
+//                    msg.show();
+//                }
             }
         });
 
