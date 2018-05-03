@@ -1,7 +1,10 @@
 package com.capston.iceamericano.smartcampus;
 
 import android.content.Intent;
+import android.graphics.Color;
+import android.os.Handler;
 import android.support.design.widget.NavigationView;
+import android.support.design.widget.Snackbar;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -15,6 +18,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.Toast;
 
@@ -25,11 +29,30 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.kongtech.plutocon.sdk.Plutocon;
+import com.kongtech.plutocon.sdk.PlutoconManager;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener{
+
+
+//비콘
+    private final int OFFSET_RSSI = -50;
+    private final int COUNT = 0;
+    private final String CLASS_ROOM = "ED:6F:DE:A3:D5:56";
+    private PlutoconManager plutoconManager;
+    private Plutocon targetPlutocon;
+    private int targetRssi = OFFSET_RSSI;
+    private boolean isDiscovered;
+    private boolean flag = false;
+    private Snackbar snackbar;
+    private List<Plutocon> plutoconList;
+    private int mCount = COUNT;
+    LinearLayout mArea;
+    private final static int SPLASH_DELAY = 7000;
 
 
     String TAG = "MainActivity";
@@ -43,6 +66,20 @@ public class MainActivity extends AppCompatActivity
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+
+        mArea = findViewById(R.id.linearMain);
+        plutoconList = new ArrayList<>();
+        plutoconManager = new PlutoconManager(this);
+        this.setResult(0,null);
+
+
+
+
+
+
+
+
 
         spinner = (Spinner) findViewById(R.id.course_Spinner);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -161,4 +198,69 @@ public class MainActivity extends AppCompatActivity
     }
 
 
+    @Override
+    protected void onResume(){
+        super.onResume();
+        plutoconManager.connectService(new PlutoconManager.OnReadyServiceListener() {
+            @Override
+            public void onReady() {
+                MainActivity.this.startMonitoring();
+            }
+        });
+
+    }
+
+    private void startMonitoring() {
+        plutoconManager.startMonitoring(PlutoconManager.MONITORING_FOREGROUND, new PlutoconManager.OnMonitoringPlutoconListener() {
+            @Override
+            public void onPlutoconDiscovered(final Plutocon plutocon, final List<Plutocon> plutocons) {
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        plutoconList.clear();
+                        plutoconList.addAll(plutocons);
+
+//targetPlutocon.getMacAddress())
+                        if (plutocon.getName().equals("CLASSROOM") && plutocon.getRssi() > targetRssi && !isDiscovered) {
+
+                            isDiscovered = true;
+                            if(flag == false) {
+                                snackbar = Snackbar.make(mArea, "강의실로 이동하시겠습니까?", Snackbar.LENGTH_INDEFINITE);
+
+                                snackbar.setActionTextColor(Color.WHITE);
+
+                                snackbar.setAction("OK", new View.OnClickListener() {
+                                    @Override
+                                    public void onClick(View v) {
+                                        isDiscovered = false;
+                                        flag = true;
+                                    }
+                                });
+                                snackbar.show();
+                            }
+                            (new Handler()).postDelayed(new Runnable() {
+                                @Override
+                                public void run() {
+                                    if (isDiscovered == true) {
+                                        isDiscovered = false;
+                                        snackbar.dismiss();
+                                        flag = true;
+                                    }
+                                }
+                            }, SPLASH_DELAY);
+                        }
+                    }
+                });
+            }
+        });
+    }
+
+
+    @Override
+    protected void onStart() {
+        plutoconManager = new PlutoconManager(this);
+        plutoconManager.connectService(null);
+        super.onStart();
+
+    }
 }

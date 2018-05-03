@@ -20,6 +20,7 @@
             android:layout_height="match_parent"
             android:orientation="vertical"
             android:background="#f9f7ea"
+            android:id="@+id/linearMain"
             >
 
 
