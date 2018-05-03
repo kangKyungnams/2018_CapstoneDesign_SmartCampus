@@ -52,10 +52,10 @@ public class BeaconService extends Service {
     @Override
     public void onCreate(){
         super.onCreate();
-
         handler = new Handler();
         plutoconList = new ArrayList<>();
         plutoconManager = new PlutoconManager(this);
+
     }
 
     @Override

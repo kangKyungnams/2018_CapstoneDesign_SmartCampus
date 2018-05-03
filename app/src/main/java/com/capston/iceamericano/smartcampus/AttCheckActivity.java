@@ -1,11 +1,17 @@
 package com.capston.iceamericano.smartcampus;
+import android.app.ActivityManager;
+import android.content.ComponentName;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -14,11 +20,20 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.kongtech.plutocon.sdk.Plutocon;
+import com.kongtech.plutocon.sdk.PlutoconManager;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class AttCheckActivity extends AppCompatActivity {
+
+    ComponentName mServiceName;
+    PlutoconManager plutoconManager;
+    Button attStart;
+    private List<Plutocon> plutoconList;
+
+
 
     RecyclerView mRecyclerView;
     LinearLayoutManager mLayoutManager;
@@ -36,6 +51,21 @@ public class AttCheckActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_att_check);
+//        plutoconManager.stopMonitoring();
+        attStart = findViewById(R.id.attStart);
+
+
+        plutoconList = new ArrayList<>();
+        plutoconManager = new PlutoconManager(this);
+
+        attStart.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startSrv();
+            }
+        });
+
+
 
         Intent in = getIntent();
         lectureID = in.getExtras().getString("lectureNameKey");
@@ -103,6 +133,92 @@ public class AttCheckActivity extends AppCompatActivity {
             }
         });
 
+    }
+
+
+    private void startSrv(){
+//        mServiceName = startService(new Intent(this, BeaconService.class));
+
+        Intent mIntent = new Intent(this, BeaconService.class);
+        mIntent.putExtra("studentNo","2013112071");
+        mIntent.putExtra("className","캡스톤디자인1");
+
+        mServiceName = startService(mIntent);
+
+
+    }
+
+    private void stopSrv(){
+
+        startSrv();
+        Intent intent = new Intent();
+        intent.setComponent(mServiceName);
+        stopService(intent);
+
+    }
+    @Override
+    public void onResume(){
+        //실행중인 서비스를 찾아서 비콘서비스가 실행중이면 서비스액티비티에서 plutoconManager를 실행하지 않게하여 비콘모니터링의 충돌을 제거한다.
+        if(!getServiceTaskName()) {
+
+            super.onResume();
+            Toast msg = Toast.makeText(AttCheckActivity.this, "못빠져나옴", Toast.LENGTH_SHORT);
+            msg.show();
+            plutoconManager.connectService(new PlutoconManager.OnReadyServiceListener() {
+                @Override
+                public void onReady() {
+                    AttCheckActivity.this.startMonitoring();
+                }
+            });
+        }
+        else{
+            super.onResume();
+            Toast msg = Toast.makeText(AttCheckActivity.this, "빠져나옴", Toast.LENGTH_SHORT);
+            msg.show();
+        }
+
+    }
+    //서비스를 활성화 시키기 위해 껍데기만 존재하는 모니터링 함수
+    private void startMonitoring() {
+        plutoconManager.startMonitoring(PlutoconManager.MONITORING_FOREGROUND, new PlutoconManager.OnMonitoringPlutoconListener() {
+            @Override
+            public void onPlutoconDiscovered(final Plutocon plutocon, final List<Plutocon> plutocons) {
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+
+                    }
+                });
+            }
+        });
+    }
+
+    @Override
+    public void onStart(){
+        plutoconManager = new PlutoconManager(this);
+        plutoconManager.connectService(null);
+        super.onStart();
+    }
+
+    //실행중인 서비스에 비콘서비스가 있는지 확인
+    private boolean getServiceTaskName() {
+
+        boolean checked = false;
+        ActivityManager am = (ActivityManager) getSystemService(Context.ACTIVITY_SERVICE);
+        List<ActivityManager.RunningServiceInfo> info;
+        info = am.getRunningServices(100);
+
+        for(int i=0; i<info.size(); i++){
+            ActivityManager.RunningServiceInfo rsi = info.get(i);
+            Log.d("run service","Package Name : " + rsi.service.getPackageName());
+            Log.d("run service","Class Name : " + rsi.service.getClassName());
+            if(rsi.service.getClassName().equals("com.capston.iceamericano.smartcampus.BeaconService")){
+                checked = true;
+            }
+
+        }
+
+        return checked;
     }
 
 
