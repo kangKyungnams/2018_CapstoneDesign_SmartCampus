@@ -138,6 +138,9 @@
             </intent-filter>
         </activity>
         <activity android:name=".FoodList" />
+        <service android:name=".BeaconService">
+
+        </service>
         <activity android:name=".food" />
         <activity android:name=".EnrollNotice"
             android:label="공 지 등 록"
