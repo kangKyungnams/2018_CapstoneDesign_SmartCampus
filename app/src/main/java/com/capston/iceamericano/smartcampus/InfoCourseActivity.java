@@ -26,7 +26,7 @@ public class InfoCourseActivity extends AppCompatActivity {
     String TAG = "InfoCourseActivity";
     String lectureID;
     TextView lecture_info_courseName, lecture_info_courseID, lecture_info_type, lecture_info_credit, lecture_info_professor, lecture_info_classroom;
-    Button bt_info_course_attCheck;
+    Button bt_info_course_attCheck, bt_info_course_noticeConfirm;
     FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
     DatabaseReference uReference = FirebaseDatabase.getInstance().getReference();
     DatabaseReference userdata = uReference.child("takingCourseList");
@@ -48,6 +48,7 @@ public class InfoCourseActivity extends AppCompatActivity {
         lecture_info_courseID.setText(lectureID);
 
         bt_info_course_attCheck = (Button) findViewById(R.id.bt_info_course_attCheck);
+        bt_info_course_noticeConfirm = (Button) findViewById(R.id.bt_info_course_noticeConfirm);
 
         String  value= user.getEmail().substring(0, 10);
         DatabaseReference userLecture = userdata.child(value);
@@ -77,6 +78,7 @@ public class InfoCourseActivity extends AppCompatActivity {
 
 
         bt_info_course_attCheck.setOnClickListener(bt_attCheck);
+        bt_info_course_noticeConfirm.setOnClickListener(bt_noticeConfirm);
     }
 
 
@@ -88,6 +90,16 @@ public class InfoCourseActivity extends AppCompatActivity {
             attCheck.putExtra("lectureNameKey",lecture_info_courseID.getText().toString());
             attCheck.putExtra("lectureName", lecture_info_courseName.getText().toString());
             InfoCourseActivity.this.startActivity(attCheck);
+        }
+    };
+
+    Button.OnClickListener bt_noticeConfirm = new Button.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+
+            Intent noticeConfirm = new Intent(InfoCourseActivity.this, NoticeInCourse.class);
+            noticeConfirm.putExtra("lectureNameKey",lecture_info_courseID.getText().toString());
+            InfoCourseActivity.this.startActivity(noticeConfirm);
         }
     };
 }

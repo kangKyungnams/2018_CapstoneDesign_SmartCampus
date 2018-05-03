@@ -8,21 +8,9 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
-        <TextView
-            android:gravity="center"
-            android:layout_width="match_parent"
-            android:layout_height="70dp"
-            android:layout_gravity="center"
-            android:text="공지 사항"
-            android:textColor="#56524e"
-            android:textSize="20dp"
-            android:textStyle="bold"
-            android:background="@color/colorPrimary" />
-
 
 
         <FrameLayout
-            android:layout_marginTop="10dp"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
@@ -62,52 +50,20 @@
                         android:layout_marginBottom="10dp"/>
                 </LinearLayout>
 
-                <ListView
+                <!-- A RecyclerView with some commonly used attributes -->
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/notice_in_course_recyclerView"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:id="@+id/notice_listview"
-                    android:layout_margin="10dp"
-                    android:dividerHeight="10dp"
-                    android:divider="#ffffff">
+                    android:scrollbars="vertical" />
 
-                </ListView>
 
             </LinearLayout>
 
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:id="@+id/fragments">
-            </RelativeLayout>
-
 
         </FrameLayout>
-        <!--<LinearLayout-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:orientation="vertical"-->
-        <!--android:background="#f9f7ea"-->
-        <!--&gt;-->
-
-        <!--<TextView-->
-        <!--android:gravity="center"-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="70dp"-->
-        <!--android:layout_gravity="center"-->
-        <!--android:text="내 강의실"-->
-        <!--android:textColor="#56524e"-->
-        <!--android:textSize="20dp"-->
-        <!--android:textStyle="bold"-->
-        <!--android:background="@color/colorPrimary" />-->
-        <!---->
 
 
-
-
-
-
-
-        <!--</LinearLayout>-->
     </LinearLayout>
 
 

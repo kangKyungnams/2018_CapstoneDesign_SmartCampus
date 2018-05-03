@@ -6,37 +6,36 @@ package com.capston.iceamericano.smartcampus;
 
 public class Notice {
 
-    String name;
-    String notice;
-    String date;
+    String writer, title, time;
 
-    public String getName() {
-        return name;
+    public Notice(String writer, String title, String time) {
+        this.writer = writer;
+        this.title = title;
+        this.time = time;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public String getWriter() {
+        return writer;
     }
 
-    public String getNotice() {
-        return notice;
+    public void setWriter(String writer) {
+        this.writer = writer;
     }
 
-    public void setNotice(String notice) {
-        this.notice = notice;
+    public String getTitle() {
+        return title;
     }
 
-    public String getDate() {
-        return date;
+    public void setTitle(String title) {
+        this.title = title;
     }
 
-    public void setDate(String date) {
-        this.date = date;
+    public String getTime() {
+        return time;
     }
 
-    public Notice(String name, String notice, String date) {
-        this.name = name;
-        this.notice = notice;
-        this.date = date;
+    public void setTime(String time) {
+        this.time = time;
     }
+
 }

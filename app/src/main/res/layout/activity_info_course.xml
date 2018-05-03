@@ -229,7 +229,8 @@
                     android:layout_weight="1"
                     android:gravity="center"
                     android:layout_marginLeft="5dp"
-                    android:drawableTop="@drawable/ic_chat_black_48dp"/>
+                    android:drawableTop="@drawable/ic_chat_black_48dp"
+                    android:id="@+id/bt_info_course_noticeConfirm"/>
             </LinearLayout>
 
 

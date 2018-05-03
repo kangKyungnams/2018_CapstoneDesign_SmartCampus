@@ -128,15 +128,6 @@
         </activity>
         <activity android:name=".ModifyMypage" />
         <activity android:name=".CourseList" />
-        <activity
-            android:name=".AttState"
-            android:theme="@style/AppTheme.NoActionBar">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.BROWSABLE" />
-            </intent-filter>
-        </activity>
         <activity android:name=".FoodList" />
         <activity android:name=".food" />
         <activity android:name=".EnrollNotice"
@@ -148,6 +139,16 @@
                 <category android:name="android.intent.category.BROWSABLE" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".NoticeInCourse"
+            android:theme="@style/AppTheme.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.BROWSABLE" />
+            </intent-filter>
+        </activity>
+
     </application>
 
 </manifest>
