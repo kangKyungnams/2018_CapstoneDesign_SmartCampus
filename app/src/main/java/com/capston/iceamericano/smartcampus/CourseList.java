@@ -70,7 +70,7 @@ public class CourseList extends AppCompatActivity {
                     String value2 = dataSnapshot2.getValue().toString();
 
                     Log.d(TAG, "Value is: " + value2);
-                    Course course =  new Course(title,professor,classroom,credit,lectureID);
+                    Course course =  new Course(title,professor,classroom,credit+"학점",lectureID);
 
 
                     // [START_EXCLUDE]
