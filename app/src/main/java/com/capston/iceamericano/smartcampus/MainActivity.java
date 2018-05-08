@@ -1,5 +1,7 @@
 package com.capston.iceamericano.smartcampus;
 
+import android.app.ActivityManager;
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Handler;
@@ -66,12 +68,12 @@ public class MainActivity extends AppCompatActivity
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        mArea = findViewById(R.id.linearMain);
-        plutoconList = new ArrayList<>();
-        plutoconManager = new PlutoconManager(this);
-        this.setResult(0,null);
-
+        if(!getServiceTaskName()) {
+            mArea = findViewById(R.id.linearMain);
+            plutoconList = new ArrayList<>();
+            plutoconManager = new PlutoconManager(this);
+            this.setResult(0, null);
+        }
 
         spinner = (Spinner) findViewById(R.id.course_Spinner);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -109,6 +111,7 @@ public class MainActivity extends AppCompatActivity
                 spinner.setAdapter(adapter);
             }
 
+
             @Override
             public void onCancelled(DatabaseError error) {
                 // Failed to read value
@@ -124,8 +127,6 @@ public class MainActivity extends AppCompatActivity
         course_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                plutoconManager.close();
-                Log.d("beaconTEST","종료");
                 Intent Intent1 = new Intent(MainActivity.this, CourseList.class);
                 MainActivity.this.startActivity(Intent1);
             }
@@ -133,7 +134,6 @@ public class MainActivity extends AppCompatActivity
         restaurant_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                plutoconManager.close();
                 Intent Intent2 = new Intent(MainActivity.this, Restaurant.class);
                 MainActivity.this.startActivity(Intent2);
             }
@@ -141,7 +141,6 @@ public class MainActivity extends AppCompatActivity
         my_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                plutoconManager.close();
                 Intent Intent3 = new Intent(MainActivity.this, Mypage.class);
                 MainActivity.this.startActivity(Intent3);
             }
@@ -197,12 +196,14 @@ public class MainActivity extends AppCompatActivity
     @Override
     protected void onResume(){
         super.onResume();
-        plutoconManager.connectService(new PlutoconManager.OnReadyServiceListener() {
-            @Override
-            public void onReady() {
-                MainActivity.this.startMonitoring();
-            }
-        });
+        if(!getServiceTaskName()) {
+            plutoconManager.connectService(new PlutoconManager.OnReadyServiceListener() {
+                @Override
+                public void onReady() {
+                    MainActivity.this.startMonitoring();
+                }
+            });
+        }
 
     }
 
@@ -255,9 +256,32 @@ public class MainActivity extends AppCompatActivity
 
     @Override
     protected void onStart() {
-        plutoconManager = new PlutoconManager(this);
-        plutoconManager.connectService(null);
+        if(!getServiceTaskName()) {
+            plutoconManager = new PlutoconManager(this);
+            plutoconManager.connectService(null);
+        }
         super.onStart();
 
+    }
+
+
+    private boolean getServiceTaskName() {
+
+        boolean checked = false;
+        ActivityManager am = (ActivityManager) getSystemService(Context.ACTIVITY_SERVICE);
+        List<ActivityManager.RunningServiceInfo> info;
+        info = am.getRunningServices(100);
+
+        for(int i=0; i<info.size(); i++){
+            ActivityManager.RunningServiceInfo rsi = info.get(i);
+            Log.d("run service","Package Name : " + rsi.service.getPackageName());
+            Log.d("run service","Class Name : " + rsi.service.getClassName());
+            if(rsi.service.getClassName().equals("com.capston.iceamericano.smartcampus.BeaconService")){
+                checked = true;
+            }
+
+        }
+
+        return checked;
     }
 }

@@ -1,6 +1,8 @@
 package com.capston.iceamericano.smartcampus;
 
+import android.app.ActivityManager;
 import android.app.Fragment;
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -61,9 +63,11 @@ public class Restaurant extends AppCompatActivity {
             super.onCreate(savedInstanceState);
             setContentView(R.layout.activity_restaurant);
 //            RestaurantSpinner = (Spinner) findViewById(R.id.course_Spinner);
-            plutoconList = new ArrayList<>();
-            plutoconManager = new PlutoconManager(this);
-            this.setResult(0,null);
+            if(!getServiceTaskName()) {
+                plutoconList = new ArrayList<>();
+                plutoconManager = new PlutoconManager(this);
+                this.setResult(0, null);
+            }
             isDiscovered = false;
 
             bt_restaurant_order = (Button) findViewById(R.id.bt_restaurant_order);
@@ -133,8 +137,10 @@ public class Restaurant extends AppCompatActivity {
 
     @Override
     protected void onStart() {
-        plutoconManager = new PlutoconManager(this);
-        plutoconManager.connectService(null);
+        if(!getServiceTaskName()) {
+            plutoconManager = new PlutoconManager(this);
+            plutoconManager.connectService(null);
+        }
         super.onStart();
 
     }
@@ -143,15 +149,37 @@ public class Restaurant extends AppCompatActivity {
     @Override
     protected void onResume(){
         super.onResume();
-        plutoconManager.connectService(new PlutoconManager.OnReadyServiceListener() {
-            @Override
-            public void onReady() {
-                Restaurant.this.startMonitoring();
-            }
-        });
+        if(!getServiceTaskName()) {
+            plutoconManager.connectService(new PlutoconManager.OnReadyServiceListener() {
+                @Override
+                public void onReady() {
+                    Restaurant.this.startMonitoring();
+                }
+            });
+        }
 
     }
 
+
+    private boolean getServiceTaskName() {
+
+        boolean checked = false;
+        ActivityManager am = (ActivityManager) getSystemService(Context.ACTIVITY_SERVICE);
+        List<ActivityManager.RunningServiceInfo> info;
+        info = am.getRunningServices(100);
+
+        for(int i=0; i<info.size(); i++){
+            ActivityManager.RunningServiceInfo rsi = info.get(i);
+            Log.d("run service","Package Name : " + rsi.service.getPackageName());
+            Log.d("run service","Class Name : " + rsi.service.getClassName());
+            if(rsi.service.getClassName().equals("com.capston.iceamericano.smartcampus.BeaconService")){
+                checked = true;
+            }
+
+        }
+
+        return checked;
+    }
 //    Button.OnClickListener mypage = new Button.OnClickListener() {
 //        @Override
 //        public void onClick(View v) {
