@@ -33,7 +33,7 @@ public class AttCheckActivity extends AppCompatActivity {
     Button attStart;
     private List<Plutocon> plutoconList;
 
-
+    String att_adapter_name, att_adapter_date, att_adapter_state, compare1;
 
     RecyclerView mRecyclerView;
     LinearLayoutManager mLayoutManager;
@@ -45,6 +45,7 @@ public class AttCheckActivity extends AppCompatActivity {
     FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
     DatabaseReference uReference = FirebaseDatabase.getInstance().getReference();
     DatabaseReference userdata = uReference.child("attendance");
+
 
 
     @Override
@@ -109,18 +110,17 @@ public class AttCheckActivity extends AppCompatActivity {
 
                 for (DataSnapshot dataSnapshot2: dataSnapshot.getChildren()){
 
-
-
-                    String compare1 = dataSnapshot2.getKey().toString().substring(0,10);
+                    compare1 = dataSnapshot2.getKey().toString().substring(0,10);
+                    String lectureDateKey = dataSnapshot2.getKey().toString();
 
                     if( compare2.equals(compare1))
                     {
                         att_adapter_num++;
-                        String att_adapter_name = dataSnapshot2.child("name").getValue().toString();
-                        String att_adapter_date = dataSnapshot2.child("date").getValue().toString();
-                        String att_adapter_state = dataSnapshot2.child("status").getValue().toString();
+                        att_adapter_name = dataSnapshot2.child("name").getValue().toString();
+                        att_adapter_date = dataSnapshot2.child("date").getValue().toString();
+                        att_adapter_state = dataSnapshot2.child("status").getValue().toString();
 
-                        AttState stateAtt =  new AttState(att_adapter_num,att_adapter_name,att_adapter_date,att_adapter_state);
+                        AttState stateAtt =  new AttState(att_adapter_num,att_adapter_name,att_adapter_date,att_adapter_state,lectureDateKey,lectureID);
                         mList.add(stateAtt);
 
                     }
@@ -128,6 +128,7 @@ public class AttCheckActivity extends AppCompatActivity {
                 }
 
                 mAdapter.notifyItemInserted(mList.size() - 1);
+                mAdapter.notifyItemChanged(mList.size() - 1);
 
             }
 

@@ -2,17 +2,38 @@ package com.capston.iceamericano.smartcampus;
 
 public class AttState {
 
-    int num; // 강의 제목
-    String name; // 교수 이름
-    String date; // 강의실
-    String state_Check; // 강의 학점
+    int num; // 강의 순번
+    String name; // 강의 이름
+    String date; // 강의 날짜
+    String state_Check; // 출석 체크
+    String lectureDateKey; // 강의 출석별 시간
+    String lectureID; // 강의 ID
 
-    public AttState(int num, String name, String date, String state_Check) {
+    public String getLectureID() {
+        return lectureID;
+    }
+
+    public AttState(int num, String name, String date, String state_Check, String lectureDateKey, String lectureID) {
         this.num = num;
         this.name = name;
         this.date = date;
         this.state_Check = state_Check;
+        this.lectureDateKey = lectureDateKey;
+        this.lectureID = lectureID;
     }
+
+    public void setLectureID(String lectureID) {
+        this.lectureID = lectureID;
+    }
+
+    public String getLectureDateKey() {
+        return lectureDateKey;
+    }
+
+    public void setLectureDateKey(String lectureDateKey) {
+        this.lectureDateKey = lectureDateKey;
+    }
+
 
     public int getNum() {
         return num;
