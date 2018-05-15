@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="#ffffef"
-    tools:context="com.capston.iceamericano.smartcampus.AttCheckForProfActivity">
+    tools:context="com.capston.iceamericano.smartcampus.DatePickerAtt">
     <TextView
         android:layout_width="match_parent"
         android:layout_height="50dp"
@@ -17,15 +17,12 @@
         android:textSize="22dp"
         android:textColor="@color/colorPrimaryDark"
         />
-
-
-
     <LinearLayout
         android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="17dp"
-        android:layout_marginBottom="17dp"
+        android:layout_marginBottom="10dp"
         android:layout_marginRight="17dp">
 
         <!--CalendarView
@@ -35,43 +32,34 @@
     </LinearLayout>
     <LinearLayout
         android:orientation="horizontal"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="17dp"
-        android:layout_marginBottom="7dp"
+        android:layout_marginBottom="0dp"
         android:layout_marginRight="17dp">
-        <Button
-            android:background="@color/colorButton"
+        <TextView
+            android:layout_marginStart="10dp"
             android:layout_weight="1"
-            android:layout_width="50dp"
-            android:layout_height="40dp"
-            android:text="출석 시작"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAlignment="center"
+            android:textSize="20dp"
+            android:text="1231232123"
+            android:layout_gravity="center"
             android:textStyle="bold"
-            android:textColor="#ffffff"
-            android:gravity="center"
-            android:layout_marginRight="10dp"/>
+            android:id="@+id/txt_TextDateTime" />
         <Button
-        android:layout_weight="1"
-        android:layout_width="50dp"
-        android:layout_height="40dp"
-            android:background="@color/colorButton"
-        android:textStyle="bold"
-        android:text="출석 종료"
-        android:textColor="#ffffff"
-        android:gravity="center"
-            android:layout_marginRight="10dp"
-        />
-        <Button
-            android:id="@+id/AttView_button"
+            android:layout_marginStart="40dp"
+            android:id="@+id/txt_ButtonDateTime"
+            android:layout_width="170dp"
+            android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:layout_width="50dp"
-            android:layout_height="40dp"
-            android:background="@color/colorButton"
-            android:textStyle="bold"
-            android:text="출결 정보"
-            android:textColor="#ffffff"
-            android:gravity="center"
-            />
+            android:text="날짜별 출결 확인"
+            android:layout_gravity="center"
+            android:textColor="#000000"
+            android:textSize="17dp"/>
+
+
     </LinearLayout>
 
 
@@ -129,9 +117,6 @@
 
 
         </ListView>
-
-
-
 
     </LinearLayout>
 </LinearLayout>

@@ -64,7 +64,7 @@ public class CourseList extends AppCompatActivity {
 
                     String title = dataSnapshot2.child("title").getValue().toString();
                     String professor = dataSnapshot2.child("professor_name").getValue().toString();
-                    String classroom = dataSnapshot2.child("classroom_id").getValue().toString();
+                    String classroom = dataSnapshot2.child("location").child("classroom").getValue().toString();
                     String credit = dataSnapshot2.child("credit").getValue().toString();
                     String lectureID = dataSnapshot2.getKey();
                     String value2 = dataSnapshot2.getValue().toString();
