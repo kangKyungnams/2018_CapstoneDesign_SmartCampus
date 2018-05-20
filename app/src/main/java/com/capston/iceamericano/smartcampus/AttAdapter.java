@@ -44,6 +44,7 @@ public class AttAdapter extends RecyclerView.Adapter<AttAdapter.ViewHolder> {
             att_adapter_date = (TextView) itemview.findViewById(R.id.att_adapter_date);
             att_adapter_state = (TextView) itemview.findViewById(R.id.att_adapter_state);
             att_adapter_start = (Button) itemview.findViewById(R.id.att_adapter_start);
+
         }
     }
 
@@ -51,6 +52,7 @@ public class AttAdapter extends RecyclerView.Adapter<AttAdapter.ViewHolder> {
     public AttAdapter(List<AttState> mList, Context context) {
         this.mList = mList;
         this.context = context;
+        notifyDataSetChanged();
     }
 
 
@@ -99,6 +101,7 @@ public class AttAdapter extends RecyclerView.Adapter<AttAdapter.ViewHolder> {
                 }
             }
         });
+        notifyDataSetChanged();
 
 
     }
