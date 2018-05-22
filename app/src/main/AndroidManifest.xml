@@ -163,7 +163,15 @@
         </activity>
         <activity android:name=".NoticeView" />
         <activity android:name=".DatePickerAtt" />
-        <activity android:name=".RestaurantManager"></activity>
+        <activity android:name=".RestaurantManager"
+            android:label="식당관리자"
+            android:theme="@style/AppTheme">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.BROWSABLE" />
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>
