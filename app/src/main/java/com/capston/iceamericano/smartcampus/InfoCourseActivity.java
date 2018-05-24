@@ -65,7 +65,7 @@ public class InfoCourseActivity extends AppCompatActivity {
                 lecture_info_type.setText(dataSnapshot.child(lectureID).child("category").getValue().toString());
                 lecture_info_credit.setText(dataSnapshot.child(lectureID).child("credit").getValue().toString());
                 lecture_info_professor.setText(dataSnapshot.child(lectureID).child("professor_name").getValue().toString());
-                lecture_info_classroom.setText(dataSnapshot.child(lectureID).child("classroom_id").getValue().toString());
+                lecture_info_classroom.setText(dataSnapshot.child(lectureID).child("location").child("classroom").getValue().toString());
 
             }
 

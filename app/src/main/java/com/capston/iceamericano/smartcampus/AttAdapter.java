@@ -52,7 +52,7 @@ public class AttAdapter extends RecyclerView.Adapter<AttAdapter.ViewHolder> {
     public AttAdapter(List<AttState> mList, Context context) {
         this.mList = mList;
         this.context = context;
-        notifyDataSetChanged();
+
     }
 
 
@@ -101,7 +101,7 @@ public class AttAdapter extends RecyclerView.Adapter<AttAdapter.ViewHolder> {
                 }
             }
         });
-        notifyDataSetChanged();
+
 
 
     }
