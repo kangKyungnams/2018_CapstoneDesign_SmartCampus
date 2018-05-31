@@ -84,28 +84,22 @@ public class AttAdapter extends RecyclerView.Adapter<AttAdapter.ViewHolder> {
             @Override
             public void onClick(View v) {
                 Date date = new Date();
-                long now  = System.currentTimeMillis();
+                long now = System.currentTimeMillis();
                 SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
                 String getTime = sdf.format(now);
 
-                if(mList.get(position).getDate().equals(getTime.substring(0,10)))
-                {
+                if (mList.get(position).getDate().equals(getTime.substring(0, 10))) {
                     Intent mIntent = new Intent(context, BeaconService.class);
-                    mIntent.putExtra("lectureID",mList.get(position).getLectureID());
-                    mIntent.putExtra("lectureDateKey",mList.get(position).getLectureDateKey());
+                    mIntent.putExtra("lectureID", mList.get(position).getLectureID());
+                    mIntent.putExtra("lectureDateKey", mList.get(position).getLectureDateKey());
                     mServiceName = context.startService(mIntent);
-                }
-                else
-                {
+                } else {
                     Toast.makeText(context, "오늘 날짜에 해당하는 출석이 아닙니다.", Toast.LENGTH_SHORT).show();
                 }
             }
         });
 
-
-
     }
-
 
 
 

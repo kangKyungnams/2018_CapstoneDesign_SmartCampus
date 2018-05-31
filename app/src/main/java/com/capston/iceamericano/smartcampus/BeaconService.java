@@ -28,7 +28,7 @@ import java.util.List;
  */
 
 public class BeaconService extends Service {
-    private final int OFFSET_RSSI = -60;
+    private final int OFFSET_RSSI = -80;
     private final int COUNT = 0;
     private final String CLASS_ROOM = "ED:6F:DE:A3:D5:56";
     private final String CAFETERIA = "EB:BA:54:08:89:BB";
@@ -120,7 +120,7 @@ public class BeaconService extends Service {
                         long ms = System.currentTimeMillis();
                         plutoconAdapter.refresh();
 
-                        if (plutocon.getMacAddress().equals(CLASS_ROOM) && plutocon.getRssi() > targetRssi && !isDiscovered) {
+                        if (plutocon.getName().equals("CAFETERIA") && plutocon.getRssi() > targetRssi && !isDiscovered) {
                             targetPlutocon = plutocon;
                             isDiscovered = true;
                             //Toast.makeText(BeaconService.this, String.valueOf(ms - plutocon.getLastSeenMillis()), Toast.LENGTH_SHORT).show();
@@ -129,7 +129,7 @@ public class BeaconService extends Service {
                                 public void run() {
                                     if (isDiscovered) {
 
-                                        mCount+=2;
+                                        mCount+=5;
                                         isDiscovered = false;
 //                                        Toast msg = Toast.makeText(BeaconService.this, "됐다! "+mCount, Toast.LENGTH_SHORT);
 //                                        msg.show();
