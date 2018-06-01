@@ -88,7 +88,10 @@ public class MainActivity extends AppCompatActivity
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
-        String  value= user.getEmail().substring(0, 10);
+        int cut_index;
+        String cut_char = user.getEmail();
+        cut_index = cut_char.indexOf("@");
+        String  value= user.getEmail().substring(0, cut_index-1);
         DatabaseReference userLecture = userdata.child(value);
 
         //접속 계정의 강의 목록 불러오기
