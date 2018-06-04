@@ -191,7 +191,8 @@
                     android:text="길찾기"
                     android:drawableLeft="@drawable/ic_map_black_36dp"
                     android:gravity="center"
-                    android:layout_weight="1.5"/>
+                    android:layout_weight="1.5"
+                    android:id="@+id/btn_navi2"/>
 
             </LinearLayout>
 

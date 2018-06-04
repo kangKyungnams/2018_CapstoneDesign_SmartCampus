@@ -30,7 +30,7 @@
             </intent-filter>
         </activity>
 
-        <service android:name=".BeaconService" />
+        <service android:name=".Beacon.BeaconService" />
 
         <activity
             android:name=".MainActivity"
@@ -163,7 +163,8 @@
         </activity>
         <activity android:name=".NoticeView" />
         <activity android:name=".DatePickerAtt" />
-        <activity android:name=".RestaurantManager"
+        <activity
+            android:name=".RestaurantManager"
             android:label="식당관리자"
             android:theme="@style/AppTheme">
             <intent-filter>
@@ -172,6 +173,7 @@
                 <category android:name="android.intent.category.BROWSABLE" />
             </intent-filter>
         </activity>
+        <activity android:name=".NaviActivity"></activity>
     </application>
 
 </manifest>

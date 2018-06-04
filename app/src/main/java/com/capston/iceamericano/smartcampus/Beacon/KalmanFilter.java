@@ -1,4 +1,4 @@
-package com.capston.iceamericano.smartcampus;
+package com.capston.iceamericano.smartcampus.Beacon;
 
 /**
  * Created by 경남 on 2018-05-14.

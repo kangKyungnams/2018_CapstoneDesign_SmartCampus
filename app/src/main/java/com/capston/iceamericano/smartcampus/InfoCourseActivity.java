@@ -26,7 +26,7 @@ public class InfoCourseActivity extends AppCompatActivity {
     String TAG = "InfoCourseActivity";
     String lectureID;
     TextView lecture_info_courseName, lecture_info_courseID, lecture_info_type, lecture_info_credit, lecture_info_professor, lecture_info_classroom;
-    Button bt_info_course_attCheck, bt_info_course_noticeConfirm;
+    Button bt_info_course_attCheck, bt_info_course_noticeConfirm, btn_navi;
     FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
     DatabaseReference uReference = FirebaseDatabase.getInstance().getReference();
     DatabaseReference userdata = uReference.child("takingCourseList");
@@ -49,6 +49,7 @@ public class InfoCourseActivity extends AppCompatActivity {
 
         bt_info_course_attCheck = (Button) findViewById(R.id.bt_info_course_attCheck);
         bt_info_course_noticeConfirm = (Button) findViewById(R.id.bt_info_course_noticeConfirm);
+        btn_navi = (Button)findViewById(R.id.btn_navi2);
 
         String  value= user.getEmail().substring(0, 10);
         DatabaseReference userLecture = userdata.child(value);
@@ -76,7 +77,7 @@ public class InfoCourseActivity extends AppCompatActivity {
             }
         });
 
-
+        btn_navi.setOnClickListener(btn_navi2);
         bt_info_course_attCheck.setOnClickListener(bt_attCheck);
         bt_info_course_noticeConfirm.setOnClickListener(bt_noticeConfirm);
     }
@@ -85,7 +86,6 @@ public class InfoCourseActivity extends AppCompatActivity {
     Button.OnClickListener bt_attCheck = new Button.OnClickListener() {
         @Override
         public void onClick(View v) {
-
             Intent attCheck = new Intent(InfoCourseActivity.this, AttCheckActivity.class);
             attCheck.putExtra("lectureNameKey",lecture_info_courseID.getText().toString());
             attCheck.putExtra("lectureName", lecture_info_courseName.getText().toString());
@@ -96,10 +96,18 @@ public class InfoCourseActivity extends AppCompatActivity {
     Button.OnClickListener bt_noticeConfirm = new Button.OnClickListener() {
         @Override
         public void onClick(View v) {
-
             Intent noticeConfirm = new Intent(InfoCourseActivity.this, NoticeInCourse.class);
             noticeConfirm.putExtra("lectureNameKey",lecture_info_courseID.getText().toString());
             InfoCourseActivity.this.startActivity(noticeConfirm);
+        }
+    };
+    Button.OnClickListener btn_navi2 = new Button.OnClickListener(){
+        @Override
+        public void onClick(View v){
+            Intent navi = new Intent(InfoCourseActivity.this, NaviActivity.class);
+            //navi.putExtra("",)
+            InfoCourseActivity.this.startActivity(navi);
+
         }
     };
 }

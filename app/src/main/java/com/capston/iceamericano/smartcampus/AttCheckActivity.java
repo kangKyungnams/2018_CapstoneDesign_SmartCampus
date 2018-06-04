@@ -13,6 +13,7 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.capston.iceamericano.smartcampus.Beacon.BeaconService;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -218,7 +219,7 @@ public class AttCheckActivity extends AppCompatActivity {
             ActivityManager.RunningServiceInfo rsi = info.get(i);
             Log.d("run service","Package Name : " + rsi.service.getPackageName());
             Log.d("run service","Class Name : " + rsi.service.getClassName());
-            if(rsi.service.getClassName().equals("com.capston.iceamericano.smartcampus.BeaconService")){
+            if(rsi.service.getClassName().equals("com.capston.iceamericano.smartcampus.Beacon.BeaconService")){
                 checked = true;
             }
 

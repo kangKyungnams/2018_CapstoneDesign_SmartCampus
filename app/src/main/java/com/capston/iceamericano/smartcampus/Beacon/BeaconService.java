@@ -1,4 +1,4 @@
-package com.capston.iceamericano.smartcampus;
+package com.capston.iceamericano.smartcampus.Beacon;
 
 import android.app.Notification;
 import android.app.Service;
@@ -7,13 +7,12 @@ import android.os.Handler;
 import android.os.IBinder;
 import android.os.Message;
 import android.support.v4.app.NotificationCompat;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.TextView;
 import android.widget.Toast;
 
+import com.capston.iceamericano.smartcampus.R;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;

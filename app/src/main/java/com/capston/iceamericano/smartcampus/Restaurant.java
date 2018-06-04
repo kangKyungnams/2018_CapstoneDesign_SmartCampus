@@ -172,7 +172,7 @@ public class Restaurant extends AppCompatActivity {
             ActivityManager.RunningServiceInfo rsi = info.get(i);
             Log.d("run service","Package Name : " + rsi.service.getPackageName());
             Log.d("run service","Class Name : " + rsi.service.getClassName());
-            if(rsi.service.getClassName().equals("com.capston.iceamericano.smartcampus.BeaconService")){
+            if(rsi.service.getClassName().equals("com.capston.iceamericano.smartcampus.Beacon.BeaconService")){
                 checked = true;
             }
 
