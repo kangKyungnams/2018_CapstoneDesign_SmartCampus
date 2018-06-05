@@ -1,6 +1,7 @@
 package com.capston.iceamericano.smartcampus;
 
 import android.*;
+import android.app.ProgressDialog;
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothManager;
 import android.content.Context;
@@ -43,7 +44,7 @@ public class LoginActivity extends AppCompatActivity {
     private Button registerButton;
     private Button loginButton;
     private Button PWmod_Button;
-
+    private BackButtonHandler backButtonHandler;
 
     DatabaseReference uReference = FirebaseDatabase.getInstance().getReference();
     DatabaseReference userdata = uReference.child("user");
@@ -64,7 +65,7 @@ public class LoginActivity extends AppCompatActivity {
         registerButton.setOnClickListener(register);
         loginButton.setOnClickListener(login);
 
-
+        backButtonHandler = new BackButtonHandler(this);
 
         //비밀번호 찾기 버튼 레이아웃
         PWmod_Button.setOnClickListener(new View.OnClickListener() {
@@ -191,6 +192,12 @@ public class LoginActivity extends AppCompatActivity {
 
         final Intent loginIntent = new Intent(LoginActivity.this, MainActivity.class);
 
+        ProgressDialog progressDialog = new ProgressDialog(LoginActivity.this);
+        progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+        progressDialog.setMessage("로그인 중입니다.");
+        progressDialog.show();
+
+
         mAuth.signInWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                     @Override
@@ -241,6 +248,10 @@ public class LoginActivity extends AppCompatActivity {
             }
         }
         return true;
+    }
+    @Override
+    public void onBackPressed(){
+        backButtonHandler.onBackPressed();
     }
 
 }

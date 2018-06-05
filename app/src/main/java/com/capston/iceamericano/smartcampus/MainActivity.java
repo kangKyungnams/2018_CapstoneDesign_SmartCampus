@@ -56,6 +56,7 @@ public class MainActivity extends AppCompatActivity
     LinearLayout mArea;
     private final static int SPLASH_DELAY = 7000;
 
+    private BackButtonHandler backButtonHandler;
 
     String TAG = "MainActivity";
     private ArrayAdapter adapter;
@@ -74,6 +75,8 @@ public class MainActivity extends AppCompatActivity
             plutoconManager = new PlutoconManager(this);
             this.setResult(0, null);
         }
+
+        backButtonHandler = new BackButtonHandler(this);
 
         spinner = (Spinner) findViewById(R.id.course_Spinner);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -286,5 +289,10 @@ public class MainActivity extends AppCompatActivity
         }
 
         return checked;
+    }
+
+    @Override
+    public void onBackPressed(){
+        backButtonHandler.onBackPressed();
     }
 }
