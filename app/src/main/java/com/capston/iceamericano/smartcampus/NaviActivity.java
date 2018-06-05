@@ -483,7 +483,7 @@ public class NaviActivity extends AppCompatActivity implements SensorEventListen
                             }
 
                             for(int x = 0 ; x < 3 ; x++){
-                                if(mPlutocon[x] != null && ms - mPlutocon[x].getLastSeenMillis() >= 3000){
+                                if(mPlutocon[x] != null && ((ms - mPlutocon[x].getLastSeenMillis() >= 3000) || (mPlutocon[x].getRssi() < OFFSET_RSSI))){
                                     isRemoved = false;
                                 }
                                 if(mPlutocon[x] != null

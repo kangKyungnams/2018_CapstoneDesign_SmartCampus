@@ -44,6 +44,7 @@ public class LoginActivity extends AppCompatActivity {
     private Button loginButton;
     private Button PWmod_Button;
 
+
     DatabaseReference uReference = FirebaseDatabase.getInstance().getReference();
     DatabaseReference userdata = uReference.child("user");
 
@@ -160,6 +161,14 @@ public class LoginActivity extends AppCompatActivity {
 
                     String e_mail = dataSnapshot.child(ed_ID.getText().toString()).child("e_mail").getValue().toString();
                     String value = dataSnapshot.getValue().toString();
+
+                    GetMacAddress getMacAddress = new GetMacAddress();
+                    String mMAC = getMacAddress.getMAC();
+//                    맥주소 일치하는지 확인..
+//                    if(mMAC == dataSnapshot.child(ed_ID.getText().toString()).child("MacAddress").getValue().toString()){
+//
+//                    }
+
                     loginAuth(e_mail, ed_PW.getText().toString());
                 }
 

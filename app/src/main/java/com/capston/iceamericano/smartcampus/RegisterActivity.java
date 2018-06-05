@@ -75,9 +75,17 @@ public class RegisterActivity extends AppCompatActivity {
                             // Sign in success, update UI with the signed-in user's information
                             Log.d(TAG, "createUserWithEmail:success");
                             FirebaseUser User = task.getResult().getUser();
+
+//                            맥주소 등록부분
+//                            GetMacAddress getMacAddress = new GetMacAddress();
+//                            String mMac = getMacAddress.getMAC();
+//                            userdata.child(ed_StuNum.getText().toString()).child("MacAddress").setValue(mMac);
+
                             userdata.child(ed_StuNum.getText().toString()).child("ID").setValue(ed_email.getText().toString());
                             userdata.child(ed_StuNum.getText().toString()).child("PW").setValue(ed_password.getText().toString());
                             userdata.child(ed_StuNum.getText().toString()).child("Name").setValue(ed_name.getText().toString());
+
+
 //                            userdata.child(User.getUid()).child("Photo").setValue("https://firebasestorage.googleapis.com/v0/b/anypeople-12.appspot.com/o/standard.png?alt=media&token=b2e19a52-39c8-44af-9989-d73e5c5c30d1");
                             userdata.child(ed_StuNum.getText().toString()).child("keyUID").setValue(User.getUid().toString());
                             Toast.makeText(RegisterActivity.this, "회원가입이 완료되었습니다.", Toast.LENGTH_SHORT).show();
