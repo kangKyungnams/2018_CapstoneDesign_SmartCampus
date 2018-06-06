@@ -59,6 +59,26 @@ tools:context="com.capston.iceamericano.smartcampus.NaviActivity">
             android:layout_height="wrap_content"
             android:id="@+id/beacon6"
             android:src="@drawable/beacon"/>
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/beacon7"
+            android:src="@drawable/beacon"/>
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/beacon8"
+            android:src="@drawable/beacon"/>
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/beacon9"
+            android:src="@drawable/beacon"/>
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/beacon10"
+            android:src="@drawable/beacon"/>
 
 
     </FrameLayout>

@@ -47,7 +47,7 @@ public class NaviActivity extends AppCompatActivity implements SensorEventListen
     private final int OFFSET_RSSI = -90;
     private final int QUEUESIZE = 4;
     private final int COUNT = 0;
-    private final int BEACON_COUNT = 5;
+    private final int BEACON_COUNT = 8;
     private final String CLASS_ROOM = "ED:6F:DE:A3:D5:56";
     private final String CAFETERIA = "EB:BA:54:08:89:BB";
     private PlutoconManager plutoconManager;
@@ -106,7 +106,7 @@ public class NaviActivity extends AppCompatActivity implements SensorEventListen
     AppCompatImageView beacon3;
     AppCompatImageView beacon4;
     AppCompatImageView beacon5;
-    AppCompatImageView beacon6;
+    AppCompatImageView beacon6, beacon7, beacon8;     //, beacon9, beacon10;
 
 
     // 센서 관련 객체
@@ -150,8 +150,13 @@ public class NaviActivity extends AppCompatActivity implements SensorEventListen
         beaconLocations[0] = new BeaconLocation("CLASSROOM",490,1100);
         beaconLocations[1] = new BeaconLocation("CAFETERIA",490,950);
         beaconLocations[2] = new BeaconLocation("OFFICE",490,790);
-        beaconLocations[3] = new BeaconLocation("LAB",490,640);
-        beaconLocations[4] = new BeaconLocation("COMPUTERROOM",490,400);
+        beaconLocations[3] = new BeaconLocation("LAB",490,625);
+        beaconLocations[4] = new BeaconLocation("COMPUTERROOM",490,480);
+        beaconLocations[5] = new BeaconLocation("LAB2",490,340);
+
+        beaconLocations[6] = new BeaconLocation("LAB3",430,175);
+        beaconLocations[7] = new BeaconLocation("LAB4",590,175);
+
         // beaconLocations[5] = new BeaconLocation("toilet",400,1100);
 
 
@@ -175,6 +180,8 @@ public class NaviActivity extends AppCompatActivity implements SensorEventListen
         beacon4 = (AppCompatImageView)findViewById(R.id.beacon4);
         beacon5 = (AppCompatImageView)findViewById(R.id.beacon5);
         beacon6 = (AppCompatImageView)findViewById(R.id.beacon6);
+        beacon7 = (AppCompatImageView)findViewById(R.id.beacon7);
+        beacon8 = (AppCompatImageView)findViewById(R.id.beacon8);
 
         plutoconAdapter = new PlutoconAdpater();
         ListView listView = (ListView) findViewById(R.id.list);
@@ -205,9 +212,15 @@ public class NaviActivity extends AppCompatActivity implements SensorEventListen
         beacon3.setX(490);
         beacon3.setY(790);
         beacon4.setX(490);
-        beacon4.setY(640);
+        beacon4.setY(625);
         beacon5.setX(490);
-        beacon5.setY(400);
+        beacon5.setY(480);
+        beacon6.setX(490);
+        beacon6.setY(340);
+        beacon7.setX(430);
+        beacon7.setY(175);
+        beacon8.setX(590);
+        beacon8.setY(175);
 //        beacon6.setX(400);
 //        beacon6.setY(1100);
 
