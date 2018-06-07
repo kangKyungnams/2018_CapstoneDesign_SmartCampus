@@ -53,7 +53,8 @@
         </activity>
         <activity
             android:name=".InfoCourseActivity"
-            android:theme="@style/AppTheme.NoActionBar">
+            android:label="강 의 정 보"
+            android:theme="@style/AppTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -165,7 +166,7 @@
         <activity android:name=".DatePickerAtt" />
         <activity
             android:name=".RestaurantManager"
-            android:label="식당관리자"
+            android:label="식 당  관 리 자"
             android:theme="@style/AppTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -173,7 +174,16 @@
                 <category android:name="android.intent.category.BROWSABLE" />
             </intent-filter>
         </activity>
-        <activity android:name=".NaviActivity"></activity>
+        <activity android:name=".NaviActivity"
+            android:label="위 치 안 내"
+            android:theme="@style/AppTheme">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.BROWSABLE" />
+            </intent-filter>
+
+        </activity>
     </application>
 
 </manifest>

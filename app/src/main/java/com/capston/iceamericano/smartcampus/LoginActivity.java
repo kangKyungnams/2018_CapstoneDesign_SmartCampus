@@ -192,7 +192,7 @@ public class LoginActivity extends AppCompatActivity {
 
         final Intent loginIntent = new Intent(LoginActivity.this, MainActivity.class);
 
-        ProgressDialog progressDialog = new ProgressDialog(LoginActivity.this);
+        final ProgressDialog progressDialog = new ProgressDialog(LoginActivity.this);
         progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
         progressDialog.setMessage("로그인 중입니다.");
         progressDialog.show();
@@ -212,6 +212,7 @@ public class LoginActivity extends AppCompatActivity {
                         } else {
                             // If sign in fails, display a message to the user.
                             Log.w(TAG, "signInWithEmail:failure", task.getException());
+                            progressDialog.dismiss();
                             Toast.makeText(LoginActivity.this, "아이디와 비밀번호를 다시 확인해주세요.", Toast.LENGTH_SHORT).show();
                         }
 

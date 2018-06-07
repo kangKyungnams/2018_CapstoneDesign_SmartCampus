@@ -1,61 +1,98 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     tools:context=".AttState">
 
+
+
+
+
     <LinearLayout
-        android:orientation="horizontal"
+        android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="10dp">
+        android:layout_height="match_parent"
+        android:layout_margin="10dp"
+        android:background="#ffffff"
+        >
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            >
 
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="35dp"
-            android:layout_weight="3"
-            android:gravity="center"
-            android:textColor="#000000"
-            android:textStyle="bold"
-            android:id="@+id/att_adapter_num"/>
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="3"
-            android:gravity="center"
-            android:textColor="#000000"
-            android:textStyle="bold"
-            android:id="@+id/att_adapter_name"/>
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="3"
-            android:gravity="center"
-            android:textColor="#000000"
-            android:textStyle="bold"
-            android:id="@+id/att_adapter_date"/>
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="3"
-            android:gravity="center"
-            android:textColor="#000000"
-            android:textStyle="bold"
-            android:id="@+id/att_adapter_state"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:textColor="#000000"
+                android:text="1"
+                android:textSize="12dp"
+                android:textStyle="bold"
+                android:id="@+id/att_adapter_num"/>
+            <TextView
+                android:layout_gravity="center"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:gravity="center"
+                android:textColor="#000000"
+                android:textStyle="bold"
+                android:textSize="12dp"
+                android:layout_weight="1"
+                android:text="방경주"
+                android:id="@+id/att_adapter_name"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:gravity="center"
+                android:textSize="12dp"
+                android:layout_weight="1"
+                android:textColor="#000000"
+                android:textStyle="bold"
+                android:text="2013-13-12"
+                android:id="@+id/att_adapter_date"/>
 
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="3"
-            android:gravity="center"
-            android:textColor="#000000"
-            android:textStyle="bold"
-            android:text="출석하기"
-            android:id="@+id/att_adapter_start"/>
+
+                <TextView
+                    android:layout_weight="1.5"
+                    android:layout_width="14dp"
+                    android:layout_height="30dp"
+                    android:gravity="center"
+                    android:textColor="#000000"
+                    android:textStyle="bold"
+                    android:textSize="12dp"
+                    android:id="@+id/att_adapter_state"/>
+                <Button
+                    android:layout_weight="1.5"
+                    android:layout_width="10dp"
+                    android:layout_height="30dp"
+                    android:gravity="center"
+                    android:textSize="8dp"
+                    android:textColor="#000000"
+                    android:textStyle="bold"
+                    android:text="출석"
+                    android:id="@+id/att_adapter_start"/>
+
+
+
+
+
+        </LinearLayout>
+
+
+
+
+
 
     </LinearLayout>
 
-</android.support.constraint.ConstraintLayout>
+
+
+
+</LinearLayout>
