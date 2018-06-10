@@ -47,7 +47,7 @@
             android:layout_height="40dp"
             android:text="출석 시작"
             android:textStyle="bold"
-            android:textColor="#ffffff"
+            android:textColor="#000000"
             android:gravity="center"
             android:layout_marginRight="10dp"/>
         <Button
@@ -57,7 +57,7 @@
             android:background="@color/colorButton"
         android:textStyle="bold"
         android:text="출석 종료"
-        android:textColor="#ffffff"
+        android:textColor="#000000"
         android:gravity="center"
             android:layout_marginRight="10dp"
         />
@@ -69,7 +69,7 @@
             android:background="@color/colorButton"
             android:textStyle="bold"
             android:text="출결 정보"
-            android:textColor="#ffffff"
+            android:textColor="#000000"
             android:gravity="center"
             />
     </LinearLayout>

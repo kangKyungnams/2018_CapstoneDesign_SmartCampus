@@ -72,8 +72,8 @@
                     android:text="이수 구분"
                     android:textSize="15dp"
                     android:textStyle="bold"
-                    android:textColor="#ffffff"
-                    android:background="#3f88f5"
+                    android:textColor="#000000"
+                    android:background="#ffae7b"
                     />
                 <TextView
 
@@ -85,8 +85,8 @@
                     android:text="학 점"
                     android:textSize="15dp"
                     android:textStyle="bold"
-                    android:textColor="#ffffff"
-                    android:background="#3f88f5"
+                    android:textColor="#000000"
+                    android:background="#ffae7b"
                     />
                 <TextView
                     android:layout_weight="1"
@@ -98,8 +98,8 @@
                     android:text="교 수"
                     android:textSize="15dp"
                     android:textStyle="bold"
-                    android:textColor="#ffffff"
-                    android:background="#3f88f5"
+                    android:textColor="#000000"
+                    android:background="#ffae7b"
                     />
             </LinearLayout>
 
@@ -192,36 +192,38 @@
                 android:id="@+id/L1"
                 android:layout_width="match_parent"
                 android:layout_height="80dp">
+
                 <Button
-                    android:paddingTop="5dp"
-                    android:textSize="16dp"
-                    android:textStyle="bold"
-                    android:textColor="#ffffff"
-                    android:background="#ff087b"
+                    android:id="@+id/bt_info_course_attCheck"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:text="출결 확인"
-                    android:layout_weight="1"
-                    android:gravity="center"
                     android:layout_marginRight="5dp"
+                    android:layout_weight="1"
+                    android:background="@color/colorButton"
                     android:drawableTop="@drawable/ic_people_black_48dp"
-                    android:id="@+id/bt_info_course_attCheck"
+                    android:gravity="center"
+                    android:paddingTop="5dp"
+                    android:text="출결 확인"
+                    android:textColor="#000000"
+                    android:textSize="16dp"
+                    android:textStyle="bold"
 
                     />
+
                 <Button
-                    android:paddingTop="5dp"
-                    android:textSize="16dp"
-                    android:textStyle="bold"
-                    android:textColor="#ffffff"
-                    android:background="#ff087b"
+                    android:id="@+id/bt_info_course_noticeConfirm"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:text="공지 확인"
-                    android:layout_weight="1"
-                    android:gravity="center"
                     android:layout_marginLeft="5dp"
+                    android:layout_weight="1"
+                    android:background="@color/colorButton"
                     android:drawableTop="@drawable/ic_chat_black_48dp"
-                    android:id="@+id/bt_info_course_noticeConfirm"/>
+                    android:gravity="center"
+                    android:paddingTop="5dp"
+                    android:text="공지 확인"
+                    android:textColor="#000000"
+                    android:textSize="16dp"
+                    android:textStyle="bold" />
             </LinearLayout>
 
 

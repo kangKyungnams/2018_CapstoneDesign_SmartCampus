@@ -106,30 +106,32 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
+
             <Button
-                android:layout_marginTop="30dp"
-                android:layout_marginLeft="18dp"
-                android:background="#1470f7"
-                android:layout_weight="1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginLeft="18dp"
                 android:layout_marginRight="8dp"
-                android:text="기기 정보 변경"
-                android:textColor="#ffffff"
-                android:textStyle="bold"
-                android:textSize="18dp"/>
-            <Button
-                android:textStyle="bold"
-                android:background="#1470f7"
-                android:layout_weight="1"
                 android:layout_marginTop="30dp"
+                android:layout_weight="1"
+                android:background="@color/colorButton"
+                android:text="기기 정보 변경"
+                android:textColor="#000000"
+                android:textSize="18dp"
+                android:textStyle="bold" />
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_marginLeft="8dp"
                 android:layout_marginRight="18dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:layout_weight="1"
+                android:background="@color/colorButton"
                 android:text="비밀번호 변경"
-                android:textColor="#ffffff"
-                android:textSize="18dp"/>
+                android:textColor="#000000"
+                android:textSize="18dp"
+                android:textStyle="bold" />
         </LinearLayout>
 
         <TextView
