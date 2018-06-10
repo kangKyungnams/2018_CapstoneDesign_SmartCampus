@@ -2,7 +2,9 @@
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="horizontal">
+    android:orientation="horizontal"
+    android:dividerPadding="1dp"
+    android:divider="#000000">
 
     <LinearLayout
         android:layout_weight="1"
@@ -16,22 +18,31 @@
             android:background="@color/colorPrimary">
 
             <TextView
+                android:paddingLeft="6dp"
+                android:paddingTop="4dp"
+                android:paddingRight="4dp"
+                android:paddingBottom="4dp"
+                android:text="asdasdasd"
                 android:id="@+id/course_List_Title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:padding="3dp"
                 android:textColor="#000000"
                 android:textStyle="bold" />
 
             <TextView
-                android:layout_marginLeft="5dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:paddingLeft="6dp"
+                android:paddingTop="4dp"
+                android:paddingRight="4dp"
+                android:paddingBottom="4dp"
+                android:text="asdasdasd"
+                android:layout_marginRight="5dp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
                 android:id="@+id/course_List_Credit"
-                android:padding="3dp"
-                android:layout_gravity="center"
+                android:layout_gravity="right"
                 android:textColor="#000000"
+                android:gravity="right"
                 android:textStyle="bold" />
 
         </LinearLayout>
@@ -43,34 +54,32 @@
             android:background="#ffffff">
 
             <TextView
+                android:paddingLeft="5dp"
+                android:text="asdsad"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/course_List_Professor"
                 android:padding="3dp"
                 android:layout_gravity="center"
                 android:textColor="#000000"
-                android:textStyle="bold"/>
-
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:background="#ffffff">
-
+                android:textStyle="bold"
+            android:paddingRight="10dp"/>
             <TextView
-                android:layout_width="wrap_content"
+                android:text="asdasd"
+                android:paddingRight="7dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/course_List_Room"
-                android:padding="3dp"
+                android:paddingTop="3dp"
+                android:paddingBottom="3dp"
+                android:gravity="right"
                 android:layout_gravity="center"
                 android:textColor="#ff0095"
                 android:textStyle="bold"/>
 
 
         </LinearLayout>
+
 
 
     </LinearLayout>
@@ -89,8 +98,9 @@
             android:layout_gravity="center"
             android:text="바로 가기"
             android:id="@+id/course_List_info_button"
-            android:layout_marginRight="8dp"
-            android:layout_marginLeft="8dp"/>
+            android:layout_marginRight="3dp"
+            android:layout_marginLeft="3dp"
+            android:layout_marginTop="-3dp"/>
 
     </LinearLayout>
 

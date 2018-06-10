@@ -64,7 +64,6 @@ public class MainActivity extends AppCompatActivity
     FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
     DatabaseReference uReference = FirebaseDatabase.getInstance().getReference();
     DatabaseReference userdata = uReference.child("takingCourseList");
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -186,13 +185,15 @@ public class MainActivity extends AppCompatActivity
     }
     @Override
     public boolean onOptionsItemSelected (MenuItem item){
+
         // Handle action bar item clicks here. The action bar will
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_logout) {
-            Toast.makeText(MainActivity.this, "로그아웃!!", Toast.LENGTH_SHORT).show();
+            Toast.makeText(MainActivity.this, "로그아웃 되었습니다.", Toast.LENGTH_SHORT).show();
+
             return true;
         }
         return super.onOptionsItemSelected(item);

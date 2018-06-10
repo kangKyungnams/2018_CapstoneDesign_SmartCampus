@@ -59,6 +59,7 @@
                     android:id="@+id/course_Spinner"
                     android:layout_marginBottom="10dp"
                     android:background="#ffffff">
+
                 </Spinner>
 
             </LinearLayout>
@@ -75,13 +76,13 @@
                     android:layout_width="185dp"
                     android:layout_height="match_parent">
                     <Button
-                        android:paddingTop="70dp"
+                        android:paddingTop="75dp"
                         android:id="@+id/course_button2"
                         android:textSize="14dp"
                         android:textColor="#000000"
-                        android:background="#913efe"
-                        android:drawablePadding="-100dp"
-                        android:layout_width="match_parent"
+                        android:background="#ffae7b"
+                        android:drawablePadding="-105dp"
+                        android:layout_width="175dp"
                         android:layout_height="match_parent"
                         android:text="Course"
                         android:drawableTop="@drawable/ic_bookmark_border_black_24dp"
@@ -95,15 +96,17 @@
                     android:orientation="vertical"
                     android:id="@+id/main_L2"
                     android:layout_width="193dp"
+                    android:layout_marginLeft="-7dp"
                     android:layout_height="match_parent">
                     <Button
+                        android:layout_marginBottom="5dp"
                         android:paddingTop="20dp"
                         android:drawablePadding="-20dp"
                         android:drawableTop="@drawable/ic_restaurant_menu_black_24dp"
                         android:id="@+id/restaurant_button"
                         android:textSize="13dp"
                         android:textColor="#000000"
-                        android:background="#bff724"
+                        android:background="#fccbac"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:text="Restaurant"
@@ -116,7 +119,7 @@
                         android:id="@+id/my_button"
                         android:textSize="13dp"
                         android:textColor="#000000"
-                        android:background="#e9d600"
+                        android:background="#f9e8dc"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:text="My page"

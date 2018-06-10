@@ -42,6 +42,7 @@
         </LinearLayout>
 
         <LinearLayout
+            android:layout_marginBottom="10dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
@@ -83,8 +84,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:id="@+id/courseListView"
-                android:dividerHeight="5dp"
-                android:divider="#ffffff">
+                android:dividerHeight="3dp"
+                android:divider="#000000"
+                >
             </ListView>
 
 

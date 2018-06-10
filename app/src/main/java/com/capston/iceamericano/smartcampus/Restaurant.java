@@ -84,7 +84,7 @@ public class Restaurant extends AppCompatActivity {
         public void onClick(View v) {
             if(isDiscovered ) {
                 isDiscovered = false;
-                Intent orderIntent = new Intent(Restaurant.this, PurchaseRestaurant.class);
+                Intent orderIntent = new Intent(Restaurant.this, FoodList.class);
                 Restaurant.this.startActivity(orderIntent);
             }
             else{
@@ -104,6 +104,7 @@ public class Restaurant extends AppCompatActivity {
 
         }
     };
+
 
 
     private void startMonitoring() {
