@@ -19,6 +19,7 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.capston.iceamericano.smartcampus.Beacon.BeaconLocation;
 import com.capston.iceamericano.smartcampus.Beacon.BeaconService;
@@ -45,9 +46,9 @@ public class NaviActivity extends AppCompatActivity implements SensorEventListen
 
 
     private final int OFFSET_RSSI = -90;
-    private final int QUEUESIZE = 4;
+    private final int QUEUESIZE = 3;
     private final int COUNT = 0;
-    private final int BEACON_COUNT = 8;
+    private final int BEACON_COUNT = 11;
     private final String CLASS_ROOM = "ED:6F:DE:A3:D5:56";
     private final String CAFETERIA = "EB:BA:54:08:89:BB";
     private PlutoconManager plutoconManager;
@@ -106,7 +107,7 @@ public class NaviActivity extends AppCompatActivity implements SensorEventListen
     AppCompatImageView beacon3;
     AppCompatImageView beacon4;
     AppCompatImageView beacon5;
-    AppCompatImageView beacon6, beacon7, beacon8;     //, beacon9, beacon10;
+    AppCompatImageView beacon6, beacon7, beacon8, beacon9, beacon10,beacon11;
 
 
     // 센서 관련 객체
@@ -150,14 +151,16 @@ public class NaviActivity extends AppCompatActivity implements SensorEventListen
         beaconLocations[0] = new BeaconLocation("CLASSROOM",490,1100);
         beaconLocations[1] = new BeaconLocation("CAFETERIA",490,950);
         beaconLocations[2] = new BeaconLocation("OFFICE",490,790);
-        beaconLocations[3] = new BeaconLocation("LAB",490,625);
-        beaconLocations[4] = new BeaconLocation("COMPUTERROOM",490,480);
-        beaconLocations[5] = new BeaconLocation("LAB2",490,340);
+        beaconLocations[3] = new BeaconLocation("LAB",490,615);
+        beaconLocations[4] = new BeaconLocation("COMPUTERROOM",490,460);
+        beaconLocations[5] = new BeaconLocation("LAB2",490,300);
 
-        beaconLocations[6] = new BeaconLocation("LAB3",430,175);
-        beaconLocations[7] = new BeaconLocation("LAB4",590,175);
+        beaconLocations[6] = new BeaconLocation("LAB3",445,145);
+        beaconLocations[7] = new BeaconLocation("LAB4",605,145);
+        beaconLocations[8] = new BeaconLocation("LAB5",605,300);
+        beaconLocations[9] = new BeaconLocation("LAB6",850,145);
+        beaconLocations[10] = new BeaconLocation("toilet",940,145);
 
-        // beaconLocations[5] = new BeaconLocation("toilet",400,1100);
 
 
         for(int x = 0; x<3 ; x++){
@@ -182,6 +185,9 @@ public class NaviActivity extends AppCompatActivity implements SensorEventListen
         beacon6 = (AppCompatImageView)findViewById(R.id.beacon6);
         beacon7 = (AppCompatImageView)findViewById(R.id.beacon7);
         beacon8 = (AppCompatImageView)findViewById(R.id.beacon8);
+        beacon9 = (AppCompatImageView)findViewById(R.id.beacon9);
+        beacon10 = (AppCompatImageView)findViewById(R.id.beacon10);
+        beacon11 = (AppCompatImageView)findViewById(R.id.beacon11);
 
         plutoconAdapter = new PlutoconAdpater();
         ListView listView = (ListView) findViewById(R.id.list);
@@ -212,15 +218,21 @@ public class NaviActivity extends AppCompatActivity implements SensorEventListen
         beacon3.setX(490);
         beacon3.setY(790);
         beacon4.setX(490);
-        beacon4.setY(625);
+        beacon4.setY(615);
         beacon5.setX(490);
-        beacon5.setY(480);
+        beacon5.setY(460);
         beacon6.setX(490);
-        beacon6.setY(340);
-        beacon7.setX(430);
-        beacon7.setY(175);
-        beacon8.setX(590);
-        beacon8.setY(175);
+        beacon6.setY(300);
+        beacon7.setX(445);
+        beacon7.setY(145);
+        beacon8.setX(605);
+        beacon8.setY(145);
+        beacon9.setX(605);
+        beacon9.setY(300);
+        beacon10.setX(790);
+        beacon10.setY(145);
+        beacon11.setX(940);
+        beacon11.setY(145);
 //        beacon6.setX(400);
 //        beacon6.setY(1100);
 
@@ -256,8 +268,8 @@ public class NaviActivity extends AppCompatActivity implements SensorEventListen
             else {
                 if(mQueue1[QUEUESIZE - 1] + 2.0 > insert){
                     mQueue1[mRear1 % QUEUESIZE] = insert;
+                    mRear1++;
                 }
-                mRear1++;
             }
         }
         else if (mRear1 != 0 /*&& mQueue1[(mRear1 - 1) % 10] + 4.0 > insert*/) {
@@ -280,8 +292,8 @@ public class NaviActivity extends AppCompatActivity implements SensorEventListen
             else {
                 if(mQueue2[QUEUESIZE - 1] + 2.0 > insert){
                     mQueue2[mRear2 % QUEUESIZE] = insert;
+                    mRear2++;
                 }
-                mRear2++;
             }
         }
         else if (mRear2 != 0 /*&& mQueue2[(mRear2 - 1) % 10] + 4.0 > insert*/) {
@@ -303,8 +315,8 @@ public class NaviActivity extends AppCompatActivity implements SensorEventListen
             else {
                 if(mQueue3[QUEUESIZE - 1] + 2.0 > insert){
                     mQueue3[mRear3 % QUEUESIZE] = insert;
+                    mRear3++;
                 }
-                mRear3++;
             }
         }
         else if (mRear3 != 0 /*&& mQueue3[(mRear3 - 1) % 10] + 4.0 > insert*/) {
@@ -317,19 +329,12 @@ public class NaviActivity extends AppCompatActivity implements SensorEventListen
         }
     }
 
-    private void deQueue1(){
-        int front;
-        for(front = QUEUESIZE - 1; front >= 0 ; front--){
-
-        }
-    }
-
     private double avgQueue(double[] queue){
         double sum = 0;
         double max = 0;
         double min = 0;
-        int i = 0;
-        int j = 0;
+        int i;
+        int j;
         //double[] myQueue = new double[10];
         for(i = 0 ; i < QUEUESIZE ; i++){
             if(i == 0) {
@@ -397,16 +402,16 @@ public class NaviActivity extends AppCompatActivity implements SensorEventListen
                         plutoconAdapter.refresh();
 
                         if(plutoconAdapter.getCount()>2){
-                            for(int i = 0;i<3;i++){
+                            for(int i = 0; i < 3; i++){
                                 mPlutocon[i] = plutoconAdapter.getPlutocon(i);
                                 isDiscover[i] = true;
-                                if(i==0 && isDiscover[0]) {
+                                if(i == 0 && isDiscover[0]) {
                                     double mRssi1 = mPlutocon[i].getRssi();
                                     double mDistance1 = Math.pow(10,(4-mRssi1) / (10*CONSTANT_NUMBER));
                                     if(!kalman1) {
                                         kalmanFilter1 = new KalmanFilter(mDistance1);
+                                        enQueue1(kalmanFilter1.getX());
                                     }
-
 
                                     else {
                                         enQueue1(kalmanFilter1.update(mDistance1));
@@ -430,6 +435,7 @@ public class NaviActivity extends AppCompatActivity implements SensorEventListen
                                     double mDistance2 = Math.pow(10,(4-mRssi2)/(10*CONSTANT_NUMBER));
                                     if(!kalman2) {
                                         kalmanFilter2 = new KalmanFilter(mDistance2);
+                                        enQueue2(kalmanFilter2.getX());
                                     }
                                     else {
                                         enQueue2(kalmanFilter2.update(mDistance2));
@@ -452,6 +458,7 @@ public class NaviActivity extends AppCompatActivity implements SensorEventListen
                                     double mDistance3 = Math.pow(10,(4-mRssi3)/(10*CONSTANT_NUMBER));
                                     if(!kalman3){
                                         kalmanFilter3 = new KalmanFilter(mDistance3);
+                                        enQueue3(kalmanFilter3.getX());
                                     }
                                     else{
                                         enQueue3(kalmanFilter3.update(mDistance3));
@@ -489,14 +496,17 @@ public class NaviActivity extends AppCompatActivity implements SensorEventListen
 //                                if(0 <= mAzimuth && mAzimuth <= 80){
 //                                    mXY[1] = mXY[1] * 1.1;
 //                                }
-                                image.setX(Float.valueOf(String.format("%.1f", mXY[0])));
+                                image.setX(Float.valueOf(String.format("%.1f", mXY[0]*0.98)));
                                 image.setY(Float.valueOf(String.format("%.0f", mXY[1])));
-
 
                             }
 
                             for(int x = 0 ; x < 3 ; x++){
-                                if(mPlutocon[x] != null && ((ms - mPlutocon[x].getLastSeenMillis() >= 3000) || (mPlutocon[x].getRssi() < OFFSET_RSSI))){
+
+                                if((mPlutocon[x] != null) && ms - mPlutocon[x].getLastSeenMillis() >= 2100){
+                                    //Toast.makeText(NaviActivity.this,String.valueOf(mPlutocon[x].getRssi()),Toast.LENGTH_SHORT).show();
+                                    //((ms - mPlutocon[x].getLastSeenMillis() >= 2100) || (mPlutocon[x].getRssi() < OFFSET_RSSI))
+
                                     isRemoved = false;
                                 }
                                 if(mPlutocon[x] != null
@@ -510,11 +520,17 @@ public class NaviActivity extends AppCompatActivity implements SensorEventListen
                                     kalmanFilter1.resetFilter();
                                     kalmanFilter2.resetFilter();
                                     kalmanFilter3.resetFilter();
-                                    for(int reset = 0 ; reset < QUEUESIZE ; reset++){
-                                        mQueue1 = new double[QUEUESIZE];
-                                        mQueue2 = new double[QUEUESIZE];
-                                        mQueue3 = new double[QUEUESIZE];
-                                    }
+                                    kalman1 = false;
+                                    kalman2 = false;
+                                    kalman3 = false;
+                                    isFull1 = false;
+                                    isFull2 = false;
+                                    isFull3 = false;
+
+                                    mQueue1 = new double[QUEUESIZE];
+                                    mQueue2 = new double[QUEUESIZE];
+                                    mQueue3 = new double[QUEUESIZE];
+
                                     isRemoved = true;
                                     plutocons.clear();
                                 }

@@ -13,6 +13,10 @@ public class KalmanFilter {
         X = initValue;
     }
 
+    public double getX(){
+        return X;
+    }
+
     public double update(double measurement){
         measurementUpdate();
         X = X + (measurement - X) * K;
