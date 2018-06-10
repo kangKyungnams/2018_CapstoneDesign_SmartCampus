@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.capston.iceamericano.smartcampus.Restaurant"
-    android:background="@drawable/res2"
+    android:background="@drawable/restaurant"
     android:id="@+id/content_restaurant">
     <!--app:layout_behavior="@string/appbar_scrolling_view_behavior"-->
 
@@ -16,7 +16,7 @@
         android:layout_height="match_parent"
         >
         <LinearLayout
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="14dp"
             android:layout_marginRight="15dp"
             android:layout_marginLeft="15dp"
             android:layout_width="match_parent"
@@ -28,10 +28,9 @@
                 android:layout_weight="1"
                 android:drawableStart="@drawable/ic_restaurant_black_29dp"
                 android:text=" 식단 보기 "
-                android:textSize="25dp"
+                android:textSize="18dp"
                 android:textStyle="bold"
-                android:textColor="#ffffff"
-                android:background="@color/colorGray"
+                android:textColor="#000000"
                 />
             <Spinner
                 android:layout_width="match_parent"
@@ -44,39 +43,41 @@
 
 
             <LinearLayout
-                android:layout_marginTop="140dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="100dp"
                 android:orientation="vertical"
-                android:layout_width="match_parent"
+                android:layout_width="300dp"
                 android:layout_height="match_parent">
                 <Button
                     android:id="@+id/bt_restaurant_order"
                     android:layout_width="match_parent"
-                    android:layout_height="65dp"
+                    android:layout_height="55dp"
                     android:text=" 주 문 하 기 "
                     android:textSize="20dp"
                     android:textStyle="bold"
                     android:textColor="#ffffff"
-                    android:background="#1470f7" />
+                    android:background="@color/colorButton"
+                    />
                 <Button
                     android:id="@+id/bt_restaurant_charge"
-                    android:layout_marginTop="25dp"
+                    android:layout_marginTop="40dp"
                     android:layout_width="match_parent"
-                    android:layout_height="65dp"
+                    android:layout_height="55dp"
                     android:text=" 충 전 하 기 "
                     android:textSize="20dp"
                     android:textStyle="bold"
                     android:textColor="#ffffff"
-                    android:background="#1470f7" />
+                    android:background="@color/colorButton" />
                 <Button
                     android:id="@+id/bt_restaurant_mypage"
-                    android:layout_marginTop="25dp"
+                    android:layout_marginTop="40dp"
                     android:layout_width="match_parent"
-                    android:layout_height="65dp"
+                    android:layout_height="55dp"
                     android:text=" 마 이 페 이 지 "
                     android:textSize="20dp"
                     android:textStyle="bold"
                     android:textColor="#ffffff"
-                    android:background="#1470f7" />
+                    android:background="@color/colorButton" />
 
             </LinearLayout>
 

@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="#f7f7ef"
+    android:background="@color/colorlightYello"
     tools:context=".FoodList">
 
 
@@ -30,7 +30,7 @@
                 android:textStyle="bold"
                 android:gravity="center"
                 android:textColor="#000000"
-                android:background="#f7f7ef" />
+                android:background="@color/colorlightYello"/>
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -48,7 +48,7 @@
                 android:textStyle="bold"
                 android:gravity="center"
                 android:textColor="#000000"
-                android:background="#f7f7ef" />
+                android:background="@color/colorlightYello" />
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -66,29 +66,30 @@
             android:layout_height="match_parent">
 
             <Button
-                android:layout_weight="1"
                 android:id="@+id/Pur_bt1"
-                android:layout_gravity="center"
                 android:layout_width="match_parent"
-                android:layout_height="52dp"
+                android:layout_height="45dp"
+                android:layout_gravity="center"
+                android:layout_marginRight="10dp"
+                android:layout_weight="1"
+                android:background="#c3999ea1"
                 android:text=" 초기화 "
-                android:textSize="20dp"
-                android:textStyle="bold"
-                android:textColor="#ffffff"
-                android:background="@color/colorGray"
-                android:layout_marginRight="10dp"/>
+                android:textColor="#000000"
+                android:textSize="16dp"
+                android:textStyle="bold" />
+
             <Button
+                android:id="@+id/Pur_bt2"
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:layout_gravity="center"
                 android:layout_marginLeft="10dp"
                 android:layout_weight="1"
-                android:id="@+id/Pur_bt2"
-                android:layout_gravity="center"
-                android:layout_width="match_parent"
-                android:layout_height="52dp"
+                android:background="#fccbac"
                 android:text=" 주문하기 "
-                android:textSize="20dp"
-                android:textStyle="bold"
-                android:textColor="#ffffff"
-                android:background="#1470f7" />
+                android:textColor="#000000"
+                android:textSize="16dp"
+                android:textStyle="bold" />
 
         </LinearLayout>
 
@@ -98,7 +99,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:id="@+id/courseListView"
-        android:dividerHeight="5dp"
+        android:dividerHeight="3dp"
         android:divider="#ffffff">
     </ListView>
 

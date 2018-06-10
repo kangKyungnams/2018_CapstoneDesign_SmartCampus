@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#ffbf00</color>
+    <color name="colorPrimary">#fda342</color>
     <color name="colorPrimaryDark">#000000</color>
     <color name="colorAccent">#2170c5</color>
     <color name="colorlightBlue">#54c3ff</color>
     <color name="colorGray">#999ea1</color>
     <color name="colorrealGray">#676a6c</color>
-    <color name="colorlightYello">#f7f9dd</color>
-    <color name="colorButton">#3284ff</color>
+    <color name="colorlightYello">#fffff9</color>
+    <color name="colorButton">#fccbac</color>
 </resources>

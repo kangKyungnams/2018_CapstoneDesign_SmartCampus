@@ -43,8 +43,8 @@
                android:layout_height="wrap_content"
                android:layout_gravity="center"
                android:textStyle="bold"
-               android:textColor="#726d69"
-               android:textSize="42dp"
+               android:textColor="#3c3c3c"
+               android:textSize="38dp"
                android:text="SMART CAMPUS"/>
            <EditText
                android:background="#ffffff"
@@ -74,18 +74,18 @@
 
                android:drawableStart="@drawable/ic_https_black_24dp"
                android:drawableLeft="@drawable/ic_https_black_24dp"/>
-           
+
            <Button
+               android:id="@+id/loginButton"
                android:layout_width="280dp"
                android:layout_height="wrap_content"
-               android:textSize="20dp"
-               android:textStyle="bold"
-               android:background="#3284ff"
-               android:text="로그인"
-               android:textColor="#ffffff"
-               android:layout_margin="10dp"
                android:layout_gravity="center"
-               android:id="@+id/loginButton"/>
+               android:layout_margin="10dp"
+               android:background="@color/colorButton"
+               android:text="로그인"
+               android:textColor="#000000"
+               android:textSize="20dp"
+               android:textStyle="bold" />
            <Button
                android:layout_width="wrap_content"
                android:layout_height="wrap_content"
@@ -104,7 +104,7 @@
                android:layout_gravity="center"
                android:textSize="10dp"
                android:background="@color/colorPrimary"
-               android:text="비밀번호 찾기 및 변경"
+               android:text=" 비밀번호 찾기 "
                android:id="@+id/PWmod_Button"
                android:textColor="#5a5856"/>
            <LinearLayout

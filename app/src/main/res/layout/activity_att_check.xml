@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="#ffffef"
+    android:background="@color/colorlightYello"
     tools:context="com.capston.iceamericano.smartcampus.AttCheckActivity">
     <TextView
         android:layout_width="match_parent"
@@ -22,50 +22,55 @@
         android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="17dp">
+        android:layout_marginTop="17dp"
+        android:layout_marginLeft="17dp"
+        android:layout_marginRight="17dp"
+        android:layout_marginBottom="7dp">
         <TextView
             android:layout_weight="1"
             android:layout_width="70dp"
             android:layout_height="60dp"
-            android:background="#005eec"
-            android:text="전체 : 30"
+            android:background="#fccbac"
+            android:text="전체 \n30"
             android:textStyle="bold"
-            android:textColor="#ffffff"
+            android:textColor="#000000"
             android:gravity="center"
             android:layout_marginRight="10dp"/>
         <TextView
             android:layout_weight="1"
             android:layout_width="70dp"
             android:layout_height="60dp"
-            android:background="#00b031"
+            android:background="#fccbac"
             android:textStyle="bold"
-            android:text="출석 : 20"
-            android:textColor="#ffffff"
+            android:text="출석 \n20"
+            android:textColor="#000000"
             android:gravity="center"
             android:layout_marginRight="10dp"/>
         <TextView
             android:layout_weight="1"
             android:layout_width="70dp"
             android:layout_height="60dp"
-            android:background="#e9d600"
+            android:background="#fccbac"
             android:textStyle="bold"
-            android:text="지각 : 3"
-            android:textColor="#ffffff"
+            android:text="지각 \n3"
+            android:textColor="#000000"
             android:gravity="center"
             android:layout_marginRight="10dp"/>
         <TextView
             android:layout_weight="1"
             android:layout_width="70dp"
             android:layout_height="60dp"
-            android:background="#fc0d00"
+            android:background="#fccbac"
             android:textStyle="bold"
-            android:text="결석 : 7"
-            android:textColor="#ffffff"
+            android:text="결석 \n 7"
+            android:textColor="#000000"
             android:gravity="center"
            />
     </LinearLayout>
 
     <LinearLayout
+        android:gravity="center"
+        android:layout_gravity="center"
         android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -73,15 +78,13 @@
         android:layout_marginBottom="17dp"
         android:layout_marginRight="17dp">
         <Button
-            android:layout_weight="1"
-            android:layout_width="50dp"
+            android:layout_width="330dp"
             android:layout_height="40dp"
-
+            android:layout_gravity="center"
             android:text="출석하기"
             android:textStyle="bold"
             android:textColor="#393939"
             android:gravity="center"
-            android:layout_marginRight="10dp"
             android:id="@+id/attStart"/>
 
     </LinearLayout>
@@ -91,7 +94,9 @@
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_margin="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginLeft="10dp"
         android:background="#ffffff"
         >
         <LinearLayout
@@ -100,33 +105,33 @@
             android:orientation="horizontal">
             <TextView
                 android:text="NO."
-                android:layout_width="wrap_content"
-                android:layout_height="35dp"
-                android:layout_weight="3"
+                android:textSize="13dp"
                 android:gravity="center"
+                android:layout_width="58dp"
+                android:layout_height="35dp"
                 android:textColor="#000000"
                 android:textStyle="bold"/>
             <TextView
                 android:text="이 름"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="3"
+                android:textSize="13dp"
+                android:layout_width="48dp"
+                android:layout_height="35dp"
                 android:gravity="center"
                 android:textColor="#000000"
                 android:textStyle="bold"/>
             <TextView
                 android:text="날 짜"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="3"
+                android:textSize="13dp"
+                android:layout_width="110dp"
+                android:layout_height="35dp"
                 android:gravity="center"
                 android:textColor="#000000"
                 android:textStyle="bold"/>
             <TextView
                 android:text="출결 현황"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="3"
+                android:textSize="13dp"
+                android:layout_width="110dp"
+                android:layout_height="35dp"
                 android:gravity="center"
                 android:textColor="#000000"
                 android:textStyle="bold"/>
@@ -138,6 +143,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:scrollbars="vertical" />
+
 
 
 

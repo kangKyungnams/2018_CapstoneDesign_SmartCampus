@@ -11,30 +11,26 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
-        <Button
+        android:orientation="horizontal"
+        android:background="#635f58">
+        <TextView
+            android:gravity="center"
             android:textStyle="bold"
             android:textColor="#ffffff"
             android:background="#635f58"
-            android:layout_marginTop="18dp"
-            android:layout_marginLeft="20dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="10dp"
             android:layout_width="110dp"
-            android:layout_height="42dp"
-            android:textSize="25dp"
+            android:layout_height="60dp"
+            android:textSize="20dp"
             android:text="내 정보"/>
 
-        <TextView
-            android:layout_marginTop="7dp"
-            android:layout_width="130dp"
-            android:layout_height="30dp"
-            android:layout_marginLeft="100dp"
-            android:background="@drawable/colorbrown"/>
 
     </LinearLayout>
 
     <LinearLayout
         android:layout_marginLeft="20dp"
-        android:layout_marginTop="9dp"
+        android:layout_marginTop="4dp"
         android:layout_marginRight="20dp"
         android:layout_width="wrap_content"
         android:layout_height="144dp"
@@ -46,17 +42,19 @@
             android:orientation="vertical">
             <ImageView
                 android:layout_marginTop="10dp"
-                android:layout_marginLeft="65dp"
+                android:layout_marginLeft="20dp"
                 android:id="@+id/imageView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:src="@drawable/profile" />
             <TextView
-                android:layout_marginLeft="74dp"
+                android:gravity="center"
+                android:layout_marginLeft="20dp"
                 android:textStyle="bold"
                 android:textSize="22dp"
                 android:layout_marginTop="5dp"
                 android:textColor="#000000"
+                android:text="asdasdasd"
                 android:id="@+id/mypage_user_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -64,33 +62,28 @@
         </LinearLayout>
 
         <LinearLayout
-            android:layout_marginTop="49dp"
-            android:layout_width="180dp"
-            android:layout_height="100dp"
+            android:layout_marginTop="0dp"
+            android:layout_width="360dp"
+            android:layout_height="150dp"
             android:background="#f6f6f2"
             android:orientation="vertical">
             <TextView
+                android:layout_marginTop="25dp"
                 android:textStyle="bold"
-                android:textSize="18dp"
-                android:layout_marginLeft="16dp"
+                android:textSize="20dp"
+                android:text="1234125"
+                android:layout_marginLeft="12dp"
                 android:textColor="#000000"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/mypage_major" />
 
             <TextView
-                android:textStyle="bold"
-                android:textSize="18dp"
-                android:layout_marginLeft="16dp"
-                android:layout_marginTop="5dp"
-                android:textColor="#000000"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-            <TextView
+                android:text="123124123"
                 android:textStyle="bold"
                 android:textSize="14dp"
-                android:layout_marginLeft="16dp"
-                android:layout_marginTop="5dp"
+                android:layout_marginLeft="12dp"
+                android:layout_marginTop="20dp"
                 android:textColor="#000000"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -107,53 +100,43 @@
         android:layout_width="match_parent"
         android:layout_height="250dp"
         android:orientation="vertical">
+
         <LinearLayout
+            android:layout_marginTop="90dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
-            <TextView
-                android:layout_marginTop="30dp"
-                android:layout_marginLeft="10dp"
+
+            <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="바코드|||||||||||||"
-                android:textColor="#000000"
-                android:textSize="50dp"/>
-        </LinearLayout>
-        <LinearLayout
-            android:layout_marginTop="20dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-            <Button
-                android:layout_marginTop="30dp"
                 android:layout_marginLeft="18dp"
-                android:background="#1470f7"
+                android:layout_marginRight="8dp"
+                android:layout_marginTop="30dp"
                 android:layout_weight="1"
+                android:background="@color/colorButton"
+                android:text="기기 정보 변경"
+                android:textColor="#000000"
+                android:textSize="18dp"
+                android:textStyle="bold" />
+
+            <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginRight="8dp"
-                android:text="바코드 스캔하기"
-                android:textColor="#ffffff"
-                android:textStyle="bold"
-                android:textSize="18dp"/>
-            <Button
-                android:textStyle="bold"
-                android:background="#1470f7"
-                android:layout_weight="1"
-                android:layout_marginTop="30dp"
                 android:layout_marginLeft="8dp"
                 android:layout_marginRight="18dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="기기 정보 변경"
-                android:textColor="#ffffff"
-                android:textSize="18dp"/>
+                android:layout_marginTop="30dp"
+                android:layout_weight="1"
+                android:background="@color/colorButton"
+                android:text="비밀번호 변경"
+                android:textColor="#000000"
+                android:textSize="18dp"
+                android:textStyle="bold" />
         </LinearLayout>
 
         <TextView
             android:layout_marginTop="5dp"
-            android:layout_marginLeft="35dp"
+            android:layout_gravity="center"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="*1개의 기기에 1개의 학번만을 등록할 수 있습니다."/>
