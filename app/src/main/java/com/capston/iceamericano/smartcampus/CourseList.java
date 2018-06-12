@@ -52,8 +52,12 @@ public class CourseList extends AppCompatActivity {
         mRecyclerView.setAdapter(mAdapter);
 
 
-        String  value= user.getEmail().substring(0, 10);
+        int cut_index;
+        String cut_char = user.getEmail();
+        cut_index = cut_char.indexOf("@");
+        String value= user.getEmail().substring(0, cut_index);
         DatabaseReference userLecture = userdata.child(value);
+
         userLecture.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {

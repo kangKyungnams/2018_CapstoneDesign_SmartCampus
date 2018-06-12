@@ -120,10 +120,10 @@
                 <category android:name="android.intent.category.BROWSABLE" />
             </intent-filter>
         </activity>
-
         <activity android:name=".ModifyMypage" />
-
-        <activity android:name=".CourseList" android:label="강의 리스트"
+        <activity
+            android:name=".CourseList"
+            android:label="강의 리스트"
             android:theme="@style/AppTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -131,26 +131,26 @@
                 <category android:name="android.intent.category.BROWSABLE" />
             </intent-filter>
         </activity>
-
-        <activity android:name=".FoodList" android:label="주문하기"
+        <activity
+            android:name=".FoodList"
+            android:label="주문하기"
             android:theme="@style/AppTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.BROWSABLE" />
             </intent-filter>
         </activity>
-
-
-
-        <activity android:name=".food" android:label="메뉴"
+        <activity
+            android:name=".food"
+            android:label="메뉴"
             android:theme="@style/AppTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.BROWSABLE" />
             </intent-filter>
         </activity>
-
-
         <activity
             android:name=".EnrollNotice"
             android:label="공 지 등 록"
@@ -166,6 +166,7 @@
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.BROWSABLE" />
             </intent-filter>
         </activity>
@@ -178,33 +179,37 @@
                 <category android:name="android.intent.category.BROWSABLE" />
             </intent-filter>
         </activity>
-
-        <activity android:name=".NoticeView" android:label="공지확인"
+        <activity
+            android:name=".NoticeView"
+            android:label="공지확인"
             android:theme="@style/AppTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.BROWSABLE" />
             </intent-filter>
         </activity>
-
-        <activity android:name=".DatePickerAtt" android:theme="@style/AppTheme.NoActionBar">
+        <activity
+            android:name=".DatePickerAtt"
+            android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.BROWSABLE" />
             </intent-filter>
         </activity>
-
         <activity
             android:name=".RestaurantManager"
             android:label="식당 관리자"
             android:theme="@style/AppTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.BROWSABLE" />
             </intent-filter>
         </activity>
-
-        <activity android:name=".NaviActivity"
+        <activity
+            android:name=".NaviActivity"
             android:label="위 치 안 내"
             android:theme="@style/AppTheme">
             <intent-filter>
@@ -212,8 +217,8 @@
 
                 <category android:name="android.intent.category.BROWSABLE" />
             </intent-filter>
-
         </activity>
+        <activity android:name=".InfoCourseProf"></activity>
     </application>
 
 </manifest>
