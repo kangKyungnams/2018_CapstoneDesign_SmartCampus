@@ -35,6 +35,7 @@ public class AttCheckActivity extends AppCompatActivity {
     private List<Plutocon> plutoconList;
 
     String att_adapter_name, att_adapter_date, att_adapter_state, compare1;
+    int total_num, att_confirm_num, att_late_num ,att_fail_num;
 
     RecyclerView mRecyclerView;
     LinearLayoutManager mLayoutManager;
@@ -42,7 +43,7 @@ public class AttCheckActivity extends AppCompatActivity {
     AttAdapter mAdapter;
     FirebaseDatabase database;
     String lectureID,TAG = getClass().getSimpleName(), lectureName;
-    TextView tv_att_check_lectureName;
+    TextView tv_att_check_lectureName, tv_total_num, tv_att_confirm_num, tv_att_late_num ,tv_att_fail_num;
     FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
     DatabaseReference uReference = FirebaseDatabase.getInstance().getReference();
     DatabaseReference userdata = uReference.child("attendance");
@@ -62,13 +63,10 @@ public class AttCheckActivity extends AppCompatActivity {
         attStart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                if(교수가 출석 버튼을 눌렀다면){
+
                     startSrv();
-//                }
-//                else{
 //                    Toast msg = Toast.makeText(AttCheckActivity.this, "현재 진행중인 수업이 아닙니다.", Toast.LENGTH_SHORT);
 //                    msg.show();
-//                }
             }
         });
 
@@ -78,6 +76,10 @@ public class AttCheckActivity extends AppCompatActivity {
         lectureID = in.getExtras().getString("lectureNameKey");
         lectureName = in.getExtras().getString("lectureName");
         tv_att_check_lectureName = (TextView) findViewById(R.id.tv_att_check_lectureName);
+        tv_total_num = (TextView) findViewById(R.id.tv_total_num);
+        tv_att_confirm_num = (TextView) findViewById(R.id.tv_att_confirm_num);
+        tv_att_late_num = (TextView) findViewById(R.id.tv_att_late_num);
+        tv_att_fail_num = (TextView) findViewById(R.id.tv_att_fail_num);
 
         tv_att_check_lectureName.setText(lectureName);
 
@@ -117,9 +119,22 @@ public class AttCheckActivity extends AppCompatActivity {
                     if( compare2.equals(compare1))
                     {
                         att_adapter_num++;
+                        total_num++;
                         att_adapter_name = dataSnapshot2.child("name").getValue().toString();
                         att_adapter_date = dataSnapshot2.child("date").getValue().toString();
                         att_adapter_state = dataSnapshot2.child("status").getValue().toString();
+                        if(att_adapter_state.equals("출석"))
+                        {
+                            att_confirm_num++;
+                        }
+                        if(att_adapter_state.equals("지각"))
+                        {
+                            att_late_num++;
+                        }
+                        if(att_adapter_state.equals("결석"))
+                        {
+                            att_fail_num++;
+                        }
 
                         AttState stateAtt =  new AttState(att_adapter_num,att_adapter_name,att_adapter_date,att_adapter_state,lectureDateKey,lectureID);
                         mList.add(stateAtt);
@@ -127,6 +142,11 @@ public class AttCheckActivity extends AppCompatActivity {
                     }
 
                 }
+
+                tv_total_num.setText("전체\n"+total_num);
+                tv_att_confirm_num.setText("출석\n"+att_confirm_num);
+                tv_att_late_num.setText("지각\n"+att_late_num);
+                tv_att_fail_num.setText("결석\n"+att_fail_num);
 
                 mAdapter.notifyItemInserted(mList.size() - 1);
                 mAdapter.notifyItemChanged(mList.size() - 1);
