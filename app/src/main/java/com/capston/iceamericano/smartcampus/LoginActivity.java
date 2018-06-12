@@ -45,7 +45,7 @@ public class LoginActivity extends AppCompatActivity {
     private Button loginButton;
     private Button PWmod_Button;
     private BackButtonHandler backButtonHandler;
-
+    private BluetoothAdapter mBluetoothAdapter;
     DatabaseReference uReference = FirebaseDatabase.getInstance().getReference();
     DatabaseReference userdata = uReference.child("user");
 
@@ -54,6 +54,7 @@ public class LoginActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+        blueTooth();
         ed_ID = (EditText) findViewById(R.id.ed_ID);
         ed_PW = (EditText) findViewById(R.id.ed_PW);
         registerButton = (Button) findViewById(R.id.registerButton);
@@ -127,6 +128,19 @@ public class LoginActivity extends AppCompatActivity {
         });
 
 
+    }
+
+
+    void blueTooth () {
+        if (mBluetoothAdapter == null) {
+            Log.d(TAG, "There is no bluetooth");
+        } else {
+            if (mBluetoothAdapter.isEnabled()) {
+                Log.d(TAG, "Bluetooth is already on");
+            } else {
+                mBluetoothAdapter.enable();
+            }
+        }
     }
 
 
@@ -205,10 +219,9 @@ public class LoginActivity extends AppCompatActivity {
                         if (task.isSuccessful()) {
                             // Sign in success, update UI with the signed-in user's information
                             Log.d(TAG, "signInWithEmail:success");
-                            if(checkPermission()) {
-                                FirebaseUser user = mAuth.getCurrentUser();
-                                LoginActivity.this.startActivity(loginIntent);
-                            }
+                            FirebaseUser user = mAuth.getCurrentUser();
+                            LoginActivity.this.startActivity(loginIntent);
+
                         } else {
                             // If sign in fails, display a message to the user.
                             Log.w(TAG, "signInWithEmail:failure", task.getException());

@@ -48,9 +48,7 @@ public class NaviActivity extends AppCompatActivity implements SensorEventListen
     private final int OFFSET_RSSI = -90;
     private final int QUEUESIZE = 3;
     private final int COUNT = 0;
-    private final int BEACON_COUNT = 11;
-    private final String CLASS_ROOM = "ED:6F:DE:A3:D5:56";
-    private final String CAFETERIA = "EB:BA:54:08:89:BB";
+    private final int BEACON_COUNT = 21;
     private PlutoconManager plutoconManager;
     private Plutocon targetPlutocon;
     private int targetRssi = OFFSET_RSSI;
@@ -107,8 +105,8 @@ public class NaviActivity extends AppCompatActivity implements SensorEventListen
     AppCompatImageView beacon3;
     AppCompatImageView beacon4;
     AppCompatImageView beacon5;
-    AppCompatImageView beacon6, beacon7, beacon8, beacon9, beacon10,beacon11;
-
+    AppCompatImageView beacon6, beacon7, beacon8, beacon9, beacon10,beacon11,beacon12,beacon13,beacon14,beacon15,beacon16,beacon17,beacon18,beacon19,beacon20,beacon21;
+    AppCompatImageView target;
 
     // 센서 관련 객체
     SensorManager m_sensor_manager;
@@ -155,11 +153,24 @@ public class NaviActivity extends AppCompatActivity implements SensorEventListen
         beaconLocations[4] = new BeaconLocation("COMPUTERROOM",490,460);
         beaconLocations[5] = new BeaconLocation("LAB2",490,300);
 
-        beaconLocations[6] = new BeaconLocation("LAB3",445,145);
-        beaconLocations[7] = new BeaconLocation("LAB4",605,145);
-        beaconLocations[8] = new BeaconLocation("LAB5",605,300);
-        beaconLocations[9] = new BeaconLocation("LAB6",850,145);
-        beaconLocations[10] = new BeaconLocation("toilet",940,145);
+        beaconLocations[6] = new BeaconLocation("LAB3",900,145);
+        beaconLocations[7] = new BeaconLocation("LAB4",690,145);
+        beaconLocations[8] = new BeaconLocation("LAB5",490,145);
+        beaconLocations[9] = new BeaconLocation("LAB6",295,145);
+        beaconLocations[10] = new BeaconLocation("toilet",120,300);
+
+        beaconLocations[11] = new BeaconLocation("LAB7",940,145);
+        beaconLocations[12] = new BeaconLocation("LAB8",940,145);
+        beaconLocations[13] = new BeaconLocation("LAB9",940,145);
+        beaconLocations[14] = new BeaconLocation("LAB10",940,145);
+        beaconLocations[15] = new BeaconLocation("LAB11",940,145);
+        beaconLocations[16] = new BeaconLocation("LAB12",940,145);
+        beaconLocations[17] = new BeaconLocation("LAB13",940,145);
+        beaconLocations[18] = new BeaconLocation("LAB14",940,145);
+        beaconLocations[19] = new BeaconLocation("LAB15",940,145);
+        beaconLocations[20] = new BeaconLocation("LAB15",940,145);
+
+
 
 
 
@@ -188,7 +199,19 @@ public class NaviActivity extends AppCompatActivity implements SensorEventListen
         beacon9 = (AppCompatImageView)findViewById(R.id.beacon9);
         beacon10 = (AppCompatImageView)findViewById(R.id.beacon10);
         beacon11 = (AppCompatImageView)findViewById(R.id.beacon11);
+        beacon12 = (AppCompatImageView)findViewById(R.id.beacon12);
+        beacon13 = (AppCompatImageView)findViewById(R.id.beacon13);
+        beacon14 = (AppCompatImageView)findViewById(R.id.beacon14);
+        beacon15 = (AppCompatImageView)findViewById(R.id.beacon15);
+        beacon16 = (AppCompatImageView)findViewById(R.id.beacon16);
+        beacon17 = (AppCompatImageView)findViewById(R.id.beacon17);
+        beacon18 = (AppCompatImageView)findViewById(R.id.beacon18);
+        beacon19 = (AppCompatImageView)findViewById(R.id.beacon19);
+        beacon20 = (AppCompatImageView)findViewById(R.id.beacon20);
+        beacon21 = (AppCompatImageView)findViewById(R.id.beacon21);
 
+
+        target = (AppCompatImageView)findViewById(R.id.targetLocation);
         plutoconAdapter = new PlutoconAdpater();
         ListView listView = (ListView) findViewById(R.id.list);
 
@@ -223,18 +246,42 @@ public class NaviActivity extends AppCompatActivity implements SensorEventListen
         beacon5.setY(460);
         beacon6.setX(490);
         beacon6.setY(300);
-        beacon7.setX(445);
+        beacon7.setX(900);
         beacon7.setY(145);
-        beacon8.setX(605);
+        beacon8.setX(690);
         beacon8.setY(145);
-        beacon9.setX(605);
-        beacon9.setY(300);
-        beacon10.setX(790);
+        beacon9.setX(490);
+        beacon9.setY(145);
+        beacon10.setX(295);
         beacon10.setY(145);
-        beacon11.setX(940);
-        beacon11.setY(145);
-//        beacon6.setX(400);
-//        beacon6.setY(1100);
+        beacon11.setX(120);
+        beacon11.setY(300);
+
+        beacon12.setX(120);
+        beacon12.setY(460);
+        beacon13.setX(120);
+        beacon13.setY(615);
+        beacon14.setX(120);
+        beacon14.setY(790);
+        beacon15.setX(120);
+        beacon15.setY(950);
+        beacon16.setX(120);
+        beacon16.setY(1100);
+        beacon17.setX(295);
+        beacon17.setY(1250);
+        beacon18.setX(490);
+        beacon18.setY(1250);
+        beacon19.setX(690);
+        beacon19.setY(1250);
+        beacon20.setX(900);
+        beacon20.setY(1250);
+        beacon21.setX(320);
+        beacon21.setY(535);
+
+
+
+        target.setX(540);
+        target.setY(1080);
 
 
         // 시스템서비스로부터 SensorManager 객체를 얻는다.
