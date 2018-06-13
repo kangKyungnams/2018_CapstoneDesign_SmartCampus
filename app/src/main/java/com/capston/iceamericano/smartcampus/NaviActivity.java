@@ -46,7 +46,7 @@ public class NaviActivity extends AppCompatActivity implements SensorEventListen
 
 
     private final int OFFSET_RSSI = -90;
-    private final int QUEUESIZE = 3;
+    private final int QUEUESIZE = 4;
     private final int COUNT = 0;
     private final int BEACON_COUNT = 21;
     private PlutoconManager plutoconManager;
@@ -152,23 +152,21 @@ public class NaviActivity extends AppCompatActivity implements SensorEventListen
         beaconLocations[3] = new BeaconLocation("LAB",490,615);
         beaconLocations[4] = new BeaconLocation("COMPUTERROOM",490,460);
         beaconLocations[5] = new BeaconLocation("LAB2",490,300);
-
         beaconLocations[6] = new BeaconLocation("LAB3",900,145);
         beaconLocations[7] = new BeaconLocation("LAB4",690,145);
         beaconLocations[8] = new BeaconLocation("LAB5",490,145);
         beaconLocations[9] = new BeaconLocation("LAB6",295,145);
         beaconLocations[10] = new BeaconLocation("toilet",120,300);
-
-        beaconLocations[11] = new BeaconLocation("LAB7",940,145);
-        beaconLocations[12] = new BeaconLocation("LAB8",940,145);
-        beaconLocations[13] = new BeaconLocation("LAB9",940,145);
-        beaconLocations[14] = new BeaconLocation("LAB10",940,145);
-        beaconLocations[15] = new BeaconLocation("LAB11",940,145);
-        beaconLocations[16] = new BeaconLocation("LAB12",940,145);
-        beaconLocations[17] = new BeaconLocation("LAB13",940,145);
-        beaconLocations[18] = new BeaconLocation("LAB14",940,145);
-        beaconLocations[19] = new BeaconLocation("LAB15",940,145);
-        beaconLocations[20] = new BeaconLocation("LAB15",940,145);
+        beaconLocations[11] = new BeaconLocation("LAB7",120,460);
+        beaconLocations[12] = new BeaconLocation("LAB8",120,615);
+        beaconLocations[13] = new BeaconLocation("LAB9",120,790);
+        beaconLocations[14] = new BeaconLocation("LAB10",120,950);
+        beaconLocations[15] = new BeaconLocation("LAB11",120,1100);
+        beaconLocations[16] = new BeaconLocation("LAB12",295,1250);
+        beaconLocations[17] = new BeaconLocation("LAB13",490,1250);
+        beaconLocations[18] = new BeaconLocation("LAB14",690,1250);
+        beaconLocations[19] = new BeaconLocation("LAB15",900,1250);
+        beaconLocations[20] = new BeaconLocation("LAB16",320,535);
 
 
 
@@ -187,28 +185,28 @@ public class NaviActivity extends AppCompatActivity implements SensorEventListen
         one = findViewById(R.id.one);
         two = findViewById(R.id.two);
         three  = findViewById(R.id.three);
-        image= (AppCompatImageView)findViewById(R.id.image2);
-        beacon1 = (AppCompatImageView)findViewById(R.id.beacon1);
-        beacon2 = (AppCompatImageView)findViewById(R.id.beacon2);
-        beacon3 = (AppCompatImageView)findViewById(R.id.beacon3);
-        beacon4 = (AppCompatImageView)findViewById(R.id.beacon4);
-        beacon5 = (AppCompatImageView)findViewById(R.id.beacon5);
-        beacon6 = (AppCompatImageView)findViewById(R.id.beacon6);
-        beacon7 = (AppCompatImageView)findViewById(R.id.beacon7);
-        beacon8 = (AppCompatImageView)findViewById(R.id.beacon8);
-        beacon9 = (AppCompatImageView)findViewById(R.id.beacon9);
-        beacon10 = (AppCompatImageView)findViewById(R.id.beacon10);
-        beacon11 = (AppCompatImageView)findViewById(R.id.beacon11);
-        beacon12 = (AppCompatImageView)findViewById(R.id.beacon12);
-        beacon13 = (AppCompatImageView)findViewById(R.id.beacon13);
-        beacon14 = (AppCompatImageView)findViewById(R.id.beacon14);
-        beacon15 = (AppCompatImageView)findViewById(R.id.beacon15);
-        beacon16 = (AppCompatImageView)findViewById(R.id.beacon16);
-        beacon17 = (AppCompatImageView)findViewById(R.id.beacon17);
-        beacon18 = (AppCompatImageView)findViewById(R.id.beacon18);
-        beacon19 = (AppCompatImageView)findViewById(R.id.beacon19);
-        beacon20 = (AppCompatImageView)findViewById(R.id.beacon20);
-        beacon21 = (AppCompatImageView)findViewById(R.id.beacon21);
+        image= findViewById(R.id.image2);
+        beacon1 = findViewById(R.id.beacon1);
+        beacon2 = findViewById(R.id.beacon2);
+        beacon3 = findViewById(R.id.beacon3);
+        beacon4 = findViewById(R.id.beacon4);
+        beacon5 = findViewById(R.id.beacon5);
+        beacon6 = findViewById(R.id.beacon6);
+        beacon7 = findViewById(R.id.beacon7);
+        beacon8 = findViewById(R.id.beacon8);
+        beacon9 = findViewById(R.id.beacon9);
+        beacon10 = findViewById(R.id.beacon10);
+        beacon11 = findViewById(R.id.beacon11);
+        beacon12 = findViewById(R.id.beacon12);
+        beacon13 = findViewById(R.id.beacon13);
+        beacon14 = findViewById(R.id.beacon14);
+        beacon15 = findViewById(R.id.beacon15);
+        beacon16 = findViewById(R.id.beacon16);
+        beacon17 = findViewById(R.id.beacon17);
+        beacon18 = findViewById(R.id.beacon18);
+        beacon19 = findViewById(R.id.beacon19);
+        beacon20 = findViewById(R.id.beacon20);
+        beacon21 = findViewById(R.id.beacon21);
 
 
         target = (AppCompatImageView)findViewById(R.id.targetLocation);
@@ -307,23 +305,25 @@ public class NaviActivity extends AppCompatActivity implements SensorEventListen
 
 
     private void enQueue1(double insert){
-        if(mRear1==0){
-            if(!isFull1) {
-                mQueue1[mRear1 % QUEUESIZE] = insert;
-                mRear1++;
-            }
-            else {
-                if(mQueue1[QUEUESIZE - 1] + 2.0 > insert){
-                    mQueue1[mRear1 % QUEUESIZE] = insert;
-                    mRear1++;
-                }
-            }
-        }
-        else if (mRear1 != 0 /*&& mQueue1[(mRear1 - 1) % 10] + 4.0 > insert*/) {
-            mQueue1[mRear1 % QUEUESIZE] = insert;
-            mRear1++;
-        }
+//        if(mRear1==0){
+//            if(!isFull1) {
+//                mQueue1[mRear1 % QUEUESIZE] = insert;
+//                mRear1++;
+//            }
+//            else {
+//                if(mQueue1[QUEUESIZE - 1] + 4.0 > insert){
+//                    mQueue1[mRear1 % QUEUESIZE] = insert;
+//                    mRear1++;
+//                }
+//            }
+//        }
+//        else if (mRear1 != 0 /*&& mQueue1[(mRear1 - 1) % 10] + 4.0 > insert*/) {
+//            mQueue1[mRear1 % QUEUESIZE] = insert;
+//            mRear1++;
+//        }
 
+        mQueue1[mRear1 % QUEUESIZE] = insert;
+        mRear1++;
         if(mRear1==QUEUESIZE){
             mRear1 = 0;
             isFull1 = true;
@@ -331,22 +331,24 @@ public class NaviActivity extends AppCompatActivity implements SensorEventListen
     }
 
     private void enQueue2(double insert){
-        if(mRear2==0){
-            if(!isFull2) {
-                mQueue2[mRear2 % QUEUESIZE] = insert;
-                mRear2++;
-            }
-            else {
-                if(mQueue2[QUEUESIZE - 1] + 2.0 > insert){
-                    mQueue2[mRear2 % QUEUESIZE] = insert;
-                    mRear2++;
-                }
-            }
-        }
-        else if (mRear2 != 0 /*&& mQueue2[(mRear2 - 1) % 10] + 4.0 > insert*/) {
-            mQueue2[mRear2 % QUEUESIZE] = insert;
-            mRear2++;
-        }
+//        if(mRear2==0){
+//            if(!isFull2) {
+//                mQueue2[mRear2 % QUEUESIZE] = insert;
+//                mRear2++;
+//            }
+//            else {
+//                if(mQueue2[QUEUESIZE - 1] + 4.0 > insert){
+//                    mQueue2[mRear2 % QUEUESIZE] = insert;
+//                    mRear2++;
+//                }
+//            }
+//        }
+//        else if (mRear2 != 0 /*&& mQueue2[(mRear2 - 1) % 10] + 4.0 > insert*/) {
+//            mQueue2[mRear2 % QUEUESIZE] = insert;
+//            mRear2++;
+//        }
+        mQueue2[mRear2 % QUEUESIZE] = insert;
+        mRear2++;
         if(mRear2==QUEUESIZE){
             mRear2 = 0;
             isFull2 = true;
@@ -354,22 +356,24 @@ public class NaviActivity extends AppCompatActivity implements SensorEventListen
     }
 
     private void enQueue3(double insert){
-        if(mRear3==0){
-            if(!isFull3) {
-                mQueue3[mRear3 % QUEUESIZE] = insert;
-                mRear3++;
-            }
-            else {
-                if(mQueue3[QUEUESIZE - 1] + 2.0 > insert){
-                    mQueue3[mRear3 % QUEUESIZE] = insert;
-                    mRear3++;
-                }
-            }
-        }
-        else if (mRear3 != 0 /*&& mQueue3[(mRear3 - 1) % 10] + 4.0 > insert*/) {
-            mQueue3[mRear3 % QUEUESIZE] = insert;
-            mRear3++;
-        }
+//        if(mRear3==0){
+//            if(!isFull3) {
+//                mQueue3[mRear3 % QUEUESIZE] = insert;
+//                mRear3++;
+//            }
+//            else {
+//                if(mQueue3[QUEUESIZE - 1] + 4.0 > insert){
+//                    mQueue3[mRear3 % QUEUESIZE] = insert;
+//                    mRear3++;
+//                }
+//            }
+//        }
+//        else if (mRear3 != 0 /*&& mQueue3[(mRear3 - 1) % 10] + 4.0 > insert*/) {
+//            mQueue3[mRear3 % QUEUESIZE] = insert;
+//            mRear3++;
+//        }
+        mQueue3[mRear3 % QUEUESIZE] = insert;
+        mRear3++;
         if(mRear3==QUEUESIZE){
             mRear3 = 0;
             isFull3 = true;
