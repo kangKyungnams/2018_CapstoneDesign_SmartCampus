@@ -7,13 +7,23 @@ public class Course {
     String classroom_id; // 강의실
     String credit; // 강의 학점
     String lectureID; // 학수번호
+    String type; // 타입
 
-    public Course(String title, String professor_name, String classroom_id, String credit, String lectureID) {
+    public Course(String title, String professor_name, String classroom_id, String credit, String lectureID, String type) {
         this.title = title;
         this.professor_name = professor_name;
         this.classroom_id = classroom_id;
         this.credit = credit;
         this.lectureID = lectureID;
+        this.type = type;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
     }
 
     public String getLectureID() {

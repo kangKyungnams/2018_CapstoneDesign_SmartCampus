@@ -210,7 +210,7 @@ tools:context=".InfoCourseProf">
                 />
 
             <Button
-                android:id="@+id/bt_info_course_noticeConfirm"
+                android:id="@+id/bt_info_course_noticeEnlroll"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginLeft="5dp"
