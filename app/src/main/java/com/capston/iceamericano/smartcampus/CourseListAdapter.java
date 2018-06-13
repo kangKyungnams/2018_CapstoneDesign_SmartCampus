@@ -75,11 +75,23 @@ public class CourseListAdapter extends RecyclerView.Adapter<CourseListAdapter.Vi
         holder.course_List_info_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String classKey = mList.get(position).getLectureID();
-                Log.d(TAG, "Value is: " + classKey);
-                Intent in = new Intent(context, InfoCourseActivity.class);
-                in.putExtra("lectureIDKey",classKey);
-                context.startActivity(in);
+
+                if(mList.get(position).getType().equals("student"))
+                {
+                    String classKey = mList.get(position).getLectureID();
+                    Log.d(TAG, "Value is: " + classKey);
+                    Intent in = new Intent(context, InfoCourseActivity.class);
+                    in.putExtra("lectureIDKey",classKey);
+                    context.startActivity(in);
+                }
+                else if(mList.get(position).getType().equals("professor"))
+                {
+                    String classKey = mList.get(position).getLectureID();
+                    Log.d(TAG, "Value is: " + classKey);
+                    Intent in = new Intent(context, InfoCourseProf.class);
+                    in.putExtra("lectureIDKey",classKey);
+                    context.startActivity(in);
+                }
 
             }
         });

@@ -22,7 +22,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
-            <TextView
+            <EditText
                 android:background="#FFFFFf"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
@@ -30,7 +30,8 @@
                 android:textSize="20dp"
                 android:gravity="center"
                 android:textColor="#000000"
-                android:text="캡스톤디자인 과제 1"/>
+                android:hint="캡스톤디자인 과제 1"
+                android:id="@+id/ed_notice_enroll_title"/>
         </LinearLayout>
 
         <LinearLayout
@@ -41,12 +42,13 @@
             android:layout_width="match_parent"
             android:layout_height="330dp"
             android:orientation="horizontal">
-            <TextView
+            <EditText
                 android:background="#ffffff"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:textSize="18dp"
-                android:text="   내용   "/>
+                android:hint="   내용   "
+                android:id="@+id/ed_notice_enroll_content"/>
 
         </LinearLayout>
 
@@ -66,7 +68,8 @@
                 android:layout_height="match_parent"
                 android:text="등록"
                 android:layout_weight="1"
-                android:layout_marginRight="5dp" />
+                android:layout_marginRight="5dp"
+                android:id="@+id/bt_notice_enroll"/>
 
         </LinearLayout>
 

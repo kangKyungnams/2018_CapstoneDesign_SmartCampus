@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Handler;
+import android.provider.ContactsContract;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.Snackbar;
 import android.support.v4.view.GravityCompat;
@@ -59,11 +60,11 @@ public class MainActivity extends AppCompatActivity
     private BackButtonHandler backButtonHandler;
 
     String TAG = "MainActivity";
-    private ArrayAdapter adapter;
-    private Spinner spinner;
+    String IDtype;
+    ArrayList<String> takes;
     FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
     DatabaseReference uReference = FirebaseDatabase.getInstance().getReference();
-    DatabaseReference userdata = uReference.child("takingCourseList");
+    DatabaseReference userdata = uReference.child("user");
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -75,9 +76,10 @@ public class MainActivity extends AppCompatActivity
             this.setResult(0, null);
         }
 
+        takes = new ArrayList<>();
+
         backButtonHandler = new BackButtonHandler(this);
 
-        spinner = (Spinner) findViewById(R.id.course_Spinner);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -102,18 +104,17 @@ public class MainActivity extends AppCompatActivity
             public void onDataChange(DataSnapshot dataSnapshot) {
                 // This method is called once with the initial value and again
                 // whenever data at this location is updated.
-
-                ArrayList<String> arGeneral = new ArrayList<String>();
-
-                for (DataSnapshot dataSnapshot2 : dataSnapshot.getChildren()) {
-
-                    String value2 = dataSnapshot2.getKey();
-                    arGeneral.add(dataSnapshot2.child("title").getValue().toString());
-
-                    Log.d(TAG, "Value is: " + value2);
+                IDtype = dataSnapshot.child("type").getValue().toString();
+                if(IDtype.equals("professor"))
+                {
+                    for(DataSnapshot dataSnapshot2: dataSnapshot.child("takes").getChildren())
+                    {
+                        String value2 = dataSnapshot2.getValue().toString();
+                        Log.d(TAG, "Value is: " + value2);
+                        String notice = dataSnapshot2.getValue(String.class);
+                        takes.add(notice);
+                    }
                 }
-                adapter = new ArrayAdapter<String>(MainActivity.this, android.R.layout.simple_spinner_dropdown_item, arGeneral);
-                spinner.setAdapter(adapter);
             }
 
 
@@ -133,6 +134,11 @@ public class MainActivity extends AppCompatActivity
             @Override
             public void onClick(View view) {
                 Intent Intent1 = new Intent(MainActivity.this, CourseList.class);
+                Intent1.putExtra("IDtype",IDtype);
+                if (IDtype.equals("professor"))
+                {
+                    Intent1.putStringArrayListExtra("takes", takes);
+                }
                 MainActivity.this.startActivity(Intent1);
             }
         });
