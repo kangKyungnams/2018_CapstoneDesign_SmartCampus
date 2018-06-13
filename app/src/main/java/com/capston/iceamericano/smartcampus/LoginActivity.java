@@ -54,6 +54,7 @@ public class LoginActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+        mBluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
         blueTooth();
         ed_ID = (EditText) findViewById(R.id.ed_ID);
         ed_PW = (EditText) findViewById(R.id.ed_PW);

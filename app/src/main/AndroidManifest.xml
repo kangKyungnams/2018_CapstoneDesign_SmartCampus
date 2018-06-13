@@ -171,15 +171,6 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".AttCheckForProfActivity"
-            android:theme="@style/AppTheme.NoActionBar">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.BROWSABLE" />
-            </intent-filter>
-        </activity>
-        <activity
             android:name=".NoticeView"
             android:label="공지확인"
             android:theme="@style/AppTheme">

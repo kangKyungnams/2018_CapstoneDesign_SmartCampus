@@ -138,7 +138,7 @@ public class AttCheckActivity extends AppCompatActivity {
 
                         AttState stateAtt =  new AttState(att_adapter_num,att_adapter_name,att_adapter_date,att_adapter_state,lectureDateKey,lectureID);
                         mList.add(stateAtt);
-
+                        mAdapter.notifyItemInserted(mList.size() - 1);
                     }
 
                 }
@@ -147,9 +147,6 @@ public class AttCheckActivity extends AppCompatActivity {
                 tv_att_confirm_num.setText("출석\n"+att_confirm_num);
                 tv_att_late_num.setText("지각\n"+att_late_num);
                 tv_att_fail_num.setText("결석\n"+att_fail_num);
-
-                mAdapter.notifyItemInserted(mList.size() - 1);
-                mAdapter.notifyItemChanged(mList.size() - 1);
 
             }
 

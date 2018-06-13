@@ -84,7 +84,7 @@ public class InfoCourseProf extends AppCompatActivity {
     Button.OnClickListener bt_attCheck = new Button.OnClickListener() {
         @Override
         public void onClick(View v) {
-            Intent attCheck = new Intent(InfoCourseProf.this, AttCheckActivity.class);
+            Intent attCheck = new Intent(InfoCourseProf.this, DatePickerAtt.class);
             attCheck.putExtra("lectureNameKey",lecture_info_courseID.getText().toString());
             attCheck.putExtra("lectureName", lecture_info_courseName.getText().toString());
             InfoCourseProf.this.startActivity(attCheck);
