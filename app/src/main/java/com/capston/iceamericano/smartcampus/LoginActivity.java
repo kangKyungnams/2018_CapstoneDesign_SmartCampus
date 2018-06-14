@@ -113,7 +113,6 @@ public class LoginActivity extends AppCompatActivity {
 
                                     }
                                 });
-
                             }
                         })
                         .setNeutralButton("  취소", new DialogInterface.OnClickListener() {
@@ -125,8 +124,6 @@ public class LoginActivity extends AppCompatActivity {
                         .show();
             }
         });
-
-
     }
 
 
@@ -158,7 +155,7 @@ public class LoginActivity extends AppCompatActivity {
         public void onClick(View v) { // 빈칸일시 에러메시지 띄우기
 
             if (ed_ID.getText().toString().isEmpty() == true) {
-                    ed_ID.setError("Please confirm the Email");
+                    ed_ID.setError("ID를 입력해 주세요.");
                 return;
             }
             if (ed_PW.getText().toString().isEmpty() == true) {
@@ -166,24 +163,29 @@ public class LoginActivity extends AppCompatActivity {
                 return;
             }
 
-
             userdata.addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
                 public void onDataChange(DataSnapshot dataSnapshot) {
                     // This method is called once with the initial value and again
                     // whenever data at this location is updated.
 
-                    String e_mail = dataSnapshot.child(ed_ID.getText().toString()).child("e_mail").getValue().toString();
-                    String value = dataSnapshot.getValue().toString();
+                    try{
+                        String e_mail = dataSnapshot.child(ed_ID.getText().toString()).child("e_mail").getValue().toString();
+                        String value = dataSnapshot.getValue().toString();
 
-                    GetMacAddress getMacAddress = new GetMacAddress();
-                    String mMAC = getMacAddress.getMAC();
+                        GetMacAddress getMacAddress = new GetMacAddress();
+                        String mMAC = getMacAddress.getMAC();
 //                    맥주소 일치하는지 확인..
 //                    if(mMAC == dataSnapshot.child(ed_ID.getText().toString()).child("MacAddress").getValue().toString()){
 //
 //                    }
 
-                    loginAuth(e_mail, ed_PW.getText().toString());
+                        loginAuth(e_mail, ed_PW.getText().toString());
+                    }
+                    catch(Exception e) {
+                        Toast.makeText(LoginActivity.this, "아이디와 비밀번호를 다시 확인해주세요.", Toast.LENGTH_SHORT).show();
+                    }
+
                 }
 
                 @Override

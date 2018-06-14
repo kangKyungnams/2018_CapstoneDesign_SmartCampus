@@ -58,35 +58,36 @@ public class NoticeInCourse extends AppCompatActivity {
         mRecyclerView.setAdapter(mAdapter);
 
 
-        DatabaseReference userNotice = userdata.child(lectureID);
-        userNotice.addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                // This method is called once with the initial value and again
-                // whenever data at this location is updated.
-                String value1 = dataSnapshot.getValue().toString();
+        if(!userdata.child(lectureID).toString().isEmpty())
+        {
+            DatabaseReference userNotice = userdata.child(lectureID);
+            userNotice.addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(DataSnapshot dataSnapshot) {
+                    // This method is called once with the initial value and again
+                    // whenever data at this location is updated.
 
-                for (DataSnapshot dataSnapshot2: dataSnapshot.getChildren()){
+                    for (DataSnapshot dataSnapshot2: dataSnapshot.getChildren()){
+                        String notice_time = dataSnapshot2.child("time").getValue().toString();
+                        String notice_title = dataSnapshot2.child("title").getValue().toString();
+                        String notice_writer = dataSnapshot2.child("writer").getValue().toString();
+                        Notice notice_list =  new Notice(notice_writer,notice_title,notice_time);
+                        mList.add(notice_list);
 
-                    String notice_time = dataSnapshot2.child("time").getValue().toString();
-                    String notice_title = dataSnapshot2.child("title").getValue().toString();
-                    String notice_writer = dataSnapshot2.child("writer").getValue().toString();
+                    }
 
-                    Notice notice_list =  new Notice(notice_writer,notice_title,notice_time);
-                    mList.add(notice_list);
+                    mAdapter.notifyItemInserted(mList.size() - 1);
 
                 }
 
-                mAdapter.notifyItemInserted(mList.size() - 1);
+                @Override
+                public void onCancelled(DatabaseError error) {
+                    // Failed to read value
+                    Log.w(TAG, "Failed to read value.", error.toException());
+                }
+            });
+        }
 
-            }
-
-            @Override
-            public void onCancelled(DatabaseError error) {
-                // Failed to read value
-                Log.w(TAG, "Failed to read value.", error.toException());
-            }
-        });
 
     }
 
