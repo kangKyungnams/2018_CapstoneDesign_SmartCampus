@@ -82,7 +82,7 @@ public class Restaurant extends AppCompatActivity {
     Button.OnClickListener order = new Button.OnClickListener() {
         @Override
         public void onClick(View v) {
-            if(isDiscovered ) {
+            if(!isDiscovered ) {
                 isDiscovered = false;
                 Intent orderIntent = new Intent(Restaurant.this, FoodList.class);
                 Restaurant.this.startActivity(orderIntent);

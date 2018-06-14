@@ -104,7 +104,6 @@ public class DatePickerAtt extends AppCompatActivity {     //교수용 출결에
                 // whenever data at this location is updated.
                 String value1 = dataSnapshot.getValue().toString();
                 int att_adapter_num = 0;
-
                 for (DataSnapshot dataSnapshot2: dataSnapshot.getChildren()){
 
                     String lectureDateKey = dataSnapshot2.getKey().toString();
@@ -117,11 +116,10 @@ public class DatePickerAtt extends AppCompatActivity {     //교수용 출결에
 
                         AttState stateAtt =  new AttState(att_adapter_num,att_adapter_name,att_adapter_date,att_adapter_state,lectureDateKey,lectureID);
                         mList.add(stateAtt);
-
+                        mAdapter.notifyItemInserted(mList.size() - 1);
                     }
                 }
 
-                mAdapter.notifyDataSetChanged();
             }
 
             @Override
@@ -141,6 +139,7 @@ public class DatePickerAtt extends AppCompatActivity {     //교수용 출결에
             public void onTextChanged(CharSequence s, int start, int before, int count) {
 
                 mAdapter.notifyItemRangeRemoved(0,mList.size());
+                mList.clear();
 
                 DatabaseReference userLecture = userdata.child(lectureID);
                 userLecture.addListenerForSingleValueEvent(new ValueEventListener() {
@@ -160,13 +159,11 @@ public class DatePickerAtt extends AppCompatActivity {     //교수용 출결에
                                 att_adapter_name = dataSnapshot2.child("name").getValue().toString();
                                 att_adapter_date = dataSnapshot2.child("date").getValue().toString();
                                 att_adapter_state = dataSnapshot2.child("status").getValue().toString();
-
                                 AttState stateAtt =  new AttState(att_adapter_num,att_adapter_name,att_adapter_date,att_adapter_state,lectureDateKey,lectureID);
                                 mList.add(stateAtt);
-
+                                mAdapter.notifyItemInserted(mList.size() - 1);
                             }
                         }
-
                     }
 
                     @Override
