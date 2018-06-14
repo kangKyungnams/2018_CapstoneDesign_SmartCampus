@@ -236,7 +236,7 @@ public class MainActivity extends AppCompatActivity
 
                             isDiscovered = true;
                             if(flag == false) {
-                                snackbar = Snackbar.make(mArea, "강의실로 이동하시겠습니까?", Snackbar.LENGTH_INDEFINITE);
+                                snackbar = Snackbar.make(mArea, "강의실로 이동하시겠습니까?", Snackbar.LENGTH_INDEFINITE).setActionTextColor(Color.WHITE);
 
                                 snackbar.setActionTextColor(Color.WHITE);
 

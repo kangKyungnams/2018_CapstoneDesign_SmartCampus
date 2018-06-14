@@ -45,7 +45,7 @@ public class NaviActivity extends AppCompatActivity implements SensorEventListen
     TextView hie;
 
 
-    private final int OFFSET_RSSI = -90;
+    private final int OFFSET_RSSI = -94;
     private final int QUEUESIZE = 4;
     private final int COUNT = 0;
     private final int BEACON_COUNT = 21;
@@ -76,6 +76,10 @@ public class NaviActivity extends AppCompatActivity implements SensorEventListen
     private Boolean isFull1 = false;
     private Boolean isFull2 = false;
     private Boolean isFull3 = false;
+    private Boolean startQ1 = false;
+    private Boolean startQ2 = false;
+    private Boolean startQ3 = false;
+
 
     private KalmanFilter kalmanFilter1;
     private KalmanFilter kalmanFilter2;
@@ -211,9 +215,9 @@ public class NaviActivity extends AppCompatActivity implements SensorEventListen
         beacon21 = findViewById(R.id.beacon21);
 
 
-        target = (AppCompatImageView)findViewById(R.id.targetLocation);
+        target = findViewById(R.id.targetLocation);
         plutoconAdapter = new PlutoconAdpater();
-        ListView listView = (ListView) findViewById(R.id.list);
+        ListView listView = findViewById(R.id.list);
 
         listView.setAdapter(plutoconAdapter);
 
@@ -338,77 +342,53 @@ public class NaviActivity extends AppCompatActivity implements SensorEventListen
 
 
     private void enQueue1(double insert){
-//        if(mRear1==0){
-//            if(!isFull1) {
-//                mQueue1[mRear1 % QUEUESIZE] = insert;
-//                mRear1++;
-//            }
-//            else {
-//                if(mQueue1[QUEUESIZE - 1] + 4.0 > insert){
-//                    mQueue1[mRear1 % QUEUESIZE] = insert;
-//                    mRear1++;
-//                }
-//            }
-//        }
-//        else if (mRear1 != 0 /*&& mQueue1[(mRear1 - 1) % 10] + 4.0 > insert*/) {
-//            mQueue1[mRear1 % QUEUESIZE] = insert;
-//            mRear1++;
-//        }
+        if(mRear1==0 && !startQ1){
+            startQ1 = true;
+        }
+        else if (mRear1 == 0 && startQ1) {
+            mQueue1[mRear1 % QUEUESIZE] = insert;
+            mRear1++;
+        }
+        else if (mRear1 != 0){
+            mQueue1[mRear1 % QUEUESIZE] = insert;
+            mRear1++;
+        }
 
-        mQueue1[mRear1 % QUEUESIZE] = insert;
-        mRear1++;
         if(mRear1==QUEUESIZE){
-            mRear1 = 0;
             isFull1 = true;
         }
     }
 
     private void enQueue2(double insert){
-//        if(mRear2==0){
-//            if(!isFull2) {
-//                mQueue2[mRear2 % QUEUESIZE] = insert;
-//                mRear2++;
-//            }
-//            else {
-//                if(mQueue2[QUEUESIZE - 1] + 4.0 > insert){
-//                    mQueue2[mRear2 % QUEUESIZE] = insert;
-//                    mRear2++;
-//                }
-//            }
-//        }
-//        else if (mRear2 != 0 /*&& mQueue2[(mRear2 - 1) % 10] + 4.0 > insert*/) {
-//            mQueue2[mRear2 % QUEUESIZE] = insert;
-//            mRear2++;
-//        }
-        mQueue2[mRear2 % QUEUESIZE] = insert;
-        mRear2++;
+        if(mRear2==0 && !startQ2){
+            startQ2 = true;
+        }
+        else if (mRear2 == 0 && startQ2) {
+            mQueue2[mRear2 % QUEUESIZE] = insert;
+            mRear2++;
+        }
+        else if (mRear2 != 0){
+            mQueue2[mRear2 % QUEUESIZE] = insert;
+            mRear2++;
+        }
         if(mRear2==QUEUESIZE){
-            mRear2 = 0;
             isFull2 = true;
         }
     }
 
     private void enQueue3(double insert){
-//        if(mRear3==0){
-//            if(!isFull3) {
-//                mQueue3[mRear3 % QUEUESIZE] = insert;
-//                mRear3++;
-//            }
-//            else {
-//                if(mQueue3[QUEUESIZE - 1] + 4.0 > insert){
-//                    mQueue3[mRear3 % QUEUESIZE] = insert;
-//                    mRear3++;
-//                }
-//            }
-//        }
-//        else if (mRear3 != 0 /*&& mQueue3[(mRear3 - 1) % 10] + 4.0 > insert*/) {
-//            mQueue3[mRear3 % QUEUESIZE] = insert;
-//            mRear3++;
-//        }
-        mQueue3[mRear3 % QUEUESIZE] = insert;
-        mRear3++;
+        if(mRear3==0 && !startQ3){
+            startQ3 = true;
+        }
+        else if (mRear3 == 0 && startQ3) {
+            mQueue3[mRear3 % QUEUESIZE] = insert;
+            mRear3++;
+        }
+        else if (mRear3 != 0){
+            mQueue3[mRear3 % QUEUESIZE] = insert;
+            mRear3++;
+        }
         if(mRear3==QUEUESIZE){
-            mRear3 = 0;
             isFull3 = true;
         }
     }
@@ -430,16 +410,16 @@ public class NaviActivity extends AppCompatActivity implements SensorEventListen
                 }
             }
         }
-        for(j = 0 ; j < QUEUESIZE ; j++){
-            if(j == 0) {
-                min = queue[j];
-            }
-            else{
-                if(queue[j] < min){
-                    min = queue[j];
-                }
-            }
-        }
+//        for(j = 0 ; j < QUEUESIZE ; j++){
+//            if(j == 0) {
+//                min = queue[j];
+//            }
+//            else{
+//                if(queue[j] < min){
+//                    min = queue[j];
+//                }
+//            }
+//        }
 
         for(i = 0; i < QUEUESIZE; i++){
             sum+=queue[i];
@@ -486,23 +466,23 @@ public class NaviActivity extends AppCompatActivity implements SensorEventListen
                         plutoconAdapter.refresh();
 
                         if(plutoconAdapter.getCount()>2){
-                            for(int i = 0; i < 3; i++){
+                            for(int i = 0; i < 3; i++) {
+//                            while(i < 3) {
+//                                if (plutoconAdapter.getPlutocon(i).getMajor() != 1)
                                 mPlutocon[i] = plutoconAdapter.getPlutocon(i);
                                 isDiscover[i] = true;
-                                if(i == 0 && isDiscover[0]) {
+                                if (i == 0 && isDiscover[0]) {
                                     double mRssi1 = mPlutocon[i].getRssi();
-                                    double mDistance1 = Math.pow(10,(4-mRssi1) / (10*CONSTANT_NUMBER));
-                                    if(!kalman1) {
+                                    double mDistance1 = Math.pow(10, (4 - mRssi1) / (10 * CONSTANT_NUMBER));
+                                    if (!kalman1) {
                                         kalmanFilter1 = new KalmanFilter(mDistance1);
                                         enQueue1(kalmanFilter1.getX());
-                                    }
-
-                                    else {
+                                    } else {
                                         enQueue1(kalmanFilter1.update(mDistance1));
-                                        if (isFull1){
+                                        if (isFull1) {
                                             String temp1 = mPlutocon[i].getName();
-                                            for(int a = 0 ; a < BEACON_COUNT ; a++){
-                                                if(beaconLocations[a].getName().equals(temp1)){
+                                            for (int a = 0; a < BEACON_COUNT; a++) {
+                                                if (beaconLocations[a].getName().equals(temp1)) {
                                                     positions[i][0] = beaconLocations[a].getmX();
                                                     positions[i][1] = beaconLocations[a].getmY();
                                                     distances[i] = 0.01 * avgQueue(mQueue1);//kalmanFilter1.update(mDistance1);//
@@ -514,19 +494,18 @@ public class NaviActivity extends AppCompatActivity implements SensorEventListen
                                     kalman1 = true;
                                 }
 
-                                if(i==1 && isDiscover[1]) {
+                                if (i == 1 && isDiscover[1]) {
                                     double mRssi2 = mPlutocon[i].getRssi();
-                                    double mDistance2 = Math.pow(10,(4-mRssi2)/(10*CONSTANT_NUMBER));
-                                    if(!kalman2) {
+                                    double mDistance2 = Math.pow(10, (4 - mRssi2) / (10 * CONSTANT_NUMBER));
+                                    if (!kalman2) {
                                         kalmanFilter2 = new KalmanFilter(mDistance2);
                                         enQueue2(kalmanFilter2.getX());
-                                    }
-                                    else {
+                                    } else {
                                         enQueue2(kalmanFilter2.update(mDistance2));
                                         if (isFull2) {
                                             String temp2 = mPlutocon[i].getName();
-                                            for(int b = 0 ; b < BEACON_COUNT ; b++){
-                                                if(beaconLocations[b].getName().equals(temp2)){
+                                            for (int b = 0; b < BEACON_COUNT; b++) {
+                                                if (beaconLocations[b].getName().equals(temp2)) {
                                                     positions[i][0] = beaconLocations[b].getmX();
                                                     positions[i][1] = beaconLocations[b].getmY();
                                                     distances[i] = 0.01 * avgQueue(mQueue2);//kalmanFilter2.update(mDistance2);//
@@ -537,19 +516,18 @@ public class NaviActivity extends AppCompatActivity implements SensorEventListen
                                     kalman2 = true;
                                 }
 
-                                if(i==2 && isDiscover[2]) {
+                                if (i == 2 && isDiscover[2]) {
                                     double mRssi3 = mPlutocon[i].getRssi();
-                                    double mDistance3 = Math.pow(10,(4-mRssi3)/(10*CONSTANT_NUMBER));
-                                    if(!kalman3){
+                                    double mDistance3 = Math.pow(10, (4 - mRssi3) / (10 * CONSTANT_NUMBER));
+                                    if (!kalman3) {
                                         kalmanFilter3 = new KalmanFilter(mDistance3);
                                         enQueue3(kalmanFilter3.getX());
-                                    }
-                                    else{
+                                    } else {
                                         enQueue3(kalmanFilter3.update(mDistance3));
-                                        if(isFull3) {
+                                        if (isFull3) {
                                             String temp3 = mPlutocon[i].getName();
-                                            for(int c = 0 ; c < BEACON_COUNT ; c++){
-                                                if(beaconLocations[c].getName().equals(temp3)){
+                                            for (int c = 0; c < BEACON_COUNT; c++) {
+                                                if (beaconLocations[c].getName().equals(temp3)) {
                                                     positions[i][0] = beaconLocations[c].getmX();
                                                     positions[i][1] = beaconLocations[c].getmY();
                                                     distances[i] = 0.01 * avgQueue(mQueue3);//kalmanFilter3.update(mDistance3);//
@@ -559,6 +537,7 @@ public class NaviActivity extends AppCompatActivity implements SensorEventListen
                                     }
                                     kalman3 = true;
                                 }
+
                             }
 
                             if(kalman1 && kalman3 && kalman2){
@@ -601,17 +580,17 @@ public class NaviActivity extends AppCompatActivity implements SensorEventListen
                                     if(mXY[0]>320){
                                         realX = 470;
                                         image.setX(realX);
-                                        image.setY(Float.valueOf(String.format("%.1f", mXY[1])));
+                                        image.setY(Float.valueOf(String.format("%.1f", mXY[1] * 1.02)));
                                     }
                                     else if(mXY[0]<320){
                                         realX = 180;
                                         image.setX(realX);
-                                        image.setY(Float.valueOf(String.format("%.1f", mXY[1])));
+                                        image.setY(Float.valueOf(String.format("%.1f", mXY[1] * 1.02)));
                                     }
                                 }
                                 else{
-                                    image.setX(Float.valueOf(String.format("%.1f", mXY[0]*0.98)));
-                                    image.setY(Float.valueOf(String.format("%.1f", mXY[1])));
+                                    image.setX(Float.valueOf(String.format("%.1f", mXY[0] * 0.98)));
+                                    image.setY(Float.valueOf(String.format("%.1f", mXY[1] * 1.02)));
 
                                 }
 
@@ -621,6 +600,7 @@ public class NaviActivity extends AppCompatActivity implements SensorEventListen
                                         Toast.makeText(NaviActivity.this, "목적지에 도착하였습니다.", Toast.LENGTH_LONG).show();
                                         isTarget = false;
                                     }
+
                                 }
 
 
@@ -630,10 +610,10 @@ public class NaviActivity extends AppCompatActivity implements SensorEventListen
 
                             for(int x = 0 ; x < 3 ; x++){
 
-                                if((mPlutocon[x] != null) && ms - mPlutocon[x].getLastSeenMillis() >= 2100){
+                                if((mPlutocon[x].getMajor()==1) || ((mPlutocon[x] != null) && ((ms - mPlutocon[x].getLastSeenMillis() >= 2100) || (mPlutocon[x].getRssi() < OFFSET_RSSI)))){
                                     //Toast.makeText(NaviActivity.this,String.valueOf(mPlutocon[x].getRssi()),Toast.LENGTH_SHORT).show();
                                     //((ms - mPlutocon[x].getLastSeenMillis() >= 2100) || (mPlutocon[x].getRssi() < OFFSET_RSSI))
-
+//ms - mPlutocon[x].getLastSeenMillis() >= 2100
                                     isRemoved = false;
                                 }
                                 if(mPlutocon[x] != null
