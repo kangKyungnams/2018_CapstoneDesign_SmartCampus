@@ -54,8 +54,6 @@ public class LoginActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-        mBluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        blueTooth();
         ed_ID = (EditText) findViewById(R.id.ed_ID);
         ed_PW = (EditText) findViewById(R.id.ed_PW);
         registerButton = (Button) findViewById(R.id.registerButton);
@@ -220,8 +218,12 @@ public class LoginActivity extends AppCompatActivity {
                         if (task.isSuccessful()) {
                             // Sign in success, update UI with the signed-in user's information
                             Log.d(TAG, "signInWithEmail:success");
-                            FirebaseUser user = mAuth.getCurrentUser();
-                            LoginActivity.this.startActivity(loginIntent);
+                            if(checkPermission()) {
+                                FirebaseUser user = mAuth.getCurrentUser();
+                                LoginActivity.this.startActivity(loginIntent);
+                            }
+                            else
+                                progressDialog.dismiss();
 
                         } else {
                             // If sign in fails, display a message to the user.

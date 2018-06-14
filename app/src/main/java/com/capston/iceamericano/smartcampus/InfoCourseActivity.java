@@ -105,7 +105,7 @@ public class InfoCourseActivity extends AppCompatActivity {
         @Override
         public void onClick(View v){
             Intent navi = new Intent(InfoCourseActivity.this, NaviActivity.class);
-            //navi.putExtra("",)
+            navi.putExtra("className",lecture_info_courseName.getText().toString());
             InfoCourseActivity.this.startActivity(navi);
 
         }

@@ -70,7 +70,9 @@ public class NaviActivity extends AppCompatActivity implements SensorEventListen
     private double[] mQueue1 = new double[QUEUESIZE];
     private double[] mQueue2 = new double[QUEUESIZE];
     private double[] mQueue3 = new double[QUEUESIZE];
-    private int mRear1, mRear2, mRear3 = COUNT;
+    private int mRear1 = COUNT;
+    private int mRear2 = COUNT;
+    private int mRear3 = COUNT;
     private Boolean isFull1 = false;
     private Boolean isFull2 = false;
     private Boolean isFull3 = false;
@@ -122,18 +124,18 @@ public class NaviActivity extends AppCompatActivity implements SensorEventListen
     float[] m_rotation = new float[9];
     float[] m_result_data = new float[3];
     private int mAzimuth = COUNT;
-
+    private int targetX, targetY;
 
 
     private BeaconLocation[] beaconLocations;
-
+    private Boolean isTarget;
     @SuppressLint("WrongViewCast")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_navi);
         Intent in = getIntent();
-
+        isTarget = true;
         distances = new double[3];
         positions = new double[3][2];
         //{ { 300, 1250 }, { 500, 1100 }, { 330, 1100 } };
@@ -277,9 +279,40 @@ public class NaviActivity extends AppCompatActivity implements SensorEventListen
         beacon21.setY(535);
 
 
+        String className = in.getExtras().getString("className");
 
-        target.setX(540);
-        target.setY(1080);
+        if(className.equals("데이터베이스체제")){
+            target.setX(540);
+            target.setY(1080);
+            targetX = 540;
+            targetY = 1080;
+        }
+        else if(className.equals("캡스톤디자인1")){
+            target.setX(540);
+            target.setY(585);
+            targetX = 540;
+            targetY = 585;
+        }
+        else if(className.equals("미적분학및연습1")){
+            target.setX(35);
+            target.setY(835);
+            targetX = 35;
+            targetY = 835;
+        }
+        else if(className.equals("대학영어2(Reading)")){
+            target.setX(40);
+            target.setY(520);
+            targetX = 40;
+            targetY = 520;
+        }
+        else if(className.equals("대학영어2(Conversation)")){
+            target.setX(513);
+            target.setY(100);
+            targetX = 513;
+            targetY = 100;
+        }
+
+
 
 
         // 시스템서비스로부터 SensorManager 객체를 얻는다.
@@ -527,12 +560,15 @@ public class NaviActivity extends AppCompatActivity implements SensorEventListen
                                     kalman3 = true;
                                 }
                             }
+
                             if(kalman1 && kalman3 && kalman2){
 
                                 mXY = new double[2];
                                 trilaterationTest = new TrilaterationTest(positions, distances);
                                 mXY = trilaterationTest.returnOutput();
 
+                                float realX;
+                                float realY;
                                 //hie.setText("내 위치 :   " + String.format("%.1f", mXY[0]) + "   " + String.format("%.0f", mXY[1]));
 
 //                                if(190 <= mAzimuth && mAzimuth <= 250){
@@ -547,8 +583,48 @@ public class NaviActivity extends AppCompatActivity implements SensorEventListen
 //                                if(0 <= mAzimuth && mAzimuth <= 80){
 //                                    mXY[1] = mXY[1] * 1.1;
 //                                }
-                                image.setX(Float.valueOf(String.format("%.1f", mXY[0]*0.98)));
-                                image.setY(Float.valueOf(String.format("%.0f", mXY[1])));
+
+
+
+
+                                if(mXY[1]< 280) {
+                                    realY = 230;
+                                    image.setX(Float.valueOf(String.format("%.1f", mXY[0]*0.98)));
+                                    image.setY(realY);
+                                }
+                                else if(mXY[1]>1150){
+                                    realY = 1200;
+                                    image.setX(Float.valueOf(String.format("%.1f", mXY[0]*0.98)));
+                                    image.setY(realY);
+                                }
+                                else if(mXY[1]>280 && mXY[1]<1150){
+                                    if(mXY[0]>320){
+                                        realX = 470;
+                                        image.setX(realX);
+                                        image.setY(Float.valueOf(String.format("%.1f", mXY[1])));
+                                    }
+                                    else if(mXY[0]<320){
+                                        realX = 180;
+                                        image.setX(realX);
+                                        image.setY(Float.valueOf(String.format("%.1f", mXY[1])));
+                                    }
+                                }
+                                else{
+                                    image.setX(Float.valueOf(String.format("%.1f", mXY[0]*0.98)));
+                                    image.setY(Float.valueOf(String.format("%.1f", mXY[1])));
+
+                                }
+
+
+                                if((targetX - 100 < mXY[0] && targetX + 100 > mXY[0]) && (targetY - 100 < mXY[1] && targetY + 100 > mXY[1])){
+                                    if(isTarget) {
+                                        Toast.makeText(NaviActivity.this, "목적지에 도착하였습니다.", Toast.LENGTH_LONG).show();
+                                        isTarget = false;
+                                    }
+                                }
+
+
+
 
                             }
 
