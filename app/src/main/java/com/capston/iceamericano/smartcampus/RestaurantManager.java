@@ -22,7 +22,7 @@ public class RestaurantManager extends AppCompatActivity implements View.OnClick
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_restaurant_manager);
 
         //bind view
         mTextView = (TextView) findViewById(R.id.textView);
