@@ -5,6 +5,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -27,7 +29,8 @@ public class food extends AppCompatActivity {
     foodMenuAdapter mAdapter;
     FirebaseDatabase database;
     String TAG = getClass().getSimpleName();
-    String IDtype;
+    Button bt_food_list1,bt_food_list2,bt_food_list3, Pur_bt1;
+    int res_num1=0,res_num2=0,res_num3=0;
     FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
     DatabaseReference uReference = FirebaseDatabase.getInstance().getReference();
     DatabaseReference userdata = uReference.child("menu");
@@ -39,6 +42,11 @@ public class food extends AppCompatActivity {
         setContentView(R.layout.activity_food_list);
 
         database = FirebaseDatabase.getInstance();
+
+        bt_food_list1 = (Button) findViewById(R.id.bt_food_list1);
+        bt_food_list2 = (Button) findViewById(R.id.bt_food_list2);
+        bt_food_list3 = (Button) findViewById(R.id.bt_food_list3);
+        Pur_bt1 = (Button) findViewById(R.id.Pur_bt1);
 
         mRecyclerView = (RecyclerView) findViewById(R.id.recyle_food_list);
 
@@ -100,6 +108,7 @@ public class food extends AppCompatActivity {
                         }
 
                     }
+                    set_visiblity();
                 }
             }
 
@@ -110,5 +119,72 @@ public class food extends AppCompatActivity {
             }
         });
 
+        bt_food_list1.setOnClickListener(button_action1);
+        bt_food_list2.setOnClickListener(button_action2);
+        bt_food_list3.setOnClickListener(button_action3);
+        Pur_bt1.setOnClickListener(clear_action);
+
     }
+
+    void set_visiblity()
+    {
+        res_num1 =0;
+        res_num2 =0;
+        res_num3 =0;
+        if(mList.size() == 1)
+        {
+            bt_food_list1.setVisibility(View.VISIBLE);
+            bt_food_list1.setText(mList.get(0).getRestaurant_name());
+        }
+        else if(mList.size() == 2)
+        {
+            bt_food_list1.setVisibility(View.VISIBLE);
+            bt_food_list2.setVisibility(View.VISIBLE);
+            bt_food_list1.setText(mList.get(0).getRestaurant_name());
+            bt_food_list2.setText(mList.get(1).getRestaurant_name());
+        }
+        else if(mList.size() == 3)
+        {
+            bt_food_list1.setVisibility(View.VISIBLE);
+            bt_food_list2.setVisibility(View.VISIBLE);
+            bt_food_list3.setVisibility(View.VISIBLE);
+            bt_food_list1.setText(mList.get(0).getRestaurant_name());
+            bt_food_list2.setText(mList.get(1).getRestaurant_name());
+            bt_food_list3.setText(mList.get(2).getRestaurant_name());
+        }
+        else
+        {
+
+        }
+    }
+
+    Button.OnClickListener button_action1 = new Button.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            res_num1++;
+            bt_food_list1.setText(String.valueOf(res_num1));
+        }
+    };
+    Button.OnClickListener button_action2 = new Button.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            res_num2++;
+            bt_food_list2.setText(String.valueOf(res_num2));
+        }
+    };
+    Button.OnClickListener button_action3 = new Button.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            res_num3++;
+            bt_food_list3.setText(String.valueOf(res_num3));
+        }
+    };
+
+    Button.OnClickListener clear_action = new Button.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            set_visiblity();
+        }
+    };
+
 }
