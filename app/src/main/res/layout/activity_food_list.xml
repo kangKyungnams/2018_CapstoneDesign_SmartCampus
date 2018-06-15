@@ -95,12 +95,11 @@
 
     </LinearLayout>
 
-    <ListView
+    <!-- A RecyclerView with some commonly used attributes -->
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recyle_food_list"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/courseListView"
-        android:dividerHeight="3dp"
-        android:divider="#ffffff">
-    </ListView>
+        android:scrollbars="vertical" />
 
 </LinearLayout>

@@ -84,7 +84,7 @@ public class Restaurant extends AppCompatActivity {
         public void onClick(View v) {
             if(!isDiscovered ) {
                 isDiscovered = false;
-                Intent orderIntent = new Intent(Restaurant.this, FoodList.class);
+                Intent orderIntent = new Intent(Restaurant.this, food.class);
                 Restaurant.this.startActivity(orderIntent);
             }
             else{
