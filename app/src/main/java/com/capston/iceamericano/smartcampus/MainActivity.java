@@ -107,7 +107,9 @@ public class MainActivity extends AppCompatActivity
                 IDtype = dataSnapshot.child("type").getValue().toString();
                 if(IDtype.equals("manager"))
                 {
+                    String high_level = dataSnapshot.child("cafeteria_id").getValue().toString();
                     Intent manager_mode = new Intent(MainActivity.this, RestaurantManager.class);
+                    manager_mode.putExtra("high_level",high_level);
                     MainActivity.this.startActivity(manager_mode);
                     finish();
                 }

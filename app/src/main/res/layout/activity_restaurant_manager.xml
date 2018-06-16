@@ -38,6 +38,8 @@
         android:layout_width="match_parent"
         android:layout_height="150dp"
         android:orientation="horizontal"
+        android:visibility="invisible"
+        android:id="@+id/restaurant_manager_lay1"
         >
         <LinearLayout
             android:layout_weight="3"
@@ -58,10 +60,10 @@
                 android:textColor="#000000"
                 android:textStyle="bold"
                 android:textAlignment="center"
-                android:drawableTop="@drawable/ic_restaurant_menu_black_36dp"/>
+                android:drawableTop="@drawable/ic_restaurant_menu_black_36dp"
+                android:id="@+id/tv_restaurant_manager_corner1"/>
 
             <ToggleButton
-                android:id="@+id/toggleButton1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="ToggleButton"
@@ -112,12 +114,12 @@
                     android:textStyle="bold"/>
             </LinearLayout>
 
-            <ListView
+            <!-- A RecyclerView with some commonly used attributes -->
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/restaurant_manager_recycle1"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:dividerHeight="5dp"
-                android:divider="#ffffff">
-            </ListView>
+                android:scrollbars="vertical" />
         </LinearLayout>
     </LinearLayout>
 
@@ -125,6 +127,8 @@
         android:layout_width="match_parent"
         android:layout_height="150dp"
         android:orientation="horizontal"
+        android:visibility="invisible"
+        android:id="@+id/restaurant_manager_lay2"
         >
         <LinearLayout
             android:layout_weight="3"
@@ -145,9 +149,9 @@
                 android:textColor="#000000"
                 android:textStyle="bold"
                 android:textAlignment="center"
-                android:drawableTop="@drawable/ic_restaurant_menu_black_36dp"/>
+                android:drawableTop="@drawable/ic_restaurant_menu_black_36dp"
+                android:id="@+id/tv_restaurant_manager_corner2"/>
             <ToggleButton
-                android:id="@+id/toggleButton2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="ToggleButton"
@@ -196,63 +200,101 @@
                     android:textStyle="bold"/>
             </LinearLayout>
 
-            <ListView
+            <!-- A RecyclerView with some commonly used attributes -->
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/restaurant_manager_recycle2"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:dividerHeight="5dp"
-                android:divider="#ffffff">
-            </ListView>
+                android:scrollbars="vertical" />
         </LinearLayout>
     </LinearLayout>
 
-    <LinearLayout
-        android:layout_marginTop="50dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
 
-        <TextView
-            android:text="리스트뷰안에 들어갈애들"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="3"
-            android:gravity="center"
-            android:textColor="#000000"
-            android:textStyle="bold"/>
-    </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:layout_height="150dp"
+        android:orientation="horizontal"
+        android:visibility="invisible"
+        android:id="@+id/restaurant_manager_lay3"
+        >
+        <LinearLayout
+            android:layout_weight="3"
+            android:id="@+id/manage_L5"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginRight="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginBottom="10dp"
+            android:background="#ffffff"
+            >
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="일품"
+                android:textSize="20dp"
+                android:textColor="#000000"
+                android:textStyle="bold"
+                android:textAlignment="center"
+                android:drawableTop="@drawable/ic_restaurant_menu_black_36dp"
+                android:id="@+id/tv_restaurant_manager_corner3"/>
+            <ToggleButton
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="ToggleButton"
+                android:textSize="10dp"
+                android:textAlignment="center"/>
+        </LinearLayout>
 
-        <TextView
-            android:text="123"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="3"
-            android:gravity="center"
-            android:textColor="#000000"
-            android:textStyle="bold"/>
-        <TextView
-            android:text="주문시간나옴"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="3"
-            android:gravity="center"
-            android:textColor="#000000"
-            android:textStyle="bold"/>
-        <Button
-            android:id="@+id/Btn_complete"
-            android:text="조리중
-(누르면 완성시간뜸)"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="3"
-            android:gravity="center"
-            android:textColor="#000000"
-            android:textStyle="bold"/>
+        <LinearLayout
+            android:layout_weight="1"
+            android:id="@+id/manage_L6"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="10dp"
+            android:layout_marginRight="10dp"
+            android:background="#ffffff"
+            >
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:text="순 번"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="3"
+                    android:gravity="center"
+                    android:textColor="#000000"
+                    android:textStyle="bold"/>
+                <TextView
+                    android:text="주문 시간"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="3"
+                    android:gravity="center"
+                    android:textColor="#000000"
+                    android:textStyle="bold"/>
+                <TextView
+                    android:text="조리 상태"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="3"
+                    android:gravity="center"
+                    android:textColor="#000000"
+                    android:textStyle="bold"/>
+            </LinearLayout>
+
+            <!-- A RecyclerView with some commonly used attributes -->
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/restaurant_manager_recycle3"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scrollbars="vertical" />
+        </LinearLayout>
     </LinearLayout>
-
 
 
 </LinearLayout>

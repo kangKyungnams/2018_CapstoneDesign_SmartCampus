@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -34,6 +35,7 @@ public class foodMenuAdapter extends RecyclerView.Adapter<foodMenuAdapter.ViewHo
     public static class ViewHolder extends RecyclerView.ViewHolder {
         // each data item is just a string in this case
         public TextView foodMenu_time_section,foodMenu_restaurant_name,foodMenu_date, foodMenu_menu_name,foodMenu_price;
+        public TextView food_total;
 
         public ViewHolder(View itemview) {
             super(itemview);
@@ -75,6 +77,7 @@ public class foodMenuAdapter extends RecyclerView.Adapter<foodMenuAdapter.ViewHo
         holder.foodMenu_date.setText(mList.get(position).getDate());
         holder.foodMenu_menu_name.setText(mList.get(position).getMenu_name());
         holder.foodMenu_price.setText(mList.get(position).getPrice());
+
 
     }
 
