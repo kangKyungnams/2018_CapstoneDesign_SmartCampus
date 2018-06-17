@@ -79,15 +79,15 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="17dp"
-        android:layout_marginBottom="17dp"
         android:layout_marginRight="17dp">
         <Button
+            android:background="@drawable/lineblue"
             android:layout_width="330dp"
-            android:layout_height="40dp"
+            android:layout_height="38dp"
             android:layout_gravity="center"
             android:text="출석하기"
             android:textStyle="bold"
-            android:textColor="#393939"
+            android:textColor="#ffffff"
             android:gravity="center"
             android:id="@+id/attStart"/>
 
@@ -101,7 +101,7 @@
         android:layout_marginTop="10dp"
         android:layout_marginRight="10dp"
         android:layout_marginLeft="10dp"
-        android:background="#ffffff"
+        android:background="@drawable/line1"
         >
         <LinearLayout
             android:layout_width="match_parent"

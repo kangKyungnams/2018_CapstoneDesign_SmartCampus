@@ -12,10 +12,11 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_margin="15dp"
-        android:background="@drawable/colorbrown"
+        android:background="@drawable/linegray"
         android:orientation="vertical">
 
         <LinearLayout
+            android:background="@drawable/line"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="20dp"
@@ -24,12 +25,13 @@
             android:orientation="horizontal">
 
             <TextView
+
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="#ffffff"
-                android:text="제목 :  "
+                android:text=" 제목 :  "
                 android:textColor="#000000"
-                android:textSize="20dp"
+                android:textSize="15dp"
                 android:textStyle="bold" />
 
             <EditText
@@ -37,10 +39,11 @@
                 android:layout_height="wrap_content"
                 android:background="#ffffff"
                 android:hint=" 제목을 입력하세요"
-                android:textSize="20dp" />
+                android:textSize="15dp" />
         </LinearLayout>
 
         <LinearLayout
+            android:background="@drawable/line"
             android:layout_width="match_parent"
             android:layout_height="330dp"
             android:layout_marginBottom="10dp"
@@ -70,7 +73,7 @@
                 android:layout_height="match_parent"
                 android:layout_marginRight="5dp"
                 android:layout_weight="1"
-                android:background="#3f88f5"
+                android:background="@drawable/lineblue"
                 android:gravity="center"
                 android:text="등록"
                 android:textColor="#ffffff"
@@ -82,7 +85,7 @@
                 android:layout_height="match_parent"
                 android:layout_marginLeft="5dp"
                 android:layout_weight="1"
-                android:background="@color/colorGray"
+                android:background="@drawable/lineblue"
                 android:gravity="center"
                 android:text="취소"
                 android:textColor="#ffffff"

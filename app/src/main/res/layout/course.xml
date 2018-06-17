@@ -4,7 +4,8 @@
     android:layout_height="wrap_content"
     android:orientation="horizontal"
     android:dividerPadding="1dp"
-    android:divider="#000000">
+    android:divider="#000000"
+    >
 
     <LinearLayout
         android:layout_weight="1"

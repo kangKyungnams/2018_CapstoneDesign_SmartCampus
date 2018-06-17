@@ -10,21 +10,21 @@
         android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="10dp">
+        >
 
 
         <TextView
-            android:text="석식"
-            android:layout_width="wrap_content"
-            android:layout_height="35dp"
+            android:text="Lunch"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:layout_weight="3"
             android:gravity="center"
             android:textColor="#000000"
             android:textStyle="bold"
             android:id="@+id/foodMenu_time_section"/>
         <TextView
-            android:text="일품코너"
-            android:layout_width="wrap_content"
+            android:text="일품"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="3"
             android:gravity="center"
@@ -32,28 +32,28 @@
             android:textStyle="bold"
             android:id="@+id/foodMenu_restaurant_name"/>
         <TextView
-            android:text="17:00-19:00"
-            android:layout_width="wrap_content"
+            android:text="2013-13-13"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="3"
+            android:layout_weight="2.7"
             android:gravity="center"
             android:textColor="#000000"
             android:textStyle="bold"
             android:id="@+id/foodMenu_date"/>
         <TextView
             android:text="고등어 무조림"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="10"
+            android:layout_weight="2.7"
             android:gravity="center"
             android:textColor="#000000"
             android:textStyle="bold"
             android:id="@+id/foodMenu_menu_name"/>
         <TextView
-            android:text="10000원"
-            android:layout_width="wrap_content"
+            android:text="1000원"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="10"
+            android:layout_weight="3"
             android:gravity="center"
             android:textColor="#000000"
             android:textStyle="bold"

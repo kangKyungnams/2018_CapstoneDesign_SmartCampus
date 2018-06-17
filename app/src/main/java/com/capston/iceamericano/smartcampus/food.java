@@ -7,6 +7,8 @@ import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -32,12 +34,13 @@ public class food extends AppCompatActivity {
     String TAG = getClass().getSimpleName();
     String user_name, high_level, nowDate ;
     Button bt_food_list1,bt_food_list2,bt_food_list3, Pur_bt1,Pur_bt2;
+    TextView text_Res1,text_Res2,text_Res3,text_price1,text_price2,text_price3,tv_food_list_total_price;
     int res_num1=0,res_num2=0,res_num3=0 , total_price1 =0 ,total_price2 =0, total_price3 =0;
     List<Integer> price_Get;
     FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
     DatabaseReference uReference = FirebaseDatabase.getInstance().getReference();
     DatabaseReference userdata = uReference.child("menu");
-
+    LinearLayout L1,L2,L3;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,11 +49,24 @@ public class food extends AppCompatActivity {
 
         database = FirebaseDatabase.getInstance();
 
+
         bt_food_list1 = (Button) findViewById(R.id.bt_food_list1);
         bt_food_list2 = (Button) findViewById(R.id.bt_food_list2);
         bt_food_list3 = (Button) findViewById(R.id.bt_food_list3);
         Pur_bt1 = (Button) findViewById(R.id.Pur_bt1);
         Pur_bt2 = (Button) findViewById(R.id.Pur_bt2);
+
+        text_Res1 = (TextView)findViewById(R.id.text_Res1);
+        text_Res2 = (TextView)findViewById(R.id.text_Res2);
+        text_Res3 = (TextView)findViewById(R.id.text_Res3);
+        text_price1 = (TextView)findViewById(R.id.text_price1);
+        text_price2 = (TextView)findViewById(R.id.text_price2);
+        text_price3 = (TextView)findViewById(R.id.text_price3);
+        tv_food_list_total_price = (TextView)findViewById(R.id.tv_food_list_total_price);
+
+        L1 = (LinearLayout)findViewById(R.id.L1);
+        L2 = (LinearLayout)findViewById(R.id.L2);
+        L3 = (LinearLayout)findViewById(R.id.L3);
 
         mRecyclerView = (RecyclerView) findViewById(R.id.recyle_food_list);
 
@@ -142,24 +158,42 @@ public class food extends AppCompatActivity {
         res_num3 =0;
         if(mList.size() == 1)
         {
-            bt_food_list1.setVisibility(View.VISIBLE);
-            bt_food_list1.setText(mList.get(0).getRestaurant_name());
+            L1.setVisibility(View.VISIBLE);
+            text_Res1.setVisibility(View.VISIBLE);
+            text_Res1.setText(mList.get(0).getRestaurant_name());
+            text_price1.setVisibility(View.VISIBLE);
+            text_price1.setText("0원");
         }
         else if(mList.size() == 2)
         {
-            bt_food_list1.setVisibility(View.VISIBLE);
-            bt_food_list2.setVisibility(View.VISIBLE);
-            bt_food_list1.setText(mList.get(0).getRestaurant_name());
-            bt_food_list2.setText(mList.get(1).getRestaurant_name());
+            L1.setVisibility(View.VISIBLE);
+            L2.setVisibility(View.VISIBLE);
+            text_Res1.setVisibility(View.VISIBLE);
+            text_Res1.setText(mList.get(0).getRestaurant_name());
+            text_price1.setVisibility(View.VISIBLE);
+            text_price1.setText("0원");
+            text_Res2.setVisibility(View.VISIBLE);
+            text_Res2.setText(mList.get(1).getRestaurant_name());
+            text_price2.setVisibility(View.VISIBLE);
+            text_price2.setText("0원");
         }
         else if(mList.size() == 3)
         {
-            bt_food_list1.setVisibility(View.VISIBLE);
-            bt_food_list2.setVisibility(View.VISIBLE);
-            bt_food_list3.setVisibility(View.VISIBLE);
-            bt_food_list1.setText(mList.get(0).getRestaurant_name());
-            bt_food_list2.setText(mList.get(1).getRestaurant_name());
-            bt_food_list3.setText(mList.get(2).getRestaurant_name());
+            L1.setVisibility(View.VISIBLE);
+            L2.setVisibility(View.VISIBLE);
+            L3.setVisibility(View.VISIBLE);
+            text_Res1.setVisibility(View.VISIBLE);
+            text_Res1.setText(mList.get(0).getRestaurant_name());
+            text_price1.setVisibility(View.VISIBLE);
+            text_price1.setText("0원");
+            text_Res2.setVisibility(View.VISIBLE);
+            text_Res2.setText(mList.get(1).getRestaurant_name());
+            text_price2.setVisibility(View.VISIBLE);
+            text_price2.setText("0원");
+            text_Res3.setVisibility(View.VISIBLE);
+            text_Res3.setText(mList.get(2).getRestaurant_name());
+            text_price3.setVisibility(View.VISIBLE);
+            text_price3.setText("0원");
         }
         else
         {
@@ -172,7 +206,9 @@ public class food extends AppCompatActivity {
         public void onClick(View v) {
             res_num1++;
             total_price1 = price_Get.get(0)*res_num1;
-            bt_food_list1.setText(mList.get(0).getRestaurant_name() + "\n" +String.valueOf(total_price1)+"원");
+            text_Res1.setText(mList.get(0).getRestaurant_name());
+            text_price1.setText(String.valueOf(total_price1)+"원");
+            tv_food_list_total_price.setText(total_price1+total_price2+total_price3+"원");
         }
     };
     Button.OnClickListener button_action2 = new Button.OnClickListener() {
@@ -180,7 +216,9 @@ public class food extends AppCompatActivity {
         public void onClick(View v) {
             res_num2++;
             total_price2 = price_Get.get(1)*res_num2;
-            bt_food_list2.setText(mList.get(1).getRestaurant_name() + "\n" +String.valueOf(total_price2)+"원");
+            text_Res2.setText(mList.get(1).getRestaurant_name());
+            text_price2.setText(String.valueOf(total_price2)+"원");
+            tv_food_list_total_price.setText(total_price1+total_price2+total_price3+"원");
         }
     };
     Button.OnClickListener button_action3 = new Button.OnClickListener() {
@@ -188,7 +226,9 @@ public class food extends AppCompatActivity {
         public void onClick(View v) {
             res_num3++;
             total_price3 = price_Get.get(2)*res_num3;
-            bt_food_list3.setText(mList.get(2).getRestaurant_name() + "\n" +String.valueOf(total_price3)+"원");
+            text_Res3.setText(mList.get(2).getRestaurant_name());
+            text_price3.setText(String.valueOf(total_price3)+"원");
+            tv_food_list_total_price.setText(total_price1+total_price2+total_price3+"원");
         }
     };
 

@@ -10,27 +10,10 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
         android:orientation="horizontal">
-        <TextView
-            android:layout_marginTop="7dp"
-            android:layout_marginLeft="10dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="현재 시간"
-            android:textStyle="bold"
-            android:textSize="15dp"
-            android:textColor="@color/colorPrimaryDark"
-            />
-        <TextView
-            android:layout_marginTop="7dp"
-            android:layout_marginLeft="10dp"
-            android:id="@+id/textView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="실시간표시됨"
-            android:textSize="15dp"
-            android:layout_marginBottom="14dp"
-            />
+
+
     </LinearLayout>
     
 
@@ -47,12 +30,14 @@
             android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="#ffffff"
+            android:background="@drawable/line1"
             android:layout_marginRight="10dp"
             android:layout_marginLeft="10dp"
             android:layout_marginBottom="10dp"
             >
             <TextView
+                android:layout_marginTop="20dp"
+                android:drawablePadding="5dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="뚝배기"
@@ -63,17 +48,13 @@
                 android:drawableTop="@drawable/ic_restaurant_menu_black_36dp"
                 android:id="@+id/tv_restaurant_manager_corner1"/>
 
-            <ToggleButton
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="ToggleButton"
-                android:textSize="10dp"
-                android:textAlignment="center"/>
+
 
 
         </LinearLayout>
 
         <LinearLayout
+
             android:layout_weight="1"
             android:id="@+id/manage_L2"
             android:orientation="vertical"
@@ -81,7 +62,7 @@
             android:layout_height="match_parent"
             android:layout_marginBottom="10dp"
             android:layout_marginRight="10dp"
-            android:background="#ffffff"
+            android:background="@drawable/line1"
             >
             <LinearLayout
                 android:layout_width="match_parent"
@@ -89,24 +70,33 @@
                 android:orientation="horizontal">
 
                 <TextView
-                    android:text="순 번"
-                    android:layout_width="wrap_content"
+
+                    android:text=" 순 번"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="3"
                     android:gravity="center"
                     android:textColor="#000000"
                     android:textStyle="bold"/>
                 <TextView
-                    android:text="주문 시간"
-                    android:layout_width="wrap_content"
+                    android:text=" 메 뉴"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight="3"
+                    android:layout_weight="2.5"
                     android:gravity="center"
                     android:textColor="#000000"
                     android:textStyle="bold"/>
                 <TextView
-                    android:text="조리 상태"
-                    android:layout_width="wrap_content"
+                    android:text=" 조리 상태"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2.7"
+                    android:gravity="center"
+                    android:textColor="#000000"
+                    android:textStyle="bold"/>
+                <TextView
+                    android:text=" 수량"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="3"
                     android:gravity="center"
@@ -131,6 +121,7 @@
         android:id="@+id/restaurant_manager_lay2"
         >
         <LinearLayout
+
             android:layout_weight="3"
             android:id="@+id/manage_L3"
             android:orientation="vertical"
@@ -139,9 +130,11 @@
             android:layout_marginRight="10dp"
             android:layout_marginLeft="10dp"
             android:layout_marginBottom="10dp"
-            android:background="#ffffff"
+            android:background="@drawable/line1"
             >
             <TextView
+                android:layout_marginTop="20dp"
+                android:drawablePadding="5dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="일품"
@@ -151,15 +144,11 @@
                 android:textAlignment="center"
                 android:drawableTop="@drawable/ic_restaurant_menu_black_36dp"
                 android:id="@+id/tv_restaurant_manager_corner2"/>
-            <ToggleButton
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="ToggleButton"
-                android:textSize="10dp"
-                android:textAlignment="center"/>
+
         </LinearLayout>
 
         <LinearLayout
+
             android:layout_weight="1"
             android:id="@+id/manage_L4"
             android:orientation="vertical"
@@ -167,7 +156,7 @@
             android:layout_height="match_parent"
             android:layout_marginBottom="10dp"
             android:layout_marginRight="10dp"
-            android:background="#ffffff"
+            android:background="@drawable/line1"
             >
             <LinearLayout
                 android:layout_width="match_parent"
@@ -175,24 +164,33 @@
                 android:orientation="horizontal">
 
                 <TextView
-                    android:text="순 번"
-                    android:layout_width="wrap_content"
+
+                    android:text=" 순 번"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="3"
                     android:gravity="center"
                     android:textColor="#000000"
                     android:textStyle="bold"/>
                 <TextView
-                    android:text="주문 시간"
-                    android:layout_width="wrap_content"
+                    android:text=" 메 뉴"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight="3"
+                    android:layout_weight="2.5"
                     android:gravity="center"
                     android:textColor="#000000"
                     android:textStyle="bold"/>
                 <TextView
-                    android:text="조리 상태"
-                    android:layout_width="wrap_content"
+                    android:text=" 조리 상태"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2.8"
+                    android:gravity="center"
+                    android:textColor="#000000"
+                    android:textStyle="bold"/>
+                <TextView
+                    android:text=" 수량"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="3"
                     android:gravity="center"
@@ -226,9 +224,11 @@
             android:layout_marginRight="10dp"
             android:layout_marginLeft="10dp"
             android:layout_marginBottom="10dp"
-            android:background="#ffffff"
+            android:background="@drawable/line1"
             >
             <TextView
+                android:layout_marginTop="20dp"
+                android:drawablePadding="5dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="일품"
@@ -238,12 +238,7 @@
                 android:textAlignment="center"
                 android:drawableTop="@drawable/ic_restaurant_menu_black_36dp"
                 android:id="@+id/tv_restaurant_manager_corner3"/>
-            <ToggleButton
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="ToggleButton"
-                android:textSize="10dp"
-                android:textAlignment="center"/>
+
         </LinearLayout>
 
         <LinearLayout
@@ -254,7 +249,7 @@
             android:layout_height="match_parent"
             android:layout_marginBottom="10dp"
             android:layout_marginRight="10dp"
-            android:background="#ffffff"
+            android:background="@drawable/line1"
             >
             <LinearLayout
                 android:layout_width="match_parent"
@@ -262,24 +257,33 @@
                 android:orientation="horizontal">
 
                 <TextView
-                    android:text="순 번"
-                    android:layout_width="wrap_content"
+
+                    android:text=" 순 번"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="3"
                     android:gravity="center"
                     android:textColor="#000000"
                     android:textStyle="bold"/>
                 <TextView
-                    android:text="주문 시간"
-                    android:layout_width="wrap_content"
+                    android:text=" 메 뉴"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight="3"
+                    android:layout_weight="2.5"
                     android:gravity="center"
                     android:textColor="#000000"
                     android:textStyle="bold"/>
                 <TextView
-                    android:text="조리 상태"
-                    android:layout_width="wrap_content"
+                    android:text=" 조리 상태"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2.8"
+                    android:gravity="center"
+                    android:textColor="#000000"
+                    android:textStyle="bold"/>
+                <TextView
+                    android:text=" 수량"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="3"
                     android:gravity="center"

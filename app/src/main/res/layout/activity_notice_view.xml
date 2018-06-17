@@ -13,9 +13,10 @@
         android:layout_height="match_parent"
         android:orientation="vertical"
         android:layout_margin="15dp"
-        android:background="@drawable/colorbrown">
+        android:background="@drawable/linegray">
 
         <LinearLayout
+            android:background="@drawable/line"
             android:layout_marginRight="20dp"
             android:layout_marginLeft="20dp"
             android:layout_marginTop="20dp"
@@ -23,7 +24,7 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal">
             <EditText
-                android:background="#FFFFFf"
+                android:background="@drawable/line"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:textStyle="bold"
@@ -35,6 +36,7 @@
         </LinearLayout>
 
         <LinearLayout
+            android:background="@drawable/line"
             android:layout_marginRight="20dp"
             android:layout_marginLeft="20dp"
             android:layout_marginTop="5dp"
@@ -43,7 +45,7 @@
             android:layout_height="330dp"
             android:orientation="horizontal">
             <EditText
-                android:background="#ffffff"
+                android:background="@drawable/line"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:textSize="18dp"

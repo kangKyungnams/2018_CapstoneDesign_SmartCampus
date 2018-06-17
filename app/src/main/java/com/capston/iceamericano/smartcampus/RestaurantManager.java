@@ -50,8 +50,6 @@ public class RestaurantManager extends AppCompatActivity {
         Intent in = getIntent();
         high_level = in.getExtras().getString("high_level");
 
-        //bind view
-        mTextView = (TextView) findViewById(R.id.textView);
         tv_restaurant_manager_corner1 = (TextView) findViewById(R.id.tv_restaurant_manager_corner1);
         tv_restaurant_manager_corner2 = (TextView) findViewById(R.id.tv_restaurant_manager_corner2);
         tv_restaurant_manager_corner3 = (TextView) findViewById(R.id.tv_restaurant_manager_corner3);
