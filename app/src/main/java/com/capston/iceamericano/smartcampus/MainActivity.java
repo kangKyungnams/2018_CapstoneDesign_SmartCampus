@@ -56,8 +56,10 @@ public class MainActivity extends AppCompatActivity
     private int mCount = COUNT;
     LinearLayout mArea;
     private final static int SPLASH_DELAY = 7000;
-
+    private Context mContext;
     private BackButtonHandler backButtonHandler;
+    private NotificationListener notificationListener;
+
 
     String TAG = "MainActivity";
     String IDtype;
@@ -75,6 +77,8 @@ public class MainActivity extends AppCompatActivity
             plutoconManager = new PlutoconManager(this);
             this.setResult(0, null);
         }
+        mContext = this;
+        notificationListener = new NotificationListener(mContext);
 
         takes = new ArrayList<>();
 
