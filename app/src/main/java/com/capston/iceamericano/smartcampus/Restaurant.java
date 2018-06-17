@@ -65,6 +65,8 @@ public class Restaurant extends AppCompatActivity {
     private Context mmContext;
     private String statuss;
     private Notification mNotification;
+
+    private String beaconName;
 //    View v;
 //
 //
@@ -176,6 +178,7 @@ public class Restaurant extends AppCompatActivity {
             if(!isDiscovered ) {
                 isDiscovered = false;
                 Intent orderIntent = new Intent(Restaurant.this, food.class);
+                orderIntent.putExtra("beaconName",beaconName); // 인텐트로 비콘이름 (coop1 / coop2) 전송
                 Restaurant.this.startActivity(orderIntent);
             }
             else{
@@ -209,16 +212,16 @@ public class Restaurant extends AppCompatActivity {
                         plutoconList.addAll(plutocons);
                         long ms = System.currentTimeMillis();
 
-
-
-                        if (plutocon.getName().equals("CAFETERIA") && plutocon.getRssi() > targetRssi && !isDiscovered) {
+                        if (plutocon.getMajor() == 12 && plutocon.getRssi() > targetRssi && !isDiscovered) {
                             isDiscovered = true;
                             targetPlutocon = plutocon;
                             plutocons.clear();
+                            beaconName = targetPlutocon.getName();
                         }
                         if(targetPlutocon!=null && targetPlutocon.getRssi() < targetRssi){
                             isDiscovered = false;
                             targetPlutocon = null;
+                            beaconName = null;
                         }
                     }
                 });
