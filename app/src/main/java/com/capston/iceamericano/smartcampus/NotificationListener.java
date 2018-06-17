@@ -2,6 +2,8 @@ package com.capston.iceamericano.smartcampus;
 
 import android.content.Context;
 import android.content.Intent;
+import android.util.Log;
+import android.widget.Toast;
 
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
@@ -38,8 +40,8 @@ public class NotificationListener {
 
             @Override
             public void onChildChanged(final DataSnapshot dataSnapshot, String s) {
-                final StatusClass mStatus = dataSnapshot.getValue(StatusClass.class);
-                if(!mStatus.getmStatus().equals(statuss)) {
+                final String mStatus = dataSnapshot.getValue().toString();
+                if(!mStatus.equals(statuss)) {
 
 
                     Intent chatIntent = new Intent(mContext, food.class); //context로 이동

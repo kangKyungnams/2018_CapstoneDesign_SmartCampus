@@ -56,9 +56,9 @@ public class MainActivity extends AppCompatActivity
     private int mCount = COUNT;
     LinearLayout mArea;
     private final static int SPLASH_DELAY = 7000;
-    private Context mContext;
+
     private BackButtonHandler backButtonHandler;
-    private NotificationListener notificationListener;
+
 
 
     String TAG = "MainActivity";
@@ -67,6 +67,7 @@ public class MainActivity extends AppCompatActivity
     FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
     DatabaseReference uReference = FirebaseDatabase.getInstance().getReference();
     DatabaseReference userdata = uReference.child("user");
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -77,8 +78,7 @@ public class MainActivity extends AppCompatActivity
             plutoconManager = new PlutoconManager(this);
             this.setResult(0, null);
         }
-        mContext = this;
-        notificationListener = new NotificationListener(mContext);
+
 
         takes = new ArrayList<>();
 
@@ -101,6 +101,9 @@ public class MainActivity extends AppCompatActivity
         cut_index = cut_char.indexOf("@");
         String  value= user.getEmail().substring(0, cut_index);
         DatabaseReference userLecture = userdata.child(value);
+
+
+
 
         //접속 계정의 강의 목록 불러오기
         userLecture.addListenerForSingleValueEvent(new ValueEventListener() {

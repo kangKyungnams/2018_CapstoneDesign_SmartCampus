@@ -20,8 +20,12 @@ import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.Spinner;
 
+import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.kongtech.plutocon.sdk.Plutocon;
 import com.kongtech.plutocon.sdk.PlutoconManager;
 
@@ -47,9 +51,20 @@ public class Restaurant extends AppCompatActivity {
     private int mCount = COUNT;
     private final static int SPLASH_DELAY = 2000;
 
-
+    private Context mContext;
 
     private Button bt_restaurant_order, bt_restaurant_charge, bt_restaurant_mypage;
+
+
+
+
+
+
+    private FirebaseDatabase mFirebaseDatabase;
+    private DatabaseReference mDatabaseReference;
+    private Context mmContext;
+    private String statuss;
+    private Notification mNotification;
 //    View v;
 //
 //
@@ -77,7 +92,83 @@ public class Restaurant extends AppCompatActivity {
 
             bt_restaurant_order.setOnClickListener(order);
             bt_restaurant_charge.setOnClickListener(charge);
+
+
+
+            mFirebaseDatabase = FirebaseDatabase.getInstance();
+            mDatabaseReference = mFirebaseDatabase.getReference("order").child("coop0001").child("뚝배기").child("2018-06-17").child("2013112140").child("status");
+            mNotification = new Notification(this);
+            statuss = "미완성";
+            foodListener();
+//            notificationListener = new NotificationListener(mContext);
+//            notificationListener.foodListener();
+
+
         }
+
+
+
+    public void foodListener(){
+            mDatabaseReference.addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(DataSnapshot dataSnapshot) {
+                final String mStatus = dataSnapshot.getValue().toString();
+                Toast.makeText(Restaurant.this,mStatus,Toast.LENGTH_SHORT).show();
+                if(!mStatus.equals(statuss)) {
+
+                    Intent chatIntent = new Intent(Restaurant.this, food.class); //context로 이동
+//                chatIntent.putExtra("chat_id", updatedChat.getChatId());
+                    mNotification
+                            .setData(chatIntent)
+                            .setTitle("동국대학교 SmartCampus")
+                            .setText("주문하신 음식이 완료되었습니다.")
+                            .notification();
+                }
+            }
+
+                @Override
+                public void onCancelled(DatabaseError databaseError) {
+
+                }
+            });
+//        mDatabaseReference.addValueEventListener(new ValueEventListener() {
+//            @Override
+//            public void onChildAdded(final DataSnapshot dataSnapshot, String s) {
+//
+//            }
+//
+//            @Override
+//            public void onChildChanged(final DataSnapshot dataSnapshot, String s) {
+//                final String mStatus = dataSnapshot.getValue().toString();
+//                Toast.makeText(Restaurant.this,mStatus,Toast.LENGTH_SHORT).show();
+//                if(!mStatus.equals(statuss)) {
+//
+//                    Intent chatIntent = new Intent(Restaurant.this, food.class); //context로 이동
+////                chatIntent.putExtra("chat_id", updatedChat.getChatId());
+//                    mNotification
+//                            .setData(chatIntent)
+//                            .setTitle("동국대학교 SmartCampus")
+//                            .setText("주문하신 음식이 완료되었습니다.")
+//                            .notification();
+//                }
+//            }
+//
+//            @Override
+//            public void onChildRemoved(DataSnapshot dataSnapshot) {
+//
+//            }
+//
+//            @Override
+//            public void onChildMoved(DataSnapshot dataSnapshot, String s) {
+//
+//            }
+//
+//            @Override
+//            public void onCancelled(DatabaseError databaseError) {
+//
+//            }
+//        });
+    }
 
     Button.OnClickListener order = new Button.OnClickListener() {
         @Override
