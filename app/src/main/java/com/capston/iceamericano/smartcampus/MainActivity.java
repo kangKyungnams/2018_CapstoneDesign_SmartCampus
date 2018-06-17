@@ -105,6 +105,14 @@ public class MainActivity extends AppCompatActivity
                 // This method is called once with the initial value and again
                 // whenever data at this location is updated.
                 IDtype = dataSnapshot.child("type").getValue().toString();
+                if(IDtype.equals("manager"))
+                {
+                    String high_level = dataSnapshot.child("cafeteria_id").getValue().toString();
+                    Intent manager_mode = new Intent(MainActivity.this, RestaurantManager.class);
+                    manager_mode.putExtra("high_level",high_level);
+                    MainActivity.this.startActivity(manager_mode);
+                    finish();
+                }
                 if(IDtype.equals("professor"))
                 {
                     for(DataSnapshot dataSnapshot2: dataSnapshot.child("takes").getChildren())
