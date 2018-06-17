@@ -59,12 +59,15 @@ public class MainActivity extends AppCompatActivity
 
     private BackButtonHandler backButtonHandler;
 
+
+
     String TAG = "MainActivity";
     String IDtype;
     ArrayList<String> takes;
     FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
     DatabaseReference uReference = FirebaseDatabase.getInstance().getReference();
     DatabaseReference userdata = uReference.child("user");
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -75,6 +78,7 @@ public class MainActivity extends AppCompatActivity
             plutoconManager = new PlutoconManager(this);
             this.setResult(0, null);
         }
+
 
         takes = new ArrayList<>();
 
@@ -97,6 +101,9 @@ public class MainActivity extends AppCompatActivity
         cut_index = cut_char.indexOf("@");
         String  value= user.getEmail().substring(0, cut_index);
         DatabaseReference userLecture = userdata.child(value);
+
+
+
 
         //접속 계정의 강의 목록 불러오기
         userLecture.addListenerForSingleValueEvent(new ValueEventListener() {
