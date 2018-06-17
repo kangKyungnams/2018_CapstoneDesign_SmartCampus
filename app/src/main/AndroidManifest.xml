@@ -132,16 +132,6 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".FoodList"
-            android:label="주문하기"
-            android:theme="@style/AppTheme">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.BROWSABLE" />
-            </intent-filter>
-        </activity>
-        <activity
             android:name=".food"
             android:label="메뉴"
             android:theme="@style/AppTheme">

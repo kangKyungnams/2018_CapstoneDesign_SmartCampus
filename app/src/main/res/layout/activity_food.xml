@@ -20,7 +20,8 @@
             android:layout_weight="3"
             android:gravity="center"
             android:textColor="#000000"
-            android:textStyle="bold"/>
+            android:textStyle="bold"
+            android:id="@+id/foodMenu_time_section"/>
         <TextView
             android:text="일품코너"
             android:layout_width="wrap_content"
@@ -28,7 +29,8 @@
             android:layout_weight="3"
             android:gravity="center"
             android:textColor="#000000"
-            android:textStyle="bold"/>
+            android:textStyle="bold"
+            android:id="@+id/foodMenu_restaurant_name"/>
         <TextView
             android:text="17:00-19:00"
             android:layout_width="wrap_content"
@@ -36,7 +38,8 @@
             android:layout_weight="3"
             android:gravity="center"
             android:textColor="#000000"
-            android:textStyle="bold"/>
+            android:textStyle="bold"
+            android:id="@+id/foodMenu_date"/>
         <TextView
             android:text="고등어 무조림"
             android:layout_width="wrap_content"
@@ -44,7 +47,17 @@
             android:layout_weight="10"
             android:gravity="center"
             android:textColor="#000000"
-            android:textStyle="bold"/>
+            android:textStyle="bold"
+            android:id="@+id/foodMenu_menu_name"/>
+        <TextView
+            android:text="10000원"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="10"
+            android:gravity="center"
+            android:textColor="#000000"
+            android:textStyle="bold"
+            android:id="@+id/foodMenu_price"/>
 
     </LinearLayout>
 </android.support.constraint.ConstraintLayout>
