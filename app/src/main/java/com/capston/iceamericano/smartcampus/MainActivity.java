@@ -247,7 +247,7 @@ public class MainActivity extends AppCompatActivity
                         plutoconList.addAll(plutocons);
 
 //targetPlutocon.getMacAddress())
-                        if (plutocon.getName().equals("CLASSROOM") && plutocon.getRssi() > targetRssi && !isDiscovered) {
+                        if (plutocon.getMajor()==13 && plutocon.getRssi() > targetRssi && !isDiscovered) {
 
                             isDiscovered = true;
                             if(flag == false) {

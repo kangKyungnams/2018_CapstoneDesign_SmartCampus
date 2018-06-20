@@ -41,6 +41,8 @@ public class food extends AppCompatActivity {
     DatabaseReference uReference = FirebaseDatabase.getInstance().getReference();
     DatabaseReference userdata = uReference.child("menu");
     LinearLayout L1,L2,L3;
+    private String beaconName;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,6 +50,10 @@ public class food extends AppCompatActivity {
         setContentView(R.layout.activity_food_list);
 
         database = FirebaseDatabase.getInstance();
+
+        Intent mIntent = getIntent();
+        beaconName = mIntent.getStringExtra("beaconName");
+
 
 
         bt_food_list1 = (Button) findViewById(R.id.bt_food_list1);
@@ -90,9 +96,10 @@ public class food extends AppCompatActivity {
 //        String  value= user.getEmail().substring(0, cut_index);
 //        DatabaseReference userLecture = userdata.child(value);
 
-        String value= "coop0001";
 
-        DatabaseReference userLecture = userdata.child(value);
+
+        DatabaseReference userLecture = userdata.child(beaconName);
+            //DatabaseReference userLecture = userdata.child(beaconName);
         userLecture.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
@@ -102,28 +109,26 @@ public class food extends AppCompatActivity {
                 long now = System.currentTimeMillis();
                 Date date = new Date(now);
                 SimpleDateFormat sdfNow = new SimpleDateFormat("yyyy-MM-dd");
-                nowDate= sdfNow.format(date);
+                nowDate = sdfNow.format(date);
 
-                for (DataSnapshot dataSnapshot2: dataSnapshot.getChildren()){
+                for (DataSnapshot dataSnapshot2 : dataSnapshot.getChildren()) {
 
                     int cut_index;
                     String cut_char = dataSnapshot2.getKey().toString();
                     cut_index = cut_char.indexOf(":");
-                    String foodMenu_date = cut_char.substring(0,cut_index);
+                    String foodMenu_date = cut_char.substring(0, cut_index);
 
                     high_level = dataSnapshot.getKey().toString();
-                    if(foodMenu_date.equals(nowDate))
-                    {
-                        String foodMenu_time_section = cut_char.substring(cut_index+1,cut_char.length());
+                    if (foodMenu_date.equals(nowDate)) {
+                        String foodMenu_time_section = cut_char.substring(cut_index + 1, cut_char.length());
 
-                        for(DataSnapshot dataSnapshot3: dataSnapshot2.getChildren())
-                        {
+                        for (DataSnapshot dataSnapshot3 : dataSnapshot2.getChildren()) {
                             String foodMenu_restaurant_name = dataSnapshot3.getKey().toString();
                             String foodMenu_menu_name = dataSnapshot3.child("food_name").getValue().toString();
                             String foodMenu_price = dataSnapshot3.child("price").getValue().toString();
                             price_Get.add(Integer.parseInt(foodMenu_price));
 
-                            foodMenu foodMenu1 =  new foodMenu(foodMenu_restaurant_name,foodMenu_menu_name,foodMenu_price,foodMenu_date,foodMenu_time_section);
+                            foodMenu foodMenu1 = new foodMenu(foodMenu_restaurant_name, foodMenu_menu_name, foodMenu_price, foodMenu_date, foodMenu_time_section);
                             // [START_EXCLUDE]
                             // Update RecyclerView
 

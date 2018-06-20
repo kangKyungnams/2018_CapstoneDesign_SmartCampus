@@ -186,8 +186,8 @@ public class AttCheckActivity extends AppCompatActivity {
         if(!getServiceTaskName()) {
 
             super.onResume();
-            Toast msg = Toast.makeText(AttCheckActivity.this, "못빠져나옴", Toast.LENGTH_SHORT);
-            msg.show();
+            //Toast msg = Toast.makeText(AttCheckActivity.this, "못빠져나옴", Toast.LENGTH_SHORT);
+            //msg.show();
             plutoconManager.connectService(new PlutoconManager.OnReadyServiceListener() {
                 @Override
                 public void onReady() {
@@ -197,8 +197,8 @@ public class AttCheckActivity extends AppCompatActivity {
         }
         else{
             super.onResume();
-            Toast msg = Toast.makeText(AttCheckActivity.this, "빠져나옴", Toast.LENGTH_SHORT);
-            msg.show();
+            //Toast msg = Toast.makeText(AttCheckActivity.this, "빠져나옴", Toast.LENGTH_SHORT);
+            //msg.show();
         }
 
     }

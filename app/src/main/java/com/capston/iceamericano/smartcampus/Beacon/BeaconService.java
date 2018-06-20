@@ -27,7 +27,7 @@ import java.util.List;
  */
 
 public class BeaconService extends Service {
-    private final int OFFSET_RSSI = -80;
+    private final int OFFSET_RSSI = -70;
     private final int COUNT = 0;
     private final String CLASS_ROOM = "ED:6F:DE:A3:D5:56";
     private final String CAFETERIA = "EB:BA:54:08:89:BB";
@@ -52,6 +52,7 @@ public class BeaconService extends Service {
     public BeaconService(){
 
     }
+
     @Override
     public IBinder onBind(Intent intent){
 
@@ -87,8 +88,8 @@ public class BeaconService extends Service {
 
 //출석 중 노티알림
         Notification notiEx = new NotificationCompat.Builder(BeaconService.this)
-                .setContentTitle("동국대학교 스마트캠퍼스(" + ")" )
-                .setContentText(  " 과목 출석이 진행중입니다. ("+String.valueOf(mCount)+"%)")
+                .setContentTitle("동국대학교 SmartCampus")
+                .setContentText( "출석이 진행중입니다. ("+String.valueOf(mCount)+"%)")
                 .setSmallIcon(R.mipmap.ic_launcher)
                 .build();
 
@@ -136,8 +137,8 @@ public class BeaconService extends Service {
 
                                         //노티 업데이트
                                         Notification notiEx = new NotificationCompat.Builder(BeaconService.this)
-                                                .setContentTitle("동국대학교 스마트캠퍼스("  + ")" )
-                                                .setContentText( "과목 출석이 진행중입니다. ("+String.valueOf(mCount)+"%)")
+                                                .setContentTitle("동국대학교 SmartCampus" )
+                                                .setContentText( "출석이 진행중입니다. ("+String.valueOf(mCount)+"%)")
                                                 .setSmallIcon(R.mipmap.ic_launcher)
                                                 .build();
                                         //background에서 foreground로 전환
@@ -157,7 +158,7 @@ public class BeaconService extends Service {
                             }, SPLASH_DELAY);
 
                         }//ms - plutocon.getLastSeenMillis()>10000
-                        if(targetPlutocon!=null && ms - targetPlutocon.getLastSeenMillis()>100000) {
+                        if(targetPlutocon!=null && ms - targetPlutocon.getLastSeenMillis()>30000) {
                             Toast.makeText(BeaconService.this, String.valueOf(ms - targetPlutocon.getLastSeenMillis()), Toast.LENGTH_SHORT).show();
                             attendance.child(lectureID).child(lectureDateKey).child("status").setValue("무단이탈");
                             stopSelf();

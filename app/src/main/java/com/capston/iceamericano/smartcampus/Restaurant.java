@@ -40,7 +40,7 @@ import android.widget.Toast;
 
 public class Restaurant extends AppCompatActivity {
 
-    private final int OFFSET_RSSI = -50;
+    private final int OFFSET_RSSI = -60;
     private final int COUNT = 0;
     private PlutoconManager plutoconManager;
     private Plutocon targetPlutocon;
@@ -175,11 +175,12 @@ public class Restaurant extends AppCompatActivity {
     Button.OnClickListener order = new Button.OnClickListener() {
         @Override
         public void onClick(View v) {
-            if(!isDiscovered ) {
+            if(isDiscovered ) {
                 isDiscovered = false;
                 Intent orderIntent = new Intent(Restaurant.this, food.class);
-                orderIntent.putExtra("beaconName",beaconName); // 인텐트로 비콘이름 (coop1 / coop2) 전송
-                Restaurant.this.startActivity(orderIntent);
+                orderIntent.putExtra("beaconName",beaconName); // 인텐트로 비콘이름 (coop1 / coop3) 전송
+                if(beaconName != null)
+                    Restaurant.this.startActivity(orderIntent);
             }
             else{
                 Toast msg = Toast.makeText(Restaurant.this, "주변에 식당이 존재하지않습니다", Toast.LENGTH_SHORT);

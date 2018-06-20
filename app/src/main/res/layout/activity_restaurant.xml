@@ -68,16 +68,7 @@
                     android:textStyle="bold"
                     android:textColor="#000000"
                     android:background="@drawable/linepink" />
-                <Button
-                    android:id="@+id/bt_restaurant_mypage"
-                    android:layout_marginTop="40dp"
-                    android:layout_width="match_parent"
-                    android:layout_height="55dp"
-                    android:text=" 마 이 페 이 지 "
-                    android:textSize="20dp"
-                    android:textStyle="bold"
-                    android:textColor="#000000"
-                    android:background="@drawable/linepink" />
+
 
             </LinearLayout>
 
