@@ -89,7 +89,8 @@
             android:textStyle="bold"
             android:textColor="#ffffff"
             android:gravity="center"
-            android:id="@+id/attStart"/>
+            android:id="@+id/attStart"
+            android:visibility="invisible"/>
 
     </LinearLayout>
 

@@ -27,7 +27,7 @@ import java.util.List;
  */
 
 public class BeaconService extends Service {
-    private final int OFFSET_RSSI = -70;
+    private final int OFFSET_RSSI = -60;
     private final int COUNT = 0;
     private final String CLASS_ROOM = "ED:6F:DE:A3:D5:56";
     private final String CAFETERIA = "EB:BA:54:08:89:BB";
@@ -120,7 +120,7 @@ public class BeaconService extends Service {
                         long ms = System.currentTimeMillis();
                         plutoconAdapter.refresh();
 
-                        if (plutocon.getName().equals("CAFETERIA") && plutocon.getRssi() > targetRssi && !isDiscovered) {
+                        if (plutocon.getMajor()==13 && plutocon.getRssi() > targetRssi && !isDiscovered) {
                             targetPlutocon = plutocon;
                             isDiscovered = true;
                             //Toast.makeText(BeaconService.this, String.valueOf(ms - plutocon.getLastSeenMillis()), Toast.LENGTH_SHORT).show();
@@ -129,7 +129,7 @@ public class BeaconService extends Service {
                                 public void run() {
                                     if (isDiscovered) {
 
-                                        mCount+=5;
+                                        mCount+=1;
                                         isDiscovered = false;
 //                                        Toast msg = Toast.makeText(BeaconService.this, "됐다! "+mCount, Toast.LENGTH_SHORT);
 //                                        msg.show();
@@ -144,7 +144,7 @@ public class BeaconService extends Service {
                                         //background에서 foreground로 전환
                                         startForeground(1,notiEx);
 
-                                        if(mCount>20 /*|| 교수가 출석 종료시*/  ){
+                                        if(mCount>=50 /*|| 교수가 출석 종료시*/  ){
                                             attendance.child(lectureID).child(lectureDateKey).child("status").setValue("출석완료");
                                             stopSelf();
                                             //출석완료시 자동종료
@@ -159,7 +159,7 @@ public class BeaconService extends Service {
 
                         }//ms - plutocon.getLastSeenMillis()>10000
                         if(targetPlutocon!=null && ms - targetPlutocon.getLastSeenMillis()>30000) {
-                            Toast.makeText(BeaconService.this, String.valueOf(ms - targetPlutocon.getLastSeenMillis()), Toast.LENGTH_SHORT).show();
+//                            Toast.makeText(BeaconService.this, String.valueOf(ms - targetPlutocon.getLastSeenMillis()), Toast.LENGTH_SHORT).show();
                             attendance.child(lectureID).child(lectureDateKey).child("status").setValue("무단이탈");
                             stopSelf();
                         }

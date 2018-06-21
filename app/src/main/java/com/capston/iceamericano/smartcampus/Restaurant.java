@@ -89,7 +89,6 @@ public class Restaurant extends AppCompatActivity {
 
             bt_restaurant_order = (Button) findViewById(R.id.bt_restaurant_order);
             bt_restaurant_charge = (Button) findViewById(R.id.bt_restaurant_charge);
-            bt_restaurant_mypage = (Button) findViewById(R.id.bt_restaurant_mypage);
 
 
             bt_restaurant_order.setOnClickListener(order);
@@ -98,7 +97,7 @@ public class Restaurant extends AppCompatActivity {
 
 
             mFirebaseDatabase = FirebaseDatabase.getInstance();
-            mDatabaseReference = mFirebaseDatabase.getReference("order").child("coop0001").child("뚝배기").child("2018-06-17").child("2013112140").child("status");
+            mDatabaseReference = mFirebaseDatabase.getReference("order").child("coop0001").child("뚝배기").child("2018-06-21").child("2013112140").child("status");
             mNotification = new Notification(this);
             statuss = "미완성";
             foodListener();
@@ -114,18 +113,23 @@ public class Restaurant extends AppCompatActivity {
             mDatabaseReference.addValueEventListener(new ValueEventListener() {
                 @Override
                 public void onDataChange(DataSnapshot dataSnapshot) {
-                final String mStatus = dataSnapshot.getValue().toString();
-                Toast.makeText(Restaurant.this,mStatus,Toast.LENGTH_SHORT).show();
-                if(!mStatus.equals(statuss)) {
+                    try {
+                        final String mStatus = dataSnapshot.getValue().toString();
+//                Toast.makeText(Restaurant.this,mStatus,Toast.LENGTH_SHORT).show();
+                        if (!mStatus.equals(statuss)) {
 
-                    Intent chatIntent = new Intent(Restaurant.this, food.class); //context로 이동
+                            Intent chatIntent = new Intent(Restaurant.this, food.class); //context로 이동
 //                chatIntent.putExtra("chat_id", updatedChat.getChatId());
-                    mNotification
-                            .setData(chatIntent)
-                            .setTitle("동국대학교 SmartCampus")
-                            .setText("주문하신 음식이 완료되었습니다.")
-                            .notification();
-                }
+                            mNotification
+                                    .setData(chatIntent)
+                                    .setTitle("동국대학교 SmartCampus")
+                                    .setText("주문하신 음식이 완료되었습니다.")
+                                    .notification();
+                        }
+                    }
+                    catch (Exception e){
+
+                    }
             }
 
                 @Override
