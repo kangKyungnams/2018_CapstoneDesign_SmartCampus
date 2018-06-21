@@ -56,13 +56,13 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(R.layout.activity_login);
         ed_ID = (EditText) findViewById(R.id.ed_ID);
         ed_PW = (EditText) findViewById(R.id.ed_PW);
-        registerButton = (Button) findViewById(R.id.registerButton);
+        //registerButton = (Button) findViewById(R.id.registerButton);
         loginButton = (Button) findViewById(R.id.loginButton);
         PWmod_Button = (Button) findViewById(R.id.PWmod_Button);
 
         mAuth = FirebaseAuth.getInstance();
 
-        registerButton.setOnClickListener(register);
+//        registerButton.setOnClickListener(register);
         loginButton.setOnClickListener(login);
 
         backButtonHandler = new BackButtonHandler(this);
@@ -140,15 +140,15 @@ public class LoginActivity extends AppCompatActivity {
     }
 
 
-    Button.OnClickListener register = new Button.OnClickListener() {
-        @Override
-        public void onClick(View v) { // 버튼에 로그인 기능 입히기
-
-                Intent registerIntent = new Intent(LoginActivity.this, RegisterActivity.class);
-                LoginActivity.this.startActivity(registerIntent);
-
-        }
-    };
+//    Button.OnClickListener register = new Button.OnClickListener() {
+//        @Override
+//        public void onClick(View v) { // 버튼에 로그인 기능 입히기
+//
+//                Intent registerIntent = new Intent(LoginActivity.this, RegisterActivity.class);
+//                LoginActivity.this.startActivity(registerIntent);
+//
+//        }
+//    };
 
     Button.OnClickListener login = new Button.OnClickListener() {
         @Override
