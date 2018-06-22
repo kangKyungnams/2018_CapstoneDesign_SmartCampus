@@ -305,9 +305,7 @@ public class MainActivity extends AppCompatActivity{
             if(rsi.service.getClassName().equals("com.capston.iceamericano.smartcampus.Beacon.BeaconService")){
                 checked = true;
             }
-
         }
-
         return checked;
     }
 
