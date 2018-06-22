@@ -95,6 +95,8 @@ public class AttAdapter extends RecyclerView.Adapter<AttAdapter.ViewHolder> {
                     mIntent.putExtra("lectureDateKey", mList.get(position).getLectureDateKey());
                     if(mList.get(position).getLectureID().equals("2018:1:INC4084:02")) {
                         mServiceName = context.startService(mIntent);
+                    }
+                    else {
                         Toast.makeText(context, "일치하지 않는 강의실입니다.", Toast.LENGTH_SHORT).show();
                     }
                 } else {

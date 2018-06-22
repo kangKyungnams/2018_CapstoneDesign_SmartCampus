@@ -20,6 +20,8 @@ import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.Spinner;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -59,7 +61,7 @@ public class Restaurant extends AppCompatActivity {
 
 
 
-
+    FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
     private FirebaseDatabase mFirebaseDatabase;
     private DatabaseReference mDatabaseReference;
     private Context mmContext;
@@ -95,9 +97,14 @@ public class Restaurant extends AppCompatActivity {
             bt_restaurant_charge.setOnClickListener(charge);
 
 
+            int cut_index;
+            String cut_char = user.getEmail();
+            cut_index = cut_char.indexOf("@");
+            String  value= user.getEmail().substring(0, cut_index);
+
 
             mFirebaseDatabase = FirebaseDatabase.getInstance();
-            mDatabaseReference = mFirebaseDatabase.getReference("order").child("coop0001").child("뚝배기").child("2018-06-21").child("2013112140").child("status");
+            mDatabaseReference = mFirebaseDatabase.getReference("order").child("coop0001").child("뚝배기").child("2018-06-22").child(value).child("status");
             mNotification = new Notification(this);
             statuss = "미완성";
             foodListener();

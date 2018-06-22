@@ -27,7 +27,7 @@ import java.util.List;
  */
 
 public class BeaconService extends Service {
-    private final int OFFSET_RSSI = -60;
+    private final int OFFSET_RSSI = -55;
     private final int COUNT = 0;
     private final String CLASS_ROOM = "ED:6F:DE:A3:D5:56";
     private final String CAFETERIA = "EB:BA:54:08:89:BB";
