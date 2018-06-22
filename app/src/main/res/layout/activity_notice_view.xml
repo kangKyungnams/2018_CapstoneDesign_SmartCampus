@@ -8,6 +8,18 @@
     android:background="#fbfbef"
     tools:context=".EnrollNotice">
 
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="58dp"
+        android:text="공지 확인"
+        android:gravity="center"
+        android:background="@color/colorPrimary"
+        android:textStyle="bold"
+        android:textSize="21dp"
+        android:textColor="@color/colorPrimaryDark"
+        android:id="@+id/tv_att_check_lectureName"
+        />
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -68,7 +80,7 @@
                 android:background="#3f88f5"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:text="등록"
+                android:text="확인"
                 android:layout_weight="1"
                 android:layout_marginRight="5dp"
                 android:id="@+id/bt_notice_enroll"/>

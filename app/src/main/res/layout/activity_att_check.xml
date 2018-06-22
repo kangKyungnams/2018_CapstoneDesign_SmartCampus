@@ -69,7 +69,7 @@
             android:textColor="#000000"
             android:gravity="center"
             android:id="@+id/tv_att_fail_num"
-           />
+            />
     </LinearLayout>
 
     <LinearLayout
@@ -82,11 +82,12 @@
         android:layout_marginRight="17dp">
         <Button
             android:background="@drawable/lineblue"
-            android:layout_width="330dp"
-            android:layout_height="38dp"
+            android:layout_width="280dp"
+            android:layout_height="20dp"
             android:layout_gravity="center"
             android:text="출석하기"
             android:textStyle="bold"
+            android:textSize="10dp"
             android:textColor="#ffffff"
             android:gravity="center"
             android:id="@+id/attStart"
@@ -112,14 +113,14 @@
                 android:text="NO."
                 android:textSize="13dp"
                 android:gravity="center"
-                android:layout_width="58dp"
+                android:layout_width="45dp"
                 android:layout_height="35dp"
                 android:textColor="#000000"
                 android:textStyle="bold"/>
             <TextView
                 android:text="이 름"
                 android:textSize="13dp"
-                android:layout_width="48dp"
+                android:layout_width="60dp"
                 android:layout_height="35dp"
                 android:gravity="center"
                 android:textColor="#000000"
@@ -127,7 +128,7 @@
             <TextView
                 android:text="날 짜"
                 android:textSize="13dp"
-                android:layout_width="110dp"
+                android:layout_width="115dp"
                 android:layout_height="35dp"
                 android:gravity="center"
                 android:textColor="#000000"
@@ -146,8 +147,7 @@
             android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_margin="10dp"
-            android:background="#ffffff"
+            android:background="@drawable/line1"
             >
 
             <!-- A RecyclerView with some commonly used attributes -->

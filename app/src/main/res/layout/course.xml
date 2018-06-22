@@ -4,7 +4,9 @@
     android:layout_height="wrap_content"
     android:orientation="horizontal"
     android:dividerPadding="1dp"
+    android:layout_marginTop="10dp"
     android:divider="#000000"
+    android:background="@drawable/line1"
     >
 
     <LinearLayout
@@ -13,6 +15,8 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
         <LinearLayout
+            android:layout_marginTop="3dp"
+            android:layout_marginLeft="3dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
@@ -49,10 +53,12 @@
         </LinearLayout>
 
         <LinearLayout
+            android:layout_marginBottom="3dp"
+            android:layout_marginLeft="3dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:background="#ffffff">
+            android:background="#f1f1f1">
 
             <TextView
                 android:paddingLeft="5dp"
@@ -64,7 +70,7 @@
                 android:layout_gravity="center"
                 android:textColor="#000000"
                 android:textStyle="bold"
-            android:paddingRight="10dp"/>
+                android:paddingRight="10dp"/>
             <TextView
                 android:text="asdasd"
                 android:paddingRight="7dp"
@@ -87,17 +93,22 @@
 
 
     <LinearLayout
+        android:layout_margin="1dp"
         android:layout_weight="2"
         android:layout_width="match_parent"
+        android:orientation="vertical"
         android:layout_height="match_parent">
 
         <Button
+            android:layout_margin="5dp"
             android:layout_weight="1"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:gravity="center"
             android:layout_gravity="center"
             android:text="바로 가기"
+            android:textStyle="bold"
+            android:background="@drawable/line"
             android:id="@+id/course_List_info_button"
             android:layout_marginRight="3dp"
             android:layout_marginLeft="3dp"

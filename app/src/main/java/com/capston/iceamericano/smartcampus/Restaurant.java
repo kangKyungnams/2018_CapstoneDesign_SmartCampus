@@ -53,7 +53,7 @@ public class Restaurant extends AppCompatActivity {
 
     private Context mContext;
 
-    private Button bt_restaurant_order, bt_restaurant_charge, bt_restaurant_mypage;
+    private Button bt_restaurant_order, bt_restaurant_charge, bt_restaurant_balance;
 
 
 
@@ -89,7 +89,7 @@ public class Restaurant extends AppCompatActivity {
 
             bt_restaurant_order = (Button) findViewById(R.id.bt_restaurant_order);
             bt_restaurant_charge = (Button) findViewById(R.id.bt_restaurant_charge);
-
+            bt_restaurant_balance = (Button) findViewById(R.id.bt_restaurant_balance);
 
             bt_restaurant_order.setOnClickListener(order);
             bt_restaurant_charge.setOnClickListener(charge);
@@ -104,6 +104,13 @@ public class Restaurant extends AppCompatActivity {
 //            notificationListener = new NotificationListener(mContext);
 //            notificationListener.foodListener();
 
+            bt_restaurant_balance.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent chargeIntent = new Intent(Restaurant.this, Mypage.class);
+                    Restaurant.this.startActivity(chargeIntent);
+                }
+            });
 
         }
 
@@ -175,6 +182,8 @@ public class Restaurant extends AppCompatActivity {
 //            }
 //        });
     }
+
+
 
     Button.OnClickListener order = new Button.OnClickListener() {
         @Override

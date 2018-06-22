@@ -38,11 +38,11 @@ import com.kongtech.plutocon.sdk.PlutoconManager;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener{
+public class MainActivity extends AppCompatActivity{
+//        implements NavigationView.OnNavigationItemSelectedListener{
 
 
-//비콘
+    //비콘
     private final int OFFSET_RSSI = -80;
     private final int COUNT = 0;
     private final String CLASS_ROOM = "ED:6F:DE:A3:D5:56";
@@ -87,14 +87,12 @@ public class MainActivity extends AppCompatActivity
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
-                this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
-        drawer.addDrawerListener(toggle);
-        toggle.syncState();
+//        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+//        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
+//                this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+//        drawer.addDrawerListener(toggle);
+//        toggle.syncState();
 
-        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
-        navigationView.setNavigationItemSelectedListener(this);
 
         int cut_index;
         String cut_char = user.getEmail();
@@ -173,52 +171,52 @@ public class MainActivity extends AppCompatActivity
         });
 
     }
-    public boolean onNavigationItemSelected (MenuItem item){
-        int id = item.getItemId();
-
-
-
-        if (id == R.id.nav_myinfo) {
-            Intent myinfo1 = new Intent(MainActivity.this, Mypage.class);
-            MainActivity.this.startActivity(myinfo1);
-        } else if (id == R.id.nav_course) {
-            Intent course1 = new Intent(MainActivity.this, Course.class);
-            MainActivity.this.startActivity(course1);
-        } else if (id == R.id.nav_restaurant) {
-            Intent restaurant1 = new Intent(MainActivity.this, Restaurant.class);
-            MainActivity.this.startActivity(restaurant1);
-        } else if (id == R.id.nav_appinfo) {
-            Intent appinfo1 = new Intent(MainActivity.this, Appinfo.class);
-            MainActivity.this.startActivity(appinfo1);
-        }
-
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        drawer.closeDrawer(GravityCompat.START);
-        return true;
-    }
-    public boolean onCreateOptionsMenu (Menu menu){
-        // Inflate the menu; this adds items to the action bar if it is present.
-
-        MenuInflater inflater = getMenuInflater();
-
-        getMenuInflater().inflate(R.menu.main, menu);
-        return true;
-    }
-    @Override
-    public boolean onOptionsItemSelected (MenuItem item){
-
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_logout) {
-            Toast.makeText(MainActivity.this, "로그아웃 되었습니다.", Toast.LENGTH_SHORT).show();
-
-            return true;
-        }
-        return super.onOptionsItemSelected(item);
-    }
+//    public boolean onNavigationItemSelected (MenuItem item){
+//        int id = item.getItemId();
+//
+//
+//
+//        if (id == R.id.nav_myinfo) {
+//            Intent myinfo1 = new Intent(MainActivity.this, Mypage.class);
+//            MainActivity.this.startActivity(myinfo1);
+//        } else if (id == R.id.nav_course) {
+//            Intent course1 = new Intent(MainActivity.this, Course.class);
+//            MainActivity.this.startActivity(course1);
+//        } else if (id == R.id.nav_restaurant) {
+//            Intent restaurant1 = new Intent(MainActivity.this, Restaurant.class);
+//            MainActivity.this.startActivity(restaurant1);
+//        } else if (id == R.id.nav_appinfo) {
+//            Intent appinfo1 = new Intent(MainActivity.this, Appinfo.class);
+//            MainActivity.this.startActivity(appinfo1);
+//        }
+//
+//        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+//        drawer.closeDrawer(GravityCompat.START);
+//        return true;
+//    }
+//    public boolean onCreateOptionsMenu (Menu menu){
+//        // Inflate the menu; this adds items to the action bar if it is present.
+//
+//        MenuInflater inflater = getMenuInflater();
+//
+//        getMenuInflater().inflate(R.menu.main, menu);
+//        return true;
+//    }
+//    @Override
+//    public boolean onOptionsItemSelected (MenuItem item){
+//
+//        // Handle action bar item clicks here. The action bar will
+//        // automatically handle clicks on the Home/Up button, so long
+//        // as you specify a parent activity in AndroidManifest.xml.
+//        int id = item.getItemId();
+//        //noinspection SimplifiableIfStatement
+//        if (id == R.id.action_logout) {
+//            Toast.makeText(MainActivity.this, "로그아웃 되었습니다.", Toast.LENGTH_SHORT).show();
+//
+//            return true;
+//        }
+//        return super.onOptionsItemSelected(item);
+//    }
 
 
     @Override

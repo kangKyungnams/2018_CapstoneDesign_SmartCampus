@@ -7,6 +7,18 @@
     android:orientation="vertical"
     android:background="@color/colorlightYello"
     tools:context=".FoodList">
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="58dp"
+        android:text="주문하기"
+        android:gravity="center"
+        android:background="@color/colorPrimary"
+        android:textStyle="bold"
+        android:textSize="21dp"
+        android:textColor="@color/colorPrimaryDark"
+        android:id="@+id/tv_att_check_lectureName"
+        />
+
 
     <TextView
         android:layout_marginTop="10dp"
@@ -44,54 +56,54 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
-        <LinearLayout
-            android:id="@+id/L1"
-            android:visibility="invisible"
-            android:background="@drawable/line1"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
-            android:layout_marginTop="10dp"
-            android:layout_width="match_parent"
-            android:layout_height="35dp"
-            android:orientation="horizontal">
-            <TextView
+            <LinearLayout
+                android:id="@+id/L1"
                 android:visibility="invisible"
-                android:id="@+id/text_Res1"
+                android:background="@drawable/line1"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="10dp"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_gravity="center"
-                android:gravity="center"
-                android:layout_weight="1"
-                android:text=" 뚝배기 "
-                android:textColor="#000000"
-                android:textSize="16dp"
-                android:textStyle="bold"
-                />
-            <TextView
-                android:visibility="invisible"
-                android:id="@+id/text_price1"
-                android:layout_width="match_parent"
-                android:layout_height="45dp"
-                android:layout_gravity="center"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:text=" 1000원 "
-                android:textColor="#000000"
-                android:textSize="16dp"
-                android:textStyle="bold"
-                />
-            <Button
-                android:id="@+id/bt_food_list1"
-                android:layout_width="match_parent"
-                android:layout_height="45dp"
-                android:layout_gravity="center"
-                android:layout_weight="1"
-                android:background="@drawable/linepink"
-                android:text=" + "
-                android:textColor="#000000"
-                android:textSize="16dp"
-                android:textStyle="bold"
-                />
+                android:layout_height="35dp"
+                android:orientation="horizontal">
+                <TextView
+                    android:visibility="invisible"
+                    android:id="@+id/text_Res1"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:layout_weight="1"
+                    android:text=" 뚝배기 "
+                    android:textColor="#000000"
+                    android:textSize="16dp"
+                    android:textStyle="bold"
+                    />
+                <TextView
+                    android:visibility="invisible"
+                    android:id="@+id/text_price1"
+                    android:layout_width="match_parent"
+                    android:layout_height="45dp"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text=" 1000원 "
+                    android:textColor="#000000"
+                    android:textSize="16dp"
+                    android:textStyle="bold"
+                    />
+                <Button
+                    android:id="@+id/bt_food_list1"
+                    android:layout_width="match_parent"
+                    android:layout_height="45dp"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    android:background="@drawable/linepink"
+                    android:text=" + "
+                    android:textColor="#000000"
+                    android:textSize="16dp"
+                    android:textStyle="bold"
+                    />
             </LinearLayout>
 
             <LinearLayout

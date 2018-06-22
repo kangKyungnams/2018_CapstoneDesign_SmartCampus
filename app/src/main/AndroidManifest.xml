@@ -44,7 +44,7 @@
         <activity
             android:name=".StudentClassActivity"
             android:label="내 강의실"
-            android:theme="@style/AppTheme">
+            android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -54,7 +54,7 @@
         <activity
             android:name=".InfoCourseActivity"
             android:label="강의정보"
-            android:theme="@style/AppTheme">
+            android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -83,7 +83,7 @@
         <activity
             android:name=".MypageRestaurent"
             android:label="마이페이지"
-            android:theme="@style/AppTheme" />
+            android:theme="@style/AppTheme.NoActionBar" />
 
         <intent-filter>
             <action android:name="android.intent.action.MAIN" />
@@ -93,7 +93,7 @@
 
         <activity
             android:name=".Mypage"
-            android:label="MY PAGE"
+            android:label="My Page"
             android:theme="@style/AppTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -112,8 +112,7 @@
         </activity>
         <activity
             android:name=".Cash"
-            android:label="충전하기"
-            android:theme="@style/AppTheme">
+            android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -124,7 +123,7 @@
         <activity
             android:name=".CourseList"
             android:label="강의 리스트"
-            android:theme="@style/AppTheme">
+            android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -134,7 +133,7 @@
         <activity
             android:name=".food"
             android:label="메뉴"
-            android:theme="@style/AppTheme">
+            android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -144,7 +143,7 @@
         <activity
             android:name=".EnrollNotice"
             android:label="공 지 등 록"
-            android:theme="@style/AppTheme">
+            android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -163,7 +162,7 @@
         <activity
             android:name=".NoticeView"
             android:label="공지확인"
-            android:theme="@style/AppTheme">
+            android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
