@@ -93,7 +93,10 @@ public class AttAdapter extends RecyclerView.Adapter<AttAdapter.ViewHolder> {
                     Intent mIntent = new Intent(context, BeaconService.class);
                     mIntent.putExtra("lectureID", mList.get(position).getLectureID());
                     mIntent.putExtra("lectureDateKey", mList.get(position).getLectureDateKey());
-                    mServiceName = context.startService(mIntent);
+                    if(mList.get(position).getLectureID().equals("2018:1:INC4084:02")) {
+                        mServiceName = context.startService(mIntent);
+                        Toast.makeText(context, "일치하지 않는 강의실입니다.", Toast.LENGTH_SHORT).show();
+                    }
                 } else {
                     Toast.makeText(context, "오늘 날짜에 해당하는 출석이 아닙니다.", Toast.LENGTH_SHORT).show();
                 }

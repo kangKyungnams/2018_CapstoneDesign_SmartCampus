@@ -72,7 +72,7 @@ public class BeaconService extends Service {
     @Override
     public int onStartCommand(Intent intent, int flags, int startId){
         super.onStartCommand(intent,flags,startId);
-        lectureID = intent.getStringExtra("lectureID");
+        lectureID = intent.getStringExtra("lectureID").substring(7,14);
         lectureDateKey = intent.getStringExtra("lectureDateKey");
 
         plutoconManager.connectService(new PlutoconManager.OnReadyServiceListener() {
@@ -119,8 +119,8 @@ public class BeaconService extends Service {
                         plutoconList.addAll(plutocons);
                         long ms = System.currentTimeMillis();
                         plutoconAdapter.refresh();
-
-                        if (plutocon.getMajor()==13 && plutocon.getRssi() > targetRssi && !isDiscovered) {
+                        String temp = plutocon.getName();
+                        if (plutocon.getName().equals(lectureID) && plutocon.getRssi() > targetRssi && !isDiscovered) {
                             targetPlutocon = plutocon;
                             isDiscovered = true;
                             //Toast.makeText(BeaconService.this, String.valueOf(ms - plutocon.getLastSeenMillis()), Toast.LENGTH_SHORT).show();
