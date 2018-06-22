@@ -73,7 +73,7 @@
         <activity
             android:name=".Restaurant"
             android:label="학생식당"
-            android:theme="@style/AppTheme">
+            android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
